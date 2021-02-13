@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-4">
               <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
+                <i class="fas fa-map-marker-alt "></i>
                 <h4>Location</h4>
                 <p>212 Barrington Court New York str <br> USA</p>
                 <a href="#">View on Google Maps</a>

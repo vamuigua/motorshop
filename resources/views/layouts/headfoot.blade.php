@@ -17,8 +17,7 @@
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-         <!-- Bootstrap core CSS -->
-        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -31,6 +30,8 @@
     </head>
 
     <body>
+        <div id="app">
+
             <!-- ***** Preloader Start ***** -->
             <div id="preloader">
                 <div class="jumper">
@@ -183,6 +184,7 @@
                     </div>
                 </div>
             </div>
+        </div>
 
         
 
@@ -196,9 +198,7 @@
                 }
             }
         </script>
-        <!-- Bootstrap core JavaScript -->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        
         <script src="{{ asset('js/custom.js') }}" defer></script>
         <script src="{{ asset('js/owl.js') }}" defer></script>
         <script src="{{ asset('js/slick.js') }}" defer></script>
