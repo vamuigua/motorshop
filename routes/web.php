@@ -42,7 +42,13 @@ Route::get('/contact', function () {
 })->name('contact-us');
 // END Static Page ROUTES
 
+// Main Page/Home route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Authentication Routes
 Auth::routes();
+
+// Admin routes
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::resource('admin/car-make', 'App\Http\Controllers\Admin\CarMakeController');
+Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');

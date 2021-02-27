@@ -97,8 +97,20 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="fas fa-user nav-icon"></i>
-                                    <p>Cars</p>
+                                    <i class="fas fa-car nav-icon"></i>
+                                    <p>All Cars</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('car-make.index') }}" class="nav-link">
+                                    <i class="fas fa-car nav-icon"></i>
+                                    <p>Car Makes</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('car-model.index') }}" class="nav-link">
+                                    <i class="fas fa-car nav-icon"></i>
+                                    <p>Car Models</p>
                                 </a>
                             </li>
                         </ul>
