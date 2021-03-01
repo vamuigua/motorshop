@@ -1,13 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <div class="row">
-        @include('admin.sidebar')
-
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Carmodel</div>
+                <div class="card-header">Car Model</div>
                 <div class="card-body">
                     <a href="{{ url('/admin/car-model/create') }}" class="btn btn-success btn-sm"
                         title="Add New CarModel">
@@ -35,6 +33,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Model</th>
+                                    <th>Make</th>
                                     <th>Year</th>
                                     <th>Actions</th>
                                 </tr>
@@ -44,6 +43,11 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name }}</td>
+                                    <td>
+                                        <a href="{{ url('/admin/car-make/' . $item->carMake->id) }}">
+                                            {{ $item->carMake->name }}
+                                        </a>
+                                    </td>
                                     <td>{{ $item->year }}</td>
                                     <td>
                                         <a href="{{ url('/admin/car-model/' . $item->id) }}"

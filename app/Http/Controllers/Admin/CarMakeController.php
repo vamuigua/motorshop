@@ -81,7 +81,6 @@ class CarMakeController extends Controller
     public function show($id)
     {
         $carmake = CarMake::findOrFail($id);
-
         return view('admin.car-make.show', compact('carmake'));
     }
 

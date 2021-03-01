@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
 use App\Models\CarModel;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use App\Models\CarMake;
 
 class CarModelController extends Controller
 {
@@ -34,7 +36,7 @@ class CarModelController extends Controller
             $carmodel = CarModel::where('name', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $carmodel = CarModel::latest()->paginate($perPage);
+            $carmodel = CarModel::latest()->with(['carMake'])->paginate($perPage);
         }
 
         return view('admin.car-model.index', compact('carmodel'));
@@ -47,7 +49,8 @@ class CarModelController extends Controller
      */
     public function create()
     {
-        return view('admin.car-model.create');
+        $car_makes = CarMake::all(['id', 'name']);
+        return view('admin.car-model.create', compact('car_makes'));
     }
 
     /**
@@ -60,11 +63,15 @@ class CarModelController extends Controller
     public function store(Request $request)
     {
 
-        $requestData = $request->all();
+        $validatedData = $this->validateRequest($request);
 
-        CarModel::create($requestData);
-
-        return redirect('admin/car-model')->with('flash_message', 'CarModel added!');
+        try {
+            $car_model = CarModel::create($validatedData);
+            return redirect('admin/car-model/' . $car_model->id)->with('flash_message', 'Car Model added!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to create car model: ' . $th->getMessage());
+            return redirect('admin/car-model')->with('flash_message_error', 'Error while creating car model');
+        }
     }
 
     /**
@@ -91,8 +98,8 @@ class CarModelController extends Controller
     public function edit($id)
     {
         $carmodel = CarModel::findOrFail($id);
-
-        return view('admin.car-model.edit', compact('carmodel'));
+        $car_makes = CarMake::all(['id', 'name']);
+        return view('admin.car-model.edit', compact('carmodel', 'car_makes'));
     }
 
     /**
@@ -106,12 +113,17 @@ class CarModelController extends Controller
     public function update(Request $request, $id)
     {
 
-        $requestData = $request->all();
+        $validatedData = $this->validateRequest($request);
 
         $carmodel = CarModel::findOrFail($id);
-        $carmodel->update($requestData);
 
-        return redirect('admin/car-model')->with('flash_message', 'CarModel updated!');
+        try {
+            $carmodel->update($validatedData);
+            return redirect('admin/car-model/' . $carmodel->id)->with('flash_message', 'Car Model updated!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to create car model: ' . $th->getMessage());
+            return redirect('admin/car-model')->with('flash_message_error', 'Error while updating car model');
+        }
     }
 
     /**
@@ -123,8 +135,28 @@ class CarModelController extends Controller
      */
     public function destroy($id)
     {
-        CarModel::destroy($id);
+        try {
+            CarModel::destroy($id);
+            return redirect('admin/car-model')->with('flash_message', 'Car Model deleted!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to delete car model: ' . $th->getMessage());
+            return redirect('admin/car-model')->with('flash_message_error', 'Error while deleting car model!');
+        }
+    }
 
-        return redirect('admin/car-model')->with('flash_message', 'CarModel deleted!');
+    /**
+     *  Validates Car Make Request Details
+     *
+     * @param \Illuminate\Http\Request $request
+     * 
+     * @return array
+     */
+    public function validateRequest(Request $request)
+    {
+        return $request->validate([
+            'name' => 'required|min:3',
+            'car_make_id' => 'required|numeric',
+            'year' => 'required|numeric'
+        ]);
     }
 }

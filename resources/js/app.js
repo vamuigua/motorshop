@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 require('admin-lte');
+require('bootstrap-datepicker');
+require('./datepicker');
 
 window.Vue = require('vue').default;
 

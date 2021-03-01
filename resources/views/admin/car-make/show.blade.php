@@ -28,10 +28,20 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
+                                <h2>{{ $carmake->name }} models:</h2>
+                                @foreach ($carmake->carModels as $carModel)
                                 <tr>
-                                    <th> Name </th>
-                                    <td> {{ $carmake->name }} </td>
+                                    <th> Model Name </th>
+                                    <td> {{ $carModel->name }} </td>
+                                    <th> Year </th>
+                                    <td> {{ $carModel->year }} </td>
+                                    <th> Actions </th>
+                                    <td> <a href="{{ url('/admin/car-model/' . $carModel->id) }}"
+                                            title="View CarModel"><button class="btn btn-info btn-sm"><i
+                                                    class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                    </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
