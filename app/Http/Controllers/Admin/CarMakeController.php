@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests;
-
 use App\Models\CarMake;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 class CarMakeController extends Controller
 {
@@ -59,12 +60,15 @@ class CarMakeController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $this->validateRequest($request);
 
-        $requestData = $request->all();
-
-        CarMake::create($requestData);
-
-        return redirect('admin/car-make')->with('flash_message', 'CarMake added!');
+        try {
+            $car_make = CarMake::create($validatedData);
+            return redirect('admin/car-make/' . $car_make->id)->with('flash_message', 'Car Make added!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to create car make: ' . $th->getMessage());
+            return redirect('admin/car-make')->with('flash_message_error', 'Error while creating car make');
+        }
     }
 
     /**
@@ -105,13 +109,17 @@ class CarMakeController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $requestData = $request->all();
+        $validatedData = $this->validateRequest($request);
 
         $carmake = CarMake::findOrFail($id);
-        $carmake->update($requestData);
 
-        return redirect('admin/car-make')->with('flash_message', 'CarMake updated!');
+        try {
+            $car_make = $carmake->update($validatedData);
+            return redirect('admin/car-make/' . $carmake->id)->with('flash_message', 'Car Make updated!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to update car make: ' . $th->getMessage());
+            return redirect('admin/car-make')->with('flash_message_error', 'Error while updating car make!');
+        }
     }
 
     /**
@@ -123,8 +131,26 @@ class CarMakeController extends Controller
      */
     public function destroy($id)
     {
-        CarMake::destroy($id);
+        try {
+            CarMake::destroy($id);
+            return redirect('admin/car-make')->with('flash_message', 'Car Make deleted!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to delete car make: ' . $th->getMessage());
+            return redirect('admin/car-make')->with('flash_message_error', 'Error while deleting car make!');
+        }
+    }
 
-        return redirect('admin/car-make')->with('flash_message', 'CarMake deleted!');
+    /**
+     *  Validates Car Make Request Details
+     *
+     * @param \Illuminate\Http\Request $request
+     * 
+     * @return array
+     */
+    public function validateRequest(Request $request)
+    {
+        return $request->validate([
+            'name' => 'required|min:3'
+        ]);
     }
 }

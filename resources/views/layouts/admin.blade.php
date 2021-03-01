@@ -104,7 +104,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('car-make.index') }}" class="nav-link">
                                     <i class="fas fa-car nav-icon"></i>
-                                    <p>Car Makes</p>
+                                    <p>Car Make</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -176,12 +176,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard</h1>
+                        <h1 class="m-0 text-dark">Motorshop</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Admin Dashboard</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
