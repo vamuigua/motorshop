@@ -149,7 +149,33 @@ class CarMakeController extends Controller
     public function validateRequest(Request $request)
     {
         return $request->validate([
-            'name' => 'required|min:3'
+            'name' => 'required|min:3|unique:App\Models\CarMake,name'
         ]);
+    }
+
+    public function addCarMake(Request $request)
+    {
+        $validatedData = $this->validateRequest($request);
+
+        try {
+            $car_make = CarMake::create($validatedData);
+            return response()->json([
+                'car_make' => $car_make->only(['id', 'name']),
+                'created' => true
+            ]);
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to create car make: ' . $th->getMessage());
+        }
+    }
+
+    public function getAllCarMakes()
+    {
+        try {
+            $carMakes = CarMake::all(['id', 'name']);
+            return response()->json(['carMakes' => $carMakes]);
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable get All car makes: ' . $th->getMessage());
+            return $th->getMessage();
+        }
     }
 }

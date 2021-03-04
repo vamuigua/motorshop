@@ -49,8 +49,9 @@ class CarModelController extends Controller
      */
     public function create()
     {
+        $carmodel = new CarModel();
         $car_makes = CarMake::all(['id', 'name']);
-        return view('admin.car-model.create', compact('car_makes'));
+        return view('admin.car-model.create', compact('carmodel', 'car_makes'));
     }
 
     /**

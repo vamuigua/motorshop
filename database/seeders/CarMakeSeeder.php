@@ -21,5 +21,9 @@ class CarMakeSeeder extends Seeder
         $car_make2 = new CarMake();
         $car_make2->name = 'mercedes benz';
         $car_make2->save();
+
+        $car_make3 = new CarMake();
+        $car_make3->name = 'volkswagen';
+        $car_make3->save();
     }
 }
