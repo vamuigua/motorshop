@@ -80,7 +80,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Cars</a>
+                                <a class="nav-link" href="{{ route('cars') }}">Cars</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="{{ route('about') }}"
