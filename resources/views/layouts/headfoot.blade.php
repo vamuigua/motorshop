@@ -149,25 +149,25 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="name" type="text" class="form-control" id="name"
+                                            <input name="name" type="text" class="form-control" id="name_contact"
                                                 placeholder="Full Name" required="">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="email" type="text" class="form-control" id="email"
+                                            <input name="email" type="text" class="form-control" id="email_contact"
                                                 pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>
-                                            <textarea name="message" rows="6" class="form-control" id="message"
+                                            <textarea name="message" rows="6" class="form-control" id="message_contact"
                                                 placeholder="Your Message" required=""></textarea>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">
                                         <fieldset>
-                                            <button type="submit" id="form-submit" class="filled-button">Send
+                                            <button type="submit" id="form-submit_contact" class="filled-button">Send
                                                 Message</button>
                                         </fieldset>
                                     </div>
@@ -184,9 +184,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p>
-                            Copyright © <script>
-                                document.write(new Date().getFullYear());
-                            </script> {{ config('app.name') }}
+                            Copyright © {{ now()->year }} {{ config('app.name') }}
                             - Designed & Built with ❣</a>
                         </p>
                     </div>
@@ -197,13 +195,13 @@
 
     {{-- JQuery --}}
     <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
 
     <!-- Additional Scripts -->
     <script src="/assets/js/custom.js"></script>
     <script src="assets/js/owl.js"></script>
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/accordions.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <script language="text/Javascript">
         cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
