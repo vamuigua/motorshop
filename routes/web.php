@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CarMakeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +17,46 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Static Page ROUTES
+Route::get('/about', function () {
+    return view('static/about');
+})->name('about');
 
+Route::get('/blog', function () {
+    return view('static/blog');
+})->name('blog');
+
+Route::get('/faq', function () {
+    return view('static/FAQ');
+})->name('faq');
+
+Route::get('/terms', function () {
+    return view('static/terms');
+})->name('terms');
+
+Route::get('/team', function () {
+    return view('static/team');
+})->name('team');
+
+Route::get('/contact', function () {
+    return view('static/contact-us');
+})->name('contact-us');
+
+Route::get('/cars', function () {
+    return view('static/cars');
+})->name('cars');
+// END Static Page ROUTES
+
+// Main Page/Home route
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Authentication Routes
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Admin routes
+Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::resource('admin/car-make', 'App\Http\Controllers\Admin\CarMakeController');
+Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
+
+Route::post('/admin/new_car_make', [CarMakeController::class, 'addCarMake']);
+Route::get('/admin/all_car_makes', [CarMakeController::class, 'getAllCarMakes']);

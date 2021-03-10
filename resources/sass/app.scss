@@ -3,6 +3,24 @@
 
 // Variables
 @import 'variables';
+$fa-font-path:        "../webfonts";
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// Admin-lte
+@import "~admin-lte/dist/css/adminlte.min.css";
+
+// Font-awesome
+@import "~admin-lte/plugins/fontawesome-free/css/fontawesome.min.css";
+@import "~admin-lte/plugins/fontawesome-free/css/solid.min.css";
+@import "~admin-lte/plugins/fontawesome-free/css/brands.min.css";
+
+// Normalize css
+@import "~normalize.css/normalize.css";
+
+// Bootstrap-datepicker
+@import "~bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
+
+// Bootstrap-select
+@import "~bootstrap-select/dist/css/bootstrap-select.min.css";
