@@ -4,13 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
-require('admin-lte');
-require('bootstrap-datepicker');
-require('./datepicker');
+require("./bootstrap");
+require("admin-lte");
+require("bootstrap-datepicker");
+require("./datepicker");
 require("bootstrap-select");
 
-window.Vue = require('vue').default;
+window.Vue = require("vue").default;
 
 /**
  * The following block of code may be used to automatically register your
@@ -23,9 +23,14 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('NewCarMakeModal', require('./components/NewCarMakeModal.vue').default);
-Vue.component('CarMakeOptions',require('./components/CarMakeOptions.vue').default);
-
+Vue.component(
+    "NewCarMakeModal",
+    require("./components/NewCarMakeModal.vue").default
+);
+Vue.component(
+    "CarMakeOptions",
+    require("./components/CarMakeOptions.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,36 +38,36 @@ Vue.component('CarMakeOptions',require('./components/CarMakeOptions.vue').defaul
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Vuex from 'vuex'
-Vue.use(Vuex)
+import Vuex from "vuex";
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state: {
-    allCarMakes: [],
-    errors: null
-  }
-})
+    state: {
+        allCarMakes: [],
+        errors: null
+    }
+});
 
 const app = new Vue({
-    el: '#app',
+    el: "#app-admin",
     store,
     data() {
         return {
-            errors: null,
+            errors: null
         };
     },
     created() {
         this.loadCarMakes();
-    }, 
-    computed:{
-        updatedCarMakes(){
-            return store.state.allCarMakes
+    },
+    computed: {
+        updatedCarMakes() {
+            return store.state.allCarMakes;
         }
     },
-    methods:{
-        async loadCarMakes(){
+    methods: {
+        async loadCarMakes() {
             try {
-                let response = await axios("/admin/all_car_makes")
+                let response = await axios("/admin/all_car_makes");
                 if (response.status === 200) {
                     store.state.allCarMakes = response.data.carMakes;
                 }
@@ -71,5 +76,5 @@ const app = new Vue({
                 console.error(err);
             }
         }
-    },
+    }
 });
