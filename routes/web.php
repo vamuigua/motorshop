@@ -41,6 +41,10 @@ Route::get('/team', function () {
 Route::get('/contact', function () {
     return view('static/contact-us');
 })->name('contact-us');
+
+Route::get('/cars', function () {
+    return view('static/cars');
+})->name('cars');
 // END Static Page ROUTES
 
 // Main Page/Home route
