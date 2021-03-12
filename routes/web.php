@@ -55,6 +55,7 @@ Auth::routes();
 
 // Admin routes
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::resource('admin/cars', 'App\Http\Controllers\Admin\CarsController');
 Route::resource('admin/car-make', 'App\Http\Controllers\Admin\CarMakeController');
 Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
 

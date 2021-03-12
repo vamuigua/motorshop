@@ -27,6 +27,9 @@ class CarModel extends Model
      */
     protected $fillable = ['name', 'car_make_id', 'year'];
 
+    /**
+     * Get the CarMake of the CarModel.
+     */
     public function carMake()
     {
         return $this->belongsTo(CarMake::class);
