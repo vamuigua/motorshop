@@ -4,11 +4,28 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+// Bootstrap 4
 require("./bootstrap");
+// admin-lte
 require("admin-lte");
+// Datepicker
 require("bootstrap-datepicker");
 require("./datepicker");
+// Bootstrap-select
 require("bootstrap-select");
+// Datatables Depedencies
+var pdfMake = require("pdfmake");
+var pdfFonts = require("pdfmake/build/vfs_fonts.js");
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+
+require("datatables.net-bs4");
+require("datatables.net-buttons-bs4");
+require("datatables.net-buttons/js/buttons.colVis.js")();
+require("datatables.net-buttons/js/buttons.html5.js")();
+require("datatables.net-buttons/js/buttons.print.js")();
+require("datatables.net-fixedheader-bs4");
+require("datatables.net-responsive-bs4");
+require("./datatables");
 
 window.Vue = require("vue").default;
 

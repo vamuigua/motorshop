@@ -30,30 +30,7 @@ class CarsController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
-        $perPage = 25;
-
-        if (!empty($keyword)) {
-            $cars = Car::where('car_make_id', 'LIKE', "%$keyword%")
-                ->orWhere('car_model_id', 'LIKE', "%$keyword%")
-                ->orWhere('year', 'LIKE', "%$keyword%")
-                ->orWhere('mileage', 'LIKE', "%$keyword%")
-                ->orWhere('body_type', 'LIKE', "%$keyword%")
-                ->orWhere('condition_type', 'LIKE', "%$keyword%")
-                ->orWhere('transmission_type', 'LIKE', "%$keyword%")
-                ->orWhere('price', 'LIKE', "%$keyword%")
-                ->orWhere('duty', 'LIKE', "%$keyword%")
-                ->orWhere('negotiable', 'LIKE', "%$keyword%")
-                ->orWhere('fuel_type', 'LIKE', "%$keyword%")
-                ->orWhere('interior_type', 'LIKE', "%$keyword%")
-                ->orWhere('color_type', 'LIKE', "%$keyword%")
-                ->orWhere('engine_size', 'LIKE', "%$keyword%")
-                ->orWhere('description', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            $cars = Car::latest()->paginate($perPage);
-        }
-
+        $cars = Car::latest()->paginate();
         return view('admin.cars.index', compact('cars'));
     }
 
