@@ -27,14 +27,14 @@
 
 <div class="form-group {{ $errors->has('year') ? 'has-error' : ''}}">
     <label for="year" class="control-label">{{ 'Year' }}</label>
-    <input class="form-control" name="year" type="text" id="year"
+    <input class="form-control" name="year" type="text" id="datepicker" placeholder="e.g 2021"
         value="{{ isset($car->year) ? $car->year : old('year')}}">
     {!! $errors->first('year', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group {{ $errors->has('mileage') ? 'has-error' : ''}}">
     <label for="mileage" class="control-label">{{ 'Mileage (km)' }}</label>
-    <input class="form-control" name="mileage" type="number" id="mileage"
+    <input class="form-control" name="mileage" type="number" id="mileage" placeholder="e.g 12000"
         value="{{ isset($car->mileage) ? $car->mileage : old('mileage')}}">
     {!! $errors->first('mileage', '<p class="help-block">:message</p>') !!}
 </div>
@@ -76,8 +76,8 @@
 </div>
 
 <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
-    <label for="price" class="control-label">{{ 'Price' }}</label>
-    <input class="form-control" name="price" type="number" id="price"
+    <label for="price" class="control-label">{{ 'Price (KSH)' }}</label>
+    <input class="form-control" name="price" type="number" id="price" placeholder="e.g 500000"
         value="{{ isset($car->price) ? $car->price : old('price')}}">
     {!! $errors->first('price', '<p class="help-block">:message</p>') !!}
 </div>
@@ -142,14 +142,14 @@
 
 <div class="form-group {{ $errors->has('engine_size') ? 'has-error' : ''}}">
     <label for="engine_size" class="control-label">{{ 'Engine Size (cc)' }}</label>
-    <input class="form-control" name="engine_size" type="number" id="engine_size"
+    <input class="form-control" name="engine_size" type="number" id="engine_size" placeholder="e.g 2500cc"
         value="{{ isset($car->engine_size) ? $car->engine_size : old('engine_size')}}">
     {!! $errors->first('engine_size', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
     <label for="description" class="control-label">{{ 'Description' }}</label>
-    <textarea class="form-control" rows="5" name="description" type="textarea"
+    <textarea class="form-control" rows="5" name="description" type="textarea" placeholder="Vehicle's description..."
         id="description">{{ isset($car->description) ? $car->description : old('description')}}</textarea>
     {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
 </div>

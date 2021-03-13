@@ -57,9 +57,9 @@ class Car extends Model
     public function conditionTypes()
     {
         return [
-            'brand_new' => 'Brand New',
-            'foreign_used' => 'Foreign Used',
-            'locally_used' => 'Locally Used',
+            'Brand-new' => 'Brand New',
+            'Foreign-used' => 'Foreign Used',
+            'Locally-used' => 'Locally Used',
         ];
     }
 
@@ -93,10 +93,10 @@ class Car extends Model
     public function dutyTypes()
     {
         return [
-            'duty_excempted' => 'Duty Excempted',
-            'duty_not_paid' => 'Duty Not Paid',
-            'duty_Paid' => 'Duty Paid',
-            'not_Specified' => 'Not Specified',
+            'Duty-excempted' => 'Duty Excempted',
+            'Duty-not-paid' => 'Duty Not Paid',
+            'Duty-paid' => 'Duty Paid',
+            'Not-specified' => 'Not Specified',
         ];
     }
 

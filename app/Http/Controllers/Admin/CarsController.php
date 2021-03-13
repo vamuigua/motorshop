@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Car;
 use App\Http\Requests;
 
-use App\Models\Car;
 use App\Models\CarMake;
 use App\Models\CarModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
 
 class CarsController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -69,12 +80,15 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
+        $valiadtedData = $this->validateRequest($request);
 
-        $requestData = $request->all();
-
-        Car::create($requestData);
-
-        return redirect('admin/cars')->with('flash_message', 'Car added!');
+        try {
+            $car = Car::create($valiadtedData);
+            return redirect('/admin/cars/' . $car->id)->with('flash_message', 'Car added!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to create car: ' . $th->getMessage());
+            return redirect('admin/cars')->with('flash_message_error', 'Error while creating car!');
+        }
     }
 
     /**
@@ -117,13 +131,17 @@ class CarsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $requestData = $request->all();
+        $valiadtedData = $this->validateRequest($request);
 
         $car = Car::findOrFail($id);
-        $car->update($requestData);
 
-        return redirect('admin/cars')->with('flash_message', 'Car updated!');
+        try {
+            $car->update($valiadtedData);
+            return redirect('admin/cars/' . $car->id)->with('flash_message', 'Car updated!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to update car: ' . $th->getMessage());
+            return redirect('admin/cars')->with('flash_message_error', 'Error while updating car!');
+        }
     }
 
     /**
@@ -135,8 +153,40 @@ class CarsController extends Controller
      */
     public function destroy($id)
     {
-        Car::destroy($id);
+        try {
+            Car::destroy($id);
+            return redirect('admin/cars')->with('flash_message', 'Car deleted!');
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable to delete car: ' . $th->getMessage());
+            return redirect('admin/cars')->with('flash_message_error', 'Error while deleting car!');
+        }
+    }
 
-        return redirect('admin/cars')->with('flash_message', 'Car deleted!');
+    /**
+     *  Validates Car Request Details
+     *
+     * @param \Illuminate\Http\Request $request
+     * 
+     * @return array
+     */
+    public function validateRequest(Request $request)
+    {
+        return $request->validate([
+            'car_make_id' => 'required',
+            'car_model_id' => 'required',
+            'year' => 'required',
+            'mileage' => 'required|numeric',
+            'body_type' => 'required',
+            'condition_type' => 'required',
+            'transmission_type' => 'required',
+            'price' => 'required|numeric',
+            'duty' => 'required',
+            'negotiable' => 'required',
+            'fuel_type' => 'required',
+            'interior_type' => 'required',
+            'color_type' => 'required',
+            'engine_size' => 'required|numeric',
+            'description' => 'required'
+        ]);
     }
 }

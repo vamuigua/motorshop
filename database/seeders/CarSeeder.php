@@ -27,10 +27,10 @@ class CarSeeder extends Seeder
         $car_1->year = $car_model_1->year;
         $car_1->mileage = '12000';
         $car_1->body_type = 'Saloon';
-        $car_1->condition_type = 'foreign_used';
+        $car_1->condition_type = 'Foreign-used';
         $car_1->transmission_type = 'automatic';
         $car_1->price = '1000000';
-        $car_1->duty = 'duty_Paid';
+        $car_1->duty = 'Duty-Paid';
         $car_1->negotiable = '1';
         $car_1->fuel_type = 'petrol';
         $car_1->interior_type = 'leather';
@@ -48,10 +48,10 @@ class CarSeeder extends Seeder
         $car_2->year = $car_model_2->year;
         $car_2->mileage = '10000';
         $car_2->body_type = 'Saloon';
-        $car_2->condition_type = 'brand_new';
+        $car_2->condition_type = 'Brand-new';
         $car_2->transmission_type = 'automatic';
         $car_2->price = '3500000';
-        $car_2->duty = 'duty_excempted';
+        $car_2->duty = 'Duty-excempted';
         $car_2->negotiable = '0';
         $car_2->fuel_type = 'petrol';
         $car_2->interior_type = 'leather';
