@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Car;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\CarMake;
+use App\Models\CarModel;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -25,6 +28,9 @@ class AdminController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('admin.dashboard', compact('user'));
+        $cars = Car::all()->count();
+        $car_makes = CarMake::all()->count();
+        $car_models = CarModel::all()->count();
+        return view('admin.dashboard', compact('user', 'cars', 'car_makes', 'car_models'));
     }
 }

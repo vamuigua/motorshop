@@ -27,6 +27,9 @@ class CarMake extends Model
      */
     protected $fillable = ['name'];
 
+    /**
+     * Get the CarModels of the CarMake
+     */
     public function carModels()
     {
         return $this->hasMany(CarModel::class);

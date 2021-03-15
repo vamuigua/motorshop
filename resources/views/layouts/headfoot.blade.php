@@ -15,13 +15,13 @@
 
     <title>{{ config('app.name') }}</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/owl.css">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <style>
@@ -47,15 +47,15 @@
                 <div class="row">
                     <div class="col-md-8 col-xs-12">
                         <ul class="left-info">
-                            <li><a href="#"><i class="fa fa-envelope"></i>info@motorshop.com</a></li>
-                            <li><a href="#"><i class="fas fa-phone-alt"></i>123-456-7890</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>contact@company.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>123-456-7890</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <ul class="right-icons">
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin-in"></i></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        <span style="color: #A4C639"><i class="fas fa-bars"></i></span>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
@@ -116,10 +116,9 @@
                         <p>Vivamus tellus mi. Nulla ne cursus elit,vulputate. Sed ne cursus augue hasellus lacinia
                             sapien vitae.</p>
                         <ul class="social-icons">
-                            <li><a rel="nofollow" href="#" target="_blank"><i class="fab fa-facebook-square"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                     <div class="col-md-3 footer-item">
@@ -193,13 +192,13 @@
         </div>
     </div>
 
-    {{-- JQuery --}}
+    <!-- Bootstrap core JavaScript -->
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
 
     <!-- Additional Scripts -->
     <script src="/assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
+    <script src="/assets/js/owl.js"></script>
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/accordions.js"></script>
 

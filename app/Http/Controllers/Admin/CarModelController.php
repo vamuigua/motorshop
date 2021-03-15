@@ -29,16 +29,7 @@ class CarModelController extends Controller
      */
     public function index(Request $request)
     {
-        $keyword = $request->get('search');
-        $perPage = 25;
-
-        if (!empty($keyword)) {
-            $carmodel = CarModel::where('name', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            $carmodel = CarModel::latest()->with(['carMake'])->paginate($perPage);
-        }
-
+        $carmodel = CarModel::latest()->with(['carMake'])->paginate();
         return view('admin.car-model.index', compact('carmodel'));
     }
 
