@@ -17,7 +17,6 @@ class CreateCarModelsTable extends Migration
             $table->id();
             $table->foreignId('car_make_id')->constrained();
             $table->string('name');
-            $table->year('year');
             $table->timestamps();
         });
     }

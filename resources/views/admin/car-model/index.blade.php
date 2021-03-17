@@ -21,7 +21,6 @@
                                     <th>#</th>
                                     <th>Model</th>
                                     <th>Make</th>
-                                    <th>Year</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -35,7 +34,6 @@
                                             {{ $item->carMake->name }}
                                         </a>
                                     </td>
-                                    <td>{{ $item->year }}</td>
                                     <td>
                                         <a href="{{ url('/admin/car-model/' . $item->id) }}"
                                             title="View CarModel"><button class="btn btn-info btn-sm"><i

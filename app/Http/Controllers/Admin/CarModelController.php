@@ -148,7 +148,6 @@ class CarModelController extends Controller
         return $request->validate([
             'name' => 'required|min:3',
             'car_make_id' => 'required|numeric',
-            'year' => 'required|numeric'
         ]);
     }
 }

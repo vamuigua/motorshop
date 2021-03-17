@@ -24,7 +24,7 @@ class CarSeeder extends Seeder
         $car_1 = new Car();
         $car_1->car_make_id = $car_make_1->id;
         $car_1->car_model_id = $car_model_1->id;
-        $car_1->year = $car_model_1->year;
+        $car_1->year = '2020';
         $car_1->mileage = '12000';
         $car_1->body_type = 'Saloon';
         $car_1->condition_type = 'Foreign-used';
@@ -45,7 +45,7 @@ class CarSeeder extends Seeder
         $car_2 = new Car();
         $car_2->car_make_id = $car_make_2->id;
         $car_2->car_model_id = $car_model_2->id;
-        $car_2->year = $car_model_2->year;
+        $car_2->year = '2020';
         $car_2->mileage = '10000';
         $car_2->body_type = 'Saloon';
         $car_2->condition_type = 'Brand-new';
