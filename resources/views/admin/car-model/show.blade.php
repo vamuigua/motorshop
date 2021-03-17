@@ -36,10 +36,6 @@
                                     <th> Make </th>
                                     <td> {{ $carmodel->carMake->name }} </td>
                                 </tr>
-                                <tr>
-                                    <th> Year </th>
-                                    <td> {{ $carmodel->year }} </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>

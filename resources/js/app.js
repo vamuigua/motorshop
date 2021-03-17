@@ -60,38 +60,11 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        allCarMakes: [],
-        errors: null
+        allCarMakes: []
     }
 });
 
 const app = new Vue({
     el: "#app-admin",
-    store,
-    data() {
-        return {
-            errors: null
-        };
-    },
-    created() {
-        this.loadCarMakes();
-    },
-    computed: {
-        updatedCarMakes() {
-            return store.state.allCarMakes;
-        }
-    },
-    methods: {
-        async loadCarMakes() {
-            try {
-                let response = await axios("/admin/all_car_makes");
-                if (response.status === 200) {
-                    store.state.allCarMakes = response.data.carMakes;
-                }
-            } catch (err) {
-                this.errors = err;
-                console.error(err);
-            }
-        }
-    }
+    store
 });

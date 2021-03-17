@@ -126,11 +126,12 @@ export default {
         axios
           .post("/admin/new_car_make", newCarMake)
           .then((response) => {
-            if (response.data.created) {
+            if (response.data.created === true) {
               this.car_make_name = "";
               this.$store.state.allCarMakes.push(response.data.car_make);
-              // show success message
-              this.success_msg = true;
+              this.success_msg = true; // show success message
+            } else if (response.data.created === false) {
+              this.errors.push(response.data.error);
             }
           })
           .catch((err) => {

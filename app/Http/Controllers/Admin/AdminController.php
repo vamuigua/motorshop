@@ -28,9 +28,6 @@ class AdminController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $cars = Car::all()->count();
-        $car_makes = CarMake::all()->count();
-        $car_models = CarModel::all()->count();
-        return view('admin.dashboard', compact('user', 'cars', 'car_makes', 'car_models'));
+        return view('admin.dashboard', compact('user'));
     }
 }

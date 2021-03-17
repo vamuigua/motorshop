@@ -1,7 +1,7 @@
 <div class="form-group {{ $errors->has('car_make_id') ? 'has-error' : ''}}">
     <label for="car_make_id" class="control-label">{{ 'Car Make' }}</label>
     {{-- Car Make Options Component --}}
-    <car-make-options :car_makes="updatedCarMakes" :carmodel="{{ $carModel }}">
+    <car-make-options :carmodel="{{ $carModel }}">
     </car-make-options>
     {!! $errors->first('car_make_id', '<p class="help-block">:message</p>') !!}
 </div>

@@ -8,7 +8,7 @@
 <div class="form-group {{ $errors->has('car_make_id') ? 'has-error' : ''}}">
     <label for="car_make_id" class="control-label">{{ 'Make' }}</label>
     {{-- Car Make Options Component --}}
-    <car-make-options :car_makes="updatedCarMakes" :carmodel="{{ $carmodel }}">
+    <car-make-options :carmodel="{{ $carmodel }}">
     </car-make-options>
     {!! $errors->first('car_make_id', '<p class="help-block">:message</p>') !!}
 </div>
@@ -17,13 +17,6 @@
 <div class="new-car-make-modal">
     <new-car-make-modal>
         <new-car-make-modal />
-</div>
-
-<div class="form-group {{ $errors->has('year') ? 'has-error' : ''}}">
-    <label for="year" class="control-label">{{ 'Year' }}</label>
-    <input class="form-control" name="year" type="text" id="datepicker" placeholder="e.g 2021"
-        value="{{ isset($carmodel->year) ? $carmodel->year : old('year')}}">
-    {!! $errors->first('year', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group">

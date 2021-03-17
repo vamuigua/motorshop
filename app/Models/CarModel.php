@@ -25,7 +25,7 @@ class CarModel extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'car_make_id', 'year'];
+    protected $fillable = ['name', 'car_make_id'];
 
     /**
      * Get the CarMake of the CarModel.
