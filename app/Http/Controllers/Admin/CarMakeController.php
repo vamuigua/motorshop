@@ -51,12 +51,15 @@ class CarMakeController extends Controller
      */
     public function store(Request $request)
     {
+        $latest_make = new CarMake;
         $validatedData = $this->validateRequest($request);
 
         try {
             $car_make = CarMake::create($validatedData);
+            $latest_make = $car_make;
             return redirect('admin/car-make/' . $car_make->id)->with('flash_message', 'Car Make added!');
         } catch (\Throwable $th) {
+            CarMake::destroy($latest_make);
             Log::error('Error! Unable to create car make: ' . $th->getMessage());
             return redirect('admin/car-make')->with('flash_message_error', 'Error while creating car make');
         }
@@ -144,21 +147,30 @@ class CarMakeController extends Controller
         ]);
     }
 
+    // Adds Car Make through Vue Modal
     public function addCarMake(Request $request)
     {
+        $latest_make = new CarMake;
         $validatedData = $this->validateRequest($request);
 
         try {
             $car_make = CarMake::create($validatedData);
+            $latest_make = $car_make;
             return response()->json([
                 'car_make' => $car_make->only(['id', 'name']),
                 'created' => true
             ]);
         } catch (\Throwable $th) {
+            CarMake::destroy($latest_make);
             Log::error('Error! Unable to create car make: ' . $th->getMessage());
+            return response()->json([
+                'error' => "Unable to create Car make",
+                'created' => false
+            ]);
         }
     }
 
+    // Returns all Car Makes
     public function getAllCarMakes()
     {
         try {

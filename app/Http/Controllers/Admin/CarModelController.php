@@ -54,14 +54,19 @@ class CarModelController extends Controller
      */
     public function store(Request $request)
     {
-
+        $latest_model = new CarModel();
         $validatedData = $this->validateRequest($request);
 
         try {
             $car_model = CarModel::create($validatedData);
+            $latest_model = $car_model;
+
             return redirect('admin/car-model/' . $car_model->id)->with('flash_message', 'Car Model added!');
         } catch (\Throwable $th) {
+            CarModel::destroy($latest_model->id);
+
             Log::error('Error! Unable to create car model: ' . $th->getMessage());
+
             return redirect('admin/car-model')->with('flash_message_error', 'Error while creating car model');
         }
     }

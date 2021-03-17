@@ -57,10 +57,12 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
+        $latest_car = new Car();
         $valiadtedData = $this->validateRequest($request);
 
         try {
             $car = Car::create($valiadtedData);
+            $latest_car = $car;
 
             foreach ($request->input('images', []) as $file) {
                 $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
@@ -68,8 +70,9 @@ class CarsController extends Controller
 
             return redirect('/admin/cars/' . $car->id)->with('flash_message', 'Car added!');
         } catch (\Throwable $th) {
-            Log::error('Error! Unable to create car: ' . $th->getMessage());
-            return redirect('admin/cars')->with('flash_message_error', 'Error while creating car!');
+            Car::destroy($latest_car->id);
+            Log::error('Error! Car was not Created: ' . $th->getMessage());
+            return redirect('admin/cars')->with('flash_message_error', 'Car was not Created!');
         }
     }
 
@@ -123,7 +126,7 @@ class CarsController extends Controller
 
             $carImages = $car->images()->pluck('file_name')->toArray();
 
-            // add images from request to the DB
+            // add images from the request to the DB
             foreach ($request->input('images', []) as $file) {
                 if (count($carImages) === 0 || !in_array($file, $carImages)) {
                     $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
