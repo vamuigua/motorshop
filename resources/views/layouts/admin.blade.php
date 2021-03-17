@@ -10,15 +10,14 @@
 
     <title>{{ config('app.name') }} Admin Panel</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- Dropzone JS CDN CSS --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.8.1/min/dropzone.min.css" rel="stylesheet" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-footer-fixed layout-navbar-fixed layout-fixed">
@@ -231,6 +230,11 @@
         </footer>
     </div>
     <!-- ./wrapper -->
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- Dropzone JS CDN script --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.8.1/min/dropzone.min.js"></script>
+    @yield('scripts')
 </body>
 
 </html>

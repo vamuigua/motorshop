@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Car extends Model
+class Car extends Model implements HasMedia
 {
+    use HasMediaTrait;
+
     /**
      * The database table used by the model.
      *
@@ -157,5 +162,21 @@ class Car extends Model
     public function carModel($id)
     {
         return CarModel::find($id);
+    }
+
+    // Get all Images of a car
+    public function images()
+    {
+        return $this->getMedia('car_image');
+    }
+
+    // Media conversions
+    public function registerMediaConversions(Media $media = null)
+    {
+        // make a thumbnail
+        $this->addMediaConversion('thumb')
+            ->width(368)
+            ->height(232)
+            ->sharpen(10);
     }
 }

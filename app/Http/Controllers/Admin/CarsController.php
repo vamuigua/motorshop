@@ -61,6 +61,11 @@ class CarsController extends Controller
 
         try {
             $car = Car::create($valiadtedData);
+
+            foreach ($request->input('images', []) as $file) {
+                $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
+            }
+
             return redirect('/admin/cars/' . $car->id)->with('flash_message', 'Car added!');
         } catch (\Throwable $th) {
             Log::error('Error! Unable to create car: ' . $th->getMessage());
@@ -78,8 +83,9 @@ class CarsController extends Controller
     public function show($id)
     {
         $car = Car::findOrFail($id);
+        $carImages =  $car->images();
 
-        return view('admin.cars.show', compact('car'));
+        return view('admin.cars.show', compact('car', 'carImages'));
     }
 
     /**
@@ -114,6 +120,16 @@ class CarsController extends Controller
 
         try {
             $car->update($valiadtedData);
+
+            $carImages = $car->images()->pluck('file_name')->toArray();
+
+            // add images from request to the DB
+            foreach ($request->input('images', []) as $file) {
+                if (count($carImages) === 0 || !in_array($file, $carImages)) {
+                    $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
+                }
+            }
+
             return redirect('admin/cars/' . $car->id)->with('flash_message', 'Car updated!');
         } catch (\Throwable $th) {
             Log::error('Error! Unable to update car: ' . $th->getMessage());
@@ -163,7 +179,28 @@ class CarsController extends Controller
             'interior_type' => 'required',
             'color_type' => 'required',
             'engine_size' => 'required|numeric',
-            'description' => 'required'
+            'description' => 'required',
+        ]);
+    }
+
+    // Temporarily stores the Uploded Car Images
+    public function storeMedia(Request $request)
+    {
+        $path = storage_path('tmp/uploads/cars');
+
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        $file = $request->file('file');
+
+        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+
+        $file->move($path, $name);
+
+        return response()->json([
+            'name'          => $name,
+            'original_name' => $file->getClientOriginalName(),
         ]);
     }
 }
