@@ -154,7 +154,53 @@
     {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
 </div>
 
+<div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
+    <label for=" images" class="control-label">{{ 'Vehicle Images' }}</label>
+    <div class="needsclick dropzone" id="image-dropzone"></div>
+    {!! $errors->first('images', '<p class="help-block">:message</p>') !!}
+</div>
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>
+
+@section('scripts')
+<script>
+    var uploadedImageMap = {}
+    Dropzone.options.imageDropzone = {
+        url: '{{ route('cars.storeMedia') }}',
+        maxFilesize: 2, // MB
+        addRemoveLinks: true,
+        resizeWidth: 650,
+        acceptedFiles: 'image/jpeg,image/png,image/jpg',
+        headers: {
+            'X-CSRF-TOKEN': "{{ csrf_token() }}"
+        },
+        success: function (file, response) {
+            $('form').append('<input type="hidden" name="images[]" alt="'+ response.original_name +'" value="' + response.name + '">')
+            uploadedImageMap[file.name] = response.name
+        },
+        removedfile: function (file) {
+            file.previewElement.remove()
+            var name = ''
+            if (typeof file.file_name !== 'undefined') {
+                name = file.file_name
+            } else {
+                name = uploadedImageMap[file.name]
+            }
+            $('form').find('input[name="images[]"][value="' + name + '"]').remove()
+        },
+        init: function () {
+            @if(isset($car) && $car->images())
+                var files = {!! json_encode($car->images()) !!}
+                for (var i in files) {
+                    var file = files[i]
+                    this.options.addedfile.call(this, file)
+                    file.previewElement.classList.add('dz-complete')
+                    $('form').append('<input type="hidden" name="images[]" alt="'+ file.file_name +'" value="' + file.file_name + '">')
+                }
+            @endif
+        }
+    }
+</script>
+@endsection

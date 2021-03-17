@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CarMakeController;
 
@@ -55,9 +56,15 @@ Auth::routes();
 
 // Admin routes
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
-Route::resource('admin/cars', 'App\Http\Controllers\Admin\CarsController');
-Route::resource('admin/car-make', 'App\Http\Controllers\Admin\CarMakeController');
-Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
 
+// Car Routes
+Route::resource('admin/cars', 'App\Http\Controllers\Admin\CarsController');
+Route::post('/admin/cars/media', [CarsController::class, 'storeMedia'])->name('cars.storeMedia');
+
+// Car-Make routes
+Route::resource('admin/car-make', 'App\Http\Controllers\Admin\CarMakeController');
 Route::post('/admin/new_car_make', [CarMakeController::class, 'addCarMake']);
 Route::get('/admin/all_car_makes', [CarMakeController::class, 'getAllCarMakes']);
+
+// Car-Model routes
+Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');

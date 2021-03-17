@@ -93,6 +93,24 @@
                                     <th> Description </th>
                                     <td> {{ $car->description }} </td>
                                 </tr>
+                                <tr>
+                                    <th> Images </th>
+                                    @if (count($carImages) > 0)
+                                    @foreach ($carImages as $image)
+                                    <td>
+                                        @if ($image->hasGeneratedConversion('thumb'))
+                                        <img src="{{ $image->getUrl('thumb') }}" alt="{{ $image->file_name }}">
+                                        @else
+                                        <img src="{{ $image->getUrl() }}" alt="{{ $image->file_name }}">
+                                        @endif
+                                    </td>
+                                    @endforeach
+                                    @else
+                                    <td>
+                                        <p>No images Provided</p>
+                                    </td>
+                                    @endif
+                                </tr>
                             </tbody>
                         </table>
                     </div>
