@@ -9,8 +9,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>{{ $cars }}</h3>
-                            <p>All Cars</p>
+                            <i class="fas fa-car"></i>
+                            <h4>All Cars</h4>
                         </div>
                         <div class="icon">
                             <i class="fas fa-car"></i>
@@ -24,8 +24,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-gradient-success">
                         <div class="inner">
-                            <h3>{{ $car_makes }}</h3>
-                            <p>Car Makes</p>
+                            <i class="fas fa-car"></i>
+                            <h4>Car Makes</h4>
                         </div>
                         <div class="icon">
                             <i class="fas fa-car"></i>
@@ -38,8 +38,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-maroon">
                         <div class="inner">
-                            <h3>{{ $car_models }}</h3>
-                            <p>Car Models</p>
+                            <i class="fas fa-car"></i>
+                            <h4>Car Models</h4>
                         </div>
                         <div class="icon">
                             <i class="fas fa-car"></i>
