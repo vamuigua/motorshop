@@ -13,7 +13,7 @@
     </div>
     <select name="car_make_id" class="form-control" id="car_make_id">
       <option
-        v-for="car_make in updatedCarMakes"
+        v-for="car_make in carMakes"
         :key="car_make.id"
         :value="car_make.id"
         :selected="car_make.id == carmodel.car_make_id"
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
+
 export default {
   props: ["carmodel"],
   data() {
@@ -36,12 +38,16 @@ export default {
     this.loadCarMakes();
   },
   methods: {
+    ...mapActions({
+      updateAllCarMakes: "updateAllCarMakes",
+    }),
+
     async loadCarMakes() {
       try {
         const uri = "/admin/all_car_makes";
         let response = await axios(uri);
         if (response.status === 200) {
-          this.$store.state.allCarMakes = response.data.carMakes;
+          this.updateAllCarMakes(response.data.carMakes);
         }
       } catch (err) {
         this.errors = err;
@@ -50,9 +56,9 @@ export default {
     },
   },
   computed: {
-    updatedCarMakes() {
-      return this.$store.state.allCarMakes;
-    },
+    ...mapGetters({
+      carMakes: "carMakes",
+    }),
   },
 };
 </script>

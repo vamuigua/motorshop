@@ -106,6 +106,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   data() {
     return {
@@ -115,6 +117,10 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      addCarMake: "addCarMake",
+    }),
+
     handleSubmit: function (e) {
       this.success_msg = false;
       e.preventDefault();
@@ -128,7 +134,7 @@ export default {
           .then((response) => {
             if (response.data.created === true) {
               this.car_make_name = "";
-              this.$store.state.allCarMakes.push(response.data.car_make);
+              this.addCarMake(response.data.car_make);
               this.success_msg = true; // show success message
             } else if (response.data.created === false) {
               this.errors.push(response.data.error);

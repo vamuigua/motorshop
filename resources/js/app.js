@@ -61,6 +61,27 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         allCarMakes: []
+    },
+    getters: {
+        carMakes(state) {
+            return state.allCarMakes;
+        }
+    },
+    mutations: {
+        SET_ALL_CAR_MAKES(state, data) {
+            state.allCarMakes = data;
+        }
+    },
+    actions: {
+        updateAllCarMakes({ commit }, data) {
+            commit("SET_ALL_CAR_MAKES", data);
+        },
+
+        addCarMake({ commit, getters }, carMake) {
+            var temp = getters.carMakes;
+            temp.push(carMake);
+            commit("SET_ALL_CAR_MAKES", temp);
+        }
     }
 });
 

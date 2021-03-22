@@ -183,6 +183,7 @@ class CarsController extends Controller
             'color_type' => 'required',
             'engine_size' => 'required|numeric',
             'description' => 'required',
+            'images.*' => 'required|string'
         ]);
     }
 
