@@ -10,7 +10,7 @@
               type="button"
               class="btn btn-primary"
               data-toggle="modal"
-              data-target="#newCarFormModal"
+              data-target="#newCarMakeFormModal"
               @click="success_msg = false"
             >
               Add Car Make
@@ -19,16 +19,16 @@
             <!-- Modal -->
             <div
               class="modal fade"
-              id="newCarFormModal"
+              id="newCarMakeFormModal"
               tabindex="-1"
               role="dialog"
-              aria-labelledby="newCarFormModalLabel"
+              aria-labelledby="newCarMakeFormModalLabel"
               aria-hidden="true"
             >
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="newCarFormModalLabel">
+                    <h5 class="modal-title" id="newCarMakeFormModalLabel">
                       Add New Car Make
                     </h5>
                     <button
@@ -46,7 +46,7 @@
                       accept-charset="UTF-8"
                       class="form-horizontal"
                       enctype="multipart/form-data"
-                      id="new_car_modal"
+                      id="new_car_make_modal"
                     >
 
                         <div class="errors">
@@ -60,7 +60,7 @@
 
                       <div class="form-group">
                         <label for="car_make" class="control-label">{{
-                          "Name"
+                          "Car Make Name"
                         }}</label>
                         <input
                           class="form-control"
@@ -77,7 +77,7 @@
                           class="btn btn-primary"
                           type="submit"
                           value="Create"
-                          @click="handleSubmit"
+                          @click.prevent="handleSubmit"
                         />
                       </div>
                     </form>
@@ -123,7 +123,6 @@ export default {
 
     handleSubmit: function (e) {
       this.success_msg = false;
-      e.preventDefault();
       this.errors = [];
 
       if (this.car_make_name) {

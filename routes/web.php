@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CarMakeController;
+use App\Http\Controllers\Admin\CarModelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,5 @@ Route::get('/admin/all_car_makes', [CarMakeController::class, 'getAllCarMakes'])
 
 // Car-Model routes
 Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
+Route::post('/admin/new_car_model', [CarModelController::class, 'addCarModel']);
+Route::get('/admin/all_car_models', [CarModelController::class, 'getAllCarModels']);

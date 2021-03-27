@@ -1,3 +1,4 @@
+{{-- Car Make --}}
 <div class="form-group {{ $errors->has('car_make_id') ? 'has-error' : ''}}">
     <label for="car_make_id" class="control-label">{{ 'Car Make' }}</label>
     {{-- Car Make Options Component --}}
@@ -5,25 +6,28 @@
     </car-make-options>
     {!! $errors->first('car_make_id', '<p class="help-block">:message</p>') !!}
 </div>
-
-{{-- New Car Make Component --}}
+{{-- Add car-make component --}}
 <div class="new-car-make-modal">
     <new-car-make-modal>
         <new-car-make-modal />
 </div>
+{{-- Car Make end --}}
 
+
+{{-- Car Model --}}
 <div class="form-group {{ $errors->has('car_model_id') ? 'has-error' : ''}}">
     <label for="car_model_id" class="control-label">{{ 'Car Model' }}</label>
-    <select name="car_model_id" class="form-control" id="car_model_id">
-        @foreach ($carMakes as $carMake)
-        @foreach ($carMake->carModels as $carModel)
-        <option value="{{ $carModel->id }}"
-            {{ (isset($car->car_model_id) && $car->car_model_id == $carModel->id) ? 'selected' : ''}}>
-            {{ $carModel->name }}</option>
-        @endforeach
-        @endforeach
-    </select>
+    {{-- Car Make Options Component --}}
+    <car-model-options :car="{{ $car }}">
+    </car-model-options>
 </div>
+{{-- Add car-model component --}}
+<div class="new-car-model-modal">
+    <new-car-model-modal :carmodel="{{ $carModel }}">
+        <new-car-model-modal />
+</div>
+{{-- Car Model end --}}
+
 
 <div class="form-group {{ $errors->has('year') ? 'has-error' : ''}}">
     <label for="year" class="control-label">{{ 'Year' }}</label>
