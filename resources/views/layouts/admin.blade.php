@@ -113,6 +113,12 @@
                                         <p>Car Models</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('features.index') }}" class="nav-link">
+                                        <i class="fas fa-car nav-icon"></i>
+                                        <p>Car Features</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 

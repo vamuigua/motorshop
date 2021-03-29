@@ -179,4 +179,10 @@ class Car extends Model implements HasMedia
             ->height(232)
             ->sharpen(10);
     }
+
+    // The features that belong to a car
+    public function features()
+    {
+        return $this->belongsToMany(Feature::class)->withTimestamps();
+    }
 }

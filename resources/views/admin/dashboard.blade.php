@@ -34,7 +34,8 @@
                             More info <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
-                </div>{{-- All Car Models --}}
+                </div>
+                {{-- All Car Models --}}
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-maroon">
                         <div class="inner">

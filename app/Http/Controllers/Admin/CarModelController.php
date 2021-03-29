@@ -118,7 +118,7 @@ class CarModelController extends Controller
             $carmodel->update($validatedData);
             return redirect('admin/car-model/' . $carmodel->id)->with('flash_message', 'Car Model updated!');
         } catch (\Throwable $th) {
-            Log::error('Error! Unable to create car model: ' . $th->getMessage());
+            Log::error('Error! Unable to update car model: ' . $th->getMessage());
             return redirect('admin/car-model')->with('flash_message_error', 'Error while updating car model');
         }
     }

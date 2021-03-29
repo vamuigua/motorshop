@@ -71,3 +71,6 @@ Route::get('/admin/all_car_makes', [CarMakeController::class, 'getAllCarMakes'])
 Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
 Route::post('/admin/new_car_model', [CarModelController::class, 'addCarModel']);
 Route::get('/admin/all_car_models', [CarModelController::class, 'getAllCarModels']);
+
+// Car-Features routes
+Route::resource('admin/features', 'App\Http\Controllers\Admin\FeaturesController');
