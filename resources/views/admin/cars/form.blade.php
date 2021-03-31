@@ -13,7 +13,6 @@
 </div>
 {{-- Car Make end --}}
 
-
 {{-- Car Model --}}
 <div class="form-group {{ $errors->has('car_model_id') ? 'has-error' : ''}}">
     <label for="car_model_id" class="control-label">{{ 'Car Model' }}</label>
@@ -28,7 +27,7 @@
 </div>
 {{-- Car Model end --}}
 
-
+{{-- Car Year --}}
 <div class="form-group {{ $errors->has('year') ? 'has-error' : ''}}">
     <label for="year" class="control-label">{{ 'Year' }}</label>
     <input class="form-control" name="year" type="text" id="datepicker" placeholder="e.g 2021"
@@ -36,6 +35,7 @@
     {!! $errors->first('year', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Mileage --}}
 <div class="form-group {{ $errors->has('mileage') ? 'has-error' : ''}}">
     <label for="mileage" class="control-label">{{ 'Mileage (km)' }}</label>
     <input class="form-control" name="mileage" type="number" id="mileage" placeholder="e.g 12000"
@@ -43,6 +43,7 @@
     {!! $errors->first('mileage', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Body Type --}}
 <div class="form-group {{ $errors->has('body_type') ? 'has-error' : ''}}">
     <label for="body_type" class="control-label">{{ 'Body Type' }}</label>
     <select name="body_type" class="form-control" id="body_type">
@@ -55,6 +56,7 @@
     {!! $errors->first('body_type', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Condition Type --}}
 <div class="form-group {{ $errors->has('condition_type') ? 'has-error' : ''}}">
     <label for="condition_type" class="control-label">{{ 'Condition Type' }}</label>
     <select name="condition_type" class="form-control" id="condition_type">
@@ -67,6 +69,7 @@
     {!! $errors->first('condition_type', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Transmission Type --}}
 <div class="form-group {{ $errors->has('transmission_type') ? 'has-error' : ''}}">
     <label for="transmission_type" class="control-label">{{ 'Transmission Type' }}</label>
     <select name="transmission_type" class="form-control" id="transmission_type">
@@ -79,6 +82,7 @@
     {!! $errors->first('transmission_type', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Price --}}
 <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
     <label for="price" class="control-label">{{ 'Price (KSH)' }}</label>
     <input class="form-control" name="price" type="number" id="price" placeholder="e.g 500000"
@@ -86,6 +90,7 @@
     {!! $errors->first('price', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Duty --}}
 <div class="form-group {{ $errors->has('duty') ? 'has-error' : ''}}">
     <label for="duty" class="control-label">{{ 'Duty' }}</label>
     <select name="duty" class="form-control" id="duty">
@@ -96,6 +101,7 @@
     </select>
 </div>
 
+{{-- Car Negotiability --}}
 <div class="form-group {{ $errors->has('negotiable') ? 'has-error' : ''}}">
     <label for="negotiable" class="control-label">{{ 'Negotiable' }}</label>
     <div class="radio">
@@ -109,6 +115,7 @@
     {!! $errors->first('negotiable', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Fuel Type --}}
 <div class="form-group {{ $errors->has('fuel_type') ? 'has-error' : ''}}">
     <label for="fuel_type" class="control-label">{{ 'Fuel Type' }}</label>
     <select name="fuel_type" class="form-control" id="fuel_type">
@@ -120,6 +127,7 @@
     {!! $errors->first('fuel_type', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Interior Type --}}
 <div class="form-group {{ $errors->has('interior_type') ? 'has-error' : ''}}">
     <label for="interior_type" class="control-label">{{ 'Interior Type' }}</label>
     <select name="interior_type" class="form-control" id="interior_type">
@@ -132,6 +140,7 @@
     {!! $errors->first('interior_type', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Color Type --}}
 <div class="form-group {{ $errors->has('color_type') ? 'has-error' : ''}}">
     <label for="color_type" class="control-label">{{ 'Color Type' }}</label>
     <select name="color_type" class="form-control" id="color_type">
@@ -144,6 +153,7 @@
     {!! $errors->first('color_type', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Engine Size --}}
 <div class="form-group {{ $errors->has('engine_size') ? 'has-error' : ''}}">
     <label for="engine_size" class="control-label">{{ 'Engine Size (cc)' }}</label>
     <input class="form-control" name="engine_size" type="number" id="engine_size" placeholder="e.g 2500cc"
@@ -151,6 +161,7 @@
     {!! $errors->first('engine_size', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Car Description --}}
 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
     <label for="description" class="control-label">{{ 'Description' }}</label>
     <textarea class="form-control" rows="5" name="description" type="textarea" placeholder="Vehicle's description..."
@@ -158,6 +169,66 @@
     {!! $errors->first('description', '<p class="help-block">:message</p>') !!}
 </div>
 
+{{-- Vehicle Features --}}
+<div class="form-group {{ $errors->has('features') ? 'has-error' : ''}}">
+    <label for="features" class="control-label">{{ 'Vehicle Features' }}</label>
+    <select name="features[]" class="form-control selectpicker" id="features" multiple data-live-search="true"
+        data-actions-box="true" data-header="Select features of the car" data-dropup-auto="false">
+
+        {{-- Common Vehicle Features --}}
+        {{-- @foreach ($car->features as $carFeature) --}}
+        <optgroup label="Common Vehicle Features">
+            @foreach ($features as $feature)
+            @if ($feature->type === 'Common')
+            <option value="{{ $feature->id }}" @if ($car->features)
+                @foreach ($car->features as $item)
+                {{ ($feature->id === $item->id) ? 'selected' : '' }}
+                @endforeach
+                @endif
+                >
+                {{ $feature->name }}
+            </option>
+            @endif
+            @endforeach
+        </optgroup>
+        {{-- @endforeach --}}
+
+        {{-- Extra Vehicle Features --}}
+        <optgroup label="Extra Vehicle Features">
+            @foreach ($features as $feature)
+            @if ($feature->type === 'Extra')
+            <option value="{{ $feature->id }}" @if ($car->features)
+                @foreach ($car->features as $item)
+                {{ ($feature->id === $item->id) ? 'selected' : '' }}
+                @endforeach
+                @endif
+                >
+                {{ $feature->name }}
+            </option>
+            @endif
+            @endforeach
+        </optgroup>
+
+        {{-- Uncommon Vehicle Features --}}
+        <optgroup label="Uncommon Vehicle Features">
+            @foreach ($features as $feature)
+            @if ($feature->type === 'Uncommon')
+            <option value="{{ $feature->id }}" @if ($car->features)
+                @foreach ($car->features as $item)
+                {{ ($feature->id === $item->id) ? 'selected' : '' }}
+                @endforeach
+                @endif
+                >
+                {{ $feature->name }}
+            </option>
+            @endif
+            @endforeach
+        </optgroup>
+
+    </select>
+</div>
+
+{{-- Car Images --}}
 <div class="form-group {{ $errors->has('images') ? 'has-error' : ''}}">
     <label for=" images" class="control-label">{{ 'Vehicle Images' }}</label>
     <div class="needsclick dropzone" id="image-dropzone"></div>

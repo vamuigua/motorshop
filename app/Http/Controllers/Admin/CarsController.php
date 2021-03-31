@@ -10,6 +10,7 @@ use App\Models\CarModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Feature;
 
 class CarsController extends Controller
 {
@@ -44,8 +45,9 @@ class CarsController extends Controller
         $car = new Car();
         $carModel = new CarModel();
         $carMakes = CarMake::with(['carModels'])->get();
+        $features = Feature::all(['id', 'name', 'type']);
 
-        return view('admin.cars.create', compact('car', 'carMakes', 'carModel'));
+        return view('admin.cars.create', compact('car', 'carMakes', 'carModel', 'features'));
     }
 
     /**
@@ -63,6 +65,12 @@ class CarsController extends Controller
         try {
             $car = Car::create($valiadtedData);
             $latest_car = $car;
+
+            $car_features = $valiadtedData['features'];
+
+            foreach ($car_features as $car_feature) {
+                $car->features()->attach($car_feature); // Add the car features through the relationship
+            }
 
             foreach ($request->input('images', []) as $file) {
                 $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
@@ -103,8 +111,9 @@ class CarsController extends Controller
         $car = Car::findOrFail($id);
         $carModel = $car->carModel($car->car_model_id);
         $carMakes = CarMake::with(['carModels'])->get();
+        $features = Feature::all(['id', 'name', 'type']);
 
-        return view('admin.cars.edit', compact('car', 'carModel', 'carMakes'));
+        return view('admin.cars.edit', compact('car', 'carModel', 'carMakes', 'features'));
     }
 
     /**
@@ -123,6 +132,9 @@ class CarsController extends Controller
 
         try {
             $car->update($valiadtedData);
+
+            // update the car features
+            $car->features()->sync($valiadtedData['features']);
 
             $carImages = $car->images()->pluck('file_name')->toArray();
 
@@ -183,6 +195,7 @@ class CarsController extends Controller
             'color_type' => 'required',
             'engine_size' => 'required|numeric',
             'description' => 'required',
+            'features' => 'required',
             'images.*' => 'required|string'
         ]);
     }

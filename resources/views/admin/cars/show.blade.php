@@ -94,6 +94,22 @@
                                     <td> {{ $car->description }} </td>
                                 </tr>
                                 <tr>
+                                    <th> Features </th>
+                                    <td>
+                                        @if ($car->features)
+                                        <ul>
+                                            @foreach ($car->features as $feature)
+                                            <li>
+                                                {{ $feature->name }}
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                        @else
+                                        <p>Missing features</p>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th> Images </th>
                                     @if (count($carImages) > 0)
                                     @foreach ($carImages as $image)
