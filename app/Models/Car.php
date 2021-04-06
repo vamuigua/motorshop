@@ -185,4 +185,22 @@ class Car extends Model implements HasMedia
     {
         return $this->belongsToMany(Feature::class)->withTimestamps();
     }
+
+    // returns images of a car with its imageURL
+    public function imagesWithURL()
+    {
+        $thumbnails = array();
+        $carImages = $this->images();
+
+        foreach ($carImages as $image) {
+            $temp = $image->getUrl('thumb');
+            array_push($thumbnails, $temp);
+        }
+
+        for ($i = 0; $i < count($carImages); $i++) {
+            $carImages[$i]["imageURL"] = $thumbnails[$i];
+        }
+
+        return $carImages;
+    }
 }

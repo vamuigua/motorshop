@@ -310,10 +310,11 @@
         },
         init: function () {
             @if(isset($car) && $car->images())
-                var files = {!! json_encode($car->images()) !!}
+                var files = {!! json_encode($car->imagesWithURL()) !!}                
                 for (var i in files) {
                     var file = files[i]
                     this.options.addedfile.call(this, file)
+                    this.options.thumbnail(file, file.imageURL)
                     file.previewElement.classList.add('dz-complete')
                     $('form').append('<input type="hidden" name="images[]" alt="'+ file.file_name +'" value="' + file.file_name + '">')
                 }
