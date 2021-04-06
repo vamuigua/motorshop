@@ -61,10 +61,10 @@
         <div class="form-group {{ $errors->has('body_type') ? 'has-error' : ''}}">
             <label for="body_type" class="control-label">{{ 'Body Type' }}</label>
             <select name="body_type" class="form-control" id="body_type">
-                @foreach ($car->bodyTypes() as $optionKey => $optionValue)
-                <option value="{{ $optionKey }}"
-                    {{ (isset($car->body_type) && $car->body_type == $optionKey) ? 'selected' : ''}}>
-                    {{ $optionValue }}</option>
+                @foreach ($car->bodyTypes() as $bodyType)
+                <option value="{{ $bodyType }}"
+                    {{ (isset($car->body_type) && $car->body_type == $bodyType) ? 'selected' : ''}}>
+                    {{ $bodyType }}</option>
                 @endforeach
             </select>
             {!! $errors->first('body_type', '<p class="help-block">:message</p>') !!}
@@ -78,10 +78,10 @@
         <div class="form-group {{ $errors->has('condition_type') ? 'has-error' : ''}}">
             <label for="condition_type" class="control-label">{{ 'Condition Type' }}</label>
             <select name="condition_type" class="form-control" id="condition_type">
-                @foreach ($car->conditionTypes() as $optionKey => $optionValue)
-                <option value="{{ $optionKey }}"
-                    {{ (isset($car->condition_type) && $car->condition_type == $optionKey) ? 'selected' : ''}}>
-                    {{ $optionValue }}</option>
+                @foreach ($car->conditionTypes() as $conditionType)
+                <option value="{{ $conditionType }}"
+                    {{ (isset($car->condition_type) && $car->condition_type == $conditionType) ? 'selected' : ''}}>
+                    {{ $conditionType }}</option>
                 @endforeach
             </select>
             {!! $errors->first('condition_type', '<p class="help-block">:message</p>') !!}
@@ -93,10 +93,10 @@
         <div class="form-group {{ $errors->has('transmission_type') ? 'has-error' : ''}}">
             <label for="transmission_type" class="control-label">{{ 'Transmission Type' }}</label>
             <select name="transmission_type" class="form-control" id="transmission_type">
-                @foreach ($car->transmissionTypes() as $optionKey => $optionValue)
-                <option value="{{ $optionKey }}"
-                    {{ (isset($car->transmission_type) && $car->transmission_type == $optionKey) ? 'selected' : ''}}>
-                    {{ $optionValue }}</option>
+                @foreach ($car->transmissionTypes() as $transmissionType)
+                <option value="{{ $transmissionType }}"
+                    {{ (isset($car->transmission_type) && $car->transmission_type == $transmissionType) ? 'selected' : ''}}>
+                    {{ $transmissionType }}</option>
                 @endforeach
             </select>
             {!! $errors->first('transmission_type', '<p class="help-block">:message</p>') !!}
@@ -108,9 +108,9 @@
         <div class="form-group {{ $errors->has('fuel_type') ? 'has-error' : ''}}">
             <label for="fuel_type" class="control-label">{{ 'Fuel Type' }}</label>
             <select name="fuel_type" class="form-control" id="fuel_type">
-                @foreach ($car->fuelTypes() as $optionKey => $optionValue)
-                <option value="{{ $optionKey }}"
-                    {{ (isset($car->fuel_type) && $car->fuel_type == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}
+                @foreach ($car->fuelTypes() as $fuelType)
+                <option value="{{ $fuelType }}"
+                    {{ (isset($car->fuel_type) && $car->fuel_type == $fuelType) ? 'selected' : ''}}>{{ $fuelType }}
                 </option>
                 @endforeach
             </select>
@@ -135,9 +135,9 @@
         <div class="form-group {{ $errors->has('duty') ? 'has-error' : ''}}">
             <label for="duty" class="control-label">{{ 'Duty' }}</label>
             <select name="duty" class="form-control" id="duty">
-                @foreach ($car->dutyTypes() as $optionKey => $optionValue)
-                <option value="{{ $optionKey }}" {{ (isset($car->duty) && $car->duty == $optionKey) ? 'selected' : ''}}>
-                    {{ $optionValue }}</option>
+                @foreach ($car->dutyTypes() as $dutyType)
+                <option value="{{ $dutyType }}" {{ (isset($car->duty) && $car->duty == $dutyType) ? 'selected' : ''}}>
+                    {{ $dutyType }}</option>
                 @endforeach
             </select>
         </div>
@@ -166,10 +166,10 @@
         <div class="form-group {{ $errors->has('interior_type') ? 'has-error' : ''}}">
             <label for="interior_type" class="control-label">{{ 'Interior Type' }}</label>
             <select name="interior_type" class="form-control" id="interior_type">
-                @foreach ($car->interiorTypes() as $optionKey => $optionValue)
-                <option value="{{ $optionKey }}"
-                    {{ (isset($car->interior_type) && $car->interior_type == $optionKey) ? 'selected' : ''}}>
-                    {{ $optionValue }}
+                @foreach ($car->interiorTypes() as $interiorType)
+                <option value="{{ $interiorType }}"
+                    {{ (isset($car->interior_type) && $car->interior_type == $interiorType) ? 'selected' : ''}}>
+                    {{ $interiorType }}
                 </option>
                 @endforeach
             </select>
@@ -182,10 +182,10 @@
         <div class="form-group {{ $errors->has('color_type') ? 'has-error' : ''}}">
             <label for="color_type" class="control-label">{{ 'Color Type' }}</label>
             <select name="color_type" class="form-control" id="color_type">
-                @foreach ($car->colorTypes() as $optionKey => $optionValue)
-                <option value="{{ $optionKey }}"
-                    {{ (isset($car->color_type) && $car->color_type == $optionKey) ? 'selected' : ''}}>
-                    {{ $optionValue }}
+                @foreach ($car->colorTypes() as $colorType)
+                <option value="{{ $colorType }}"
+                    {{ (isset($car->color_type) && $car->color_type == $colorType) ? 'selected' : ''}}>
+                    {{ $colorType }}
                 </option>
                 @endforeach
             </select>
