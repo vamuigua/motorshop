@@ -131,16 +131,30 @@ class CarsController extends Controller
         $car = Car::findOrFail($id);
 
         try {
+            // update the car with the validated data
             $car->update($valiadtedData);
 
             // update the car features
             $car->features()->sync($valiadtedData['features']);
 
-            $carImages = $car->images()->pluck('file_name')->toArray();
+            // get all images of this car
+            $carImages = $car->images();
+
+            // delete old images of this car
+            if (count($carImages) > 0) {
+                foreach ($carImages as $carImage) {
+                    if (!in_array($carImage->file_name, $request->input('images', []))) {
+                        $carImage->delete();
+                    }
+                }
+            }
+
+            // get the car image file names of this car
+            $carImageFileNames = $carImages->pluck('file_name')->toArray();
 
             // add images from the request to the DB
             foreach ($request->input('images', []) as $file) {
-                if (count($carImages) === 0 || !in_array($file, $carImages)) {
+                if (count($carImageFileNames) === 0 || !in_array($file, $carImageFileNames)) {
                     $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
                 }
             }
