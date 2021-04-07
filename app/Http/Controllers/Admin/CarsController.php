@@ -73,7 +73,8 @@ class CarsController extends Controller
             }
 
             foreach ($request->input('images', []) as $file) {
-                $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
+                $car->addMedia(storage_path('tmp/uploads/cars/' . $file))
+                    ->toMediaCollection('car_image');
             }
 
             return redirect('/admin/cars/' . $car->id)->with('flash_message', 'Car added!');

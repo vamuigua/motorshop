@@ -177,7 +177,8 @@ class Car extends Model implements HasMedia
         $this->addMediaConversion('thumb')
             ->width(368)
             ->height(232)
-            ->sharpen(10);
+            ->sharpen(10)
+            ->withResponsiveImages();
     }
 
     // The features that belong to a car
@@ -189,16 +190,10 @@ class Car extends Model implements HasMedia
     // returns images of a car with its imageURL
     public function imagesWithURL()
     {
-        $thumbnails = array();
         $carImages = $this->images();
 
         foreach ($carImages as $image) {
-            $temp = $image->getUrl('thumb');
-            array_push($thumbnails, $temp);
-        }
-
-        for ($i = 0; $i < count($carImages); $i++) {
-            $carImages[$i]["imageURL"] = $thumbnails[$i];
+            $image["imageURL"] = $image->getUrl('thumb');
         }
 
         return $carImages;

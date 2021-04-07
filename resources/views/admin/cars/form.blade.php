@@ -309,8 +309,8 @@
             $('form').find('input[name="images[]"][value="' + name + '"]').remove()
         },
         init: function () {
-            @if(isset($car) && $car->images())
-                var files = {!! json_encode($car->imagesWithURL()) !!}                
+            @if(isset($car) && $carImages = $car->imagesWithURL())
+                var files = {!! json_encode($carImages) !!}                
                 for (var i in files) {
                     var file = files[i]
                     this.options.addedfile.call(this, file)
