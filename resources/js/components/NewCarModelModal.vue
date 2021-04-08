@@ -114,13 +114,12 @@
 
 <script>
 import { mapActions } from "vuex";
-import CarMakeOptionsComp from "./CarMakeOptions";
 
 export default {
   name: "NewCarModelModal",
   props: ["carmodel"],
   components: {
-    CarMakeOptionsComp,
+    CarMakeOptionsComp: () => import("./CarMakeOptions"),
   },
   data() {
     return {
