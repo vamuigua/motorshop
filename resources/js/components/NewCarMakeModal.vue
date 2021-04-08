@@ -109,6 +109,7 @@
 import { mapActions } from "vuex";
 
 export default {
+  name: "NewCarMakeModal",
   data() {
     return {
       car_make_name: null,

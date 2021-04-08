@@ -29,6 +29,7 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
+  name: "CarModelOptions",
   props: ["car"],
   data() {
     return {
