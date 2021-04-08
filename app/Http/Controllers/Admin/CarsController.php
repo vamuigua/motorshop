@@ -10,6 +10,7 @@ use App\Models\CarModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Feature;
 
 class CarsController extends Controller
 {
@@ -44,8 +45,9 @@ class CarsController extends Controller
         $car = new Car();
         $carModel = new CarModel();
         $carMakes = CarMake::with(['carModels'])->get();
+        $features = Feature::all(['id', 'name', 'type']);
 
-        return view('admin.cars.create', compact('car', 'carMakes', 'carModel'));
+        return view('admin.cars.create', compact('car', 'carMakes', 'carModel', 'features'));
     }
 
     /**
@@ -64,8 +66,15 @@ class CarsController extends Controller
             $car = Car::create($valiadtedData);
             $latest_car = $car;
 
+            $car_features = $valiadtedData['features'];
+
+            foreach ($car_features as $car_feature) {
+                $car->features()->attach($car_feature); // Add the car features through the relationship
+            }
+
             foreach ($request->input('images', []) as $file) {
-                $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
+                $car->addMedia(storage_path('tmp/uploads/cars/' . $file))
+                    ->toMediaCollection('car_image');
             }
 
             return redirect('/admin/cars/' . $car->id)->with('flash_message', 'Car added!');
@@ -103,8 +112,9 @@ class CarsController extends Controller
         $car = Car::findOrFail($id);
         $carModel = $car->carModel($car->car_model_id);
         $carMakes = CarMake::with(['carModels'])->get();
+        $features = Feature::all(['id', 'name', 'type']);
 
-        return view('admin.cars.edit', compact('car', 'carModel', 'carMakes'));
+        return view('admin.cars.edit', compact('car', 'carModel', 'carMakes', 'features'));
     }
 
     /**
@@ -122,13 +132,30 @@ class CarsController extends Controller
         $car = Car::findOrFail($id);
 
         try {
+            // update the car with the validated data
             $car->update($valiadtedData);
 
-            $carImages = $car->images()->pluck('file_name')->toArray();
+            // update the car features
+            $car->features()->sync($valiadtedData['features']);
+
+            // get all images of this car
+            $carImages = $car->images();
+
+            // delete old images of this car
+            if (count($carImages) > 0) {
+                foreach ($carImages as $carImage) {
+                    if (!in_array($carImage->file_name, $request->input('images', []))) {
+                        $carImage->delete();
+                    }
+                }
+            }
+
+            // get the car image file names of this car
+            $carImageFileNames = $carImages->pluck('file_name')->toArray();
 
             // add images from the request to the DB
             foreach ($request->input('images', []) as $file) {
-                if (count($carImages) === 0 || !in_array($file, $carImages)) {
+                if (count($carImageFileNames) === 0 || !in_array($file, $carImageFileNames)) {
                     $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
                 }
             }
@@ -183,6 +210,9 @@ class CarsController extends Controller
             'color_type' => 'required',
             'engine_size' => 'required|numeric',
             'description' => 'required',
+            'features' => 'required',
+            'images' => 'required',
+            'images.*' => 'required|string'
         ]);
     }
 

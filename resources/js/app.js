@@ -27,6 +27,16 @@ require("datatables.net-fixedheader-bs4");
 require("datatables.net-responsive-bs4");
 require("./datatables");
 
+// Eko Lightbox
+require("ekko-lightbox");
+
+$(document).on("click", '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox({
+        alwaysShowClose: true
+    });
+});
+
 window.Vue = require("vue").default;
 
 /**
@@ -48,6 +58,14 @@ Vue.component(
     "CarMakeOptions",
     require("./components/CarMakeOptions.vue").default
 );
+Vue.component(
+    "CarModelOptions",
+    require("./components/CarModelOptions.vue").default
+);
+Vue.component(
+    "NewCarModelModal",
+    require("./components/NewCarModelModal.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -60,7 +78,45 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        allCarMakes: []
+        allCarMakes: [],
+        allCarModels: []
+    },
+    getters: {
+        carMakes(state) {
+            return state.allCarMakes;
+        },
+        carModels(state) {
+            return state.allCarModels;
+        }
+    },
+    mutations: {
+        SET_ALL_CAR_MAKES(state, data) {
+            state.allCarMakes = data;
+        },
+        SET_ALL_CAR_MODELS(state, data) {
+            state.allCarModels = data;
+        }
+    },
+    actions: {
+        updateAllCarMakes({ commit }, data) {
+            commit("SET_ALL_CAR_MAKES", data);
+        },
+
+        addCarMake({ commit, getters }, carMake) {
+            var temp = getters.carMakes;
+            temp.push(carMake);
+            commit("SET_ALL_CAR_MAKES", temp);
+        },
+
+        updateAllCarModels({ commit }, data) {
+            commit("SET_ALL_CAR_MODELS", data);
+        },
+
+        addCarModel({ commit, getters }, carModel) {
+            var temp = getters.carModels;
+            temp.push(carModel);
+            commit("SET_ALL_CAR_MODELS", temp);
+        }
     }
 });
 
