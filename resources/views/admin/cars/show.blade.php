@@ -94,14 +94,29 @@
                                     <td> {{ $car->description }} </td>
                                 </tr>
                                 <tr>
+                                    <th> Features </th>
+                                    <td>
+                                        @if ($car->features)
+                                        <ul>
+                                            @foreach ($car->features as $feature)
+                                            <li>
+                                                {{ $feature->name }}
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                        @else
+                                        <p>Missing features</p>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th> Images </th>
                                     @if (count($carImages) > 0)
                                     @foreach ($carImages as $image)
                                     <td>
-                                        @if ($image->hasGeneratedConversion('thumb'))
-                                        <img src="{{ $image->getUrl('thumb') }}" alt="{{ $image->file_name }}">
-                                        @else
-                                        <img src="{{ $image->getUrl() }}" alt="{{ $image->file_name }}">
+                                        @if ($image)
+                                        {{-- generates the img tag with the filled in srcset & a responsive img--}}
+                                        {{ $image('thumb') }}
                                         @endif
                                     </td>
                                     @endforeach

@@ -7,6 +7,7 @@ use App\Http\Controllers\CarsDisplayController;
 use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CarMakeController;
+use App\Http\Controllers\Admin\CarModelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +71,8 @@ Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelControlle
 
 Route::get('/results', [CarsDisplayController::class, 'searchForm'])->name('search');
 // Route::get('static/cars', [CarsController::class, 'searchForm'])->name('search');
+Route::post('/admin/new_car_model', [CarModelController::class, 'addCarModel']);
+Route::get('/admin/all_car_models', [CarModelController::class, 'getAllCarModels']);
+
+// Car-Features routes
+Route::resource('admin/features', 'App\Http\Controllers\Admin\FeaturesController');

@@ -40,21 +40,21 @@ class Car extends Model implements HasMedia
     public function bodyTypes()
     {
         return [
-            'Saloon' => 'Saloon',
-            'Hatchback' => 'Hatchback',
-            '4 Wheel Drive & SUV' => '4 Wheel Drive & SUV',
-            'Station Wagons' => 'Station Wagon',
-            'Pickup' => 'Pickup',
-            'Motorbikes' => 'Motorbikes',
-            'Convertibles' => 'Convertibles',
-            'Buses, Taxis and Vans' => 'Buses, Taxis and Vans',
-            'Trucks' => 'Trucks',
-            'Machinery and Tractors' => 'Machinery and Tractors',
-            'Trailers' => 'Trailers',
-            'Minis' => 'Minis',
-            'Coupes' => 'Coupes',
-            'Quad Bikes' => 'Quad Bikes',
-            'Other' => 'Other',
+            'Saloon',
+            'Hatchback',
+            '4 Wheel Drive & SUV',
+            'Station Wagon',
+            'Pickup',
+            'Motorbikes',
+            'Convertibles',
+            'Buses, Taxis and Vans',
+            'Trucks',
+            'Machinery and Tractors',
+            'Trailers',
+            'Minis',
+            'Coupes',
+            'Quad Bikes',
+            'Other'
         ];
     }
 
@@ -64,9 +64,9 @@ class Car extends Model implements HasMedia
     public function conditionTypes()
     {
         return [
-            'Brand-new' => 'Brand New',
-            'Foreign-used' => 'Foreign Used',
-            'Locally-used' => 'Locally Used',
+            'Brand-new',
+            'Foreign-used',
+            'Locally-used'
         ];
     }
 
@@ -76,9 +76,9 @@ class Car extends Model implements HasMedia
     public function interiorTypes()
     {
         return [
-            'cloth' => 'Cloth',
-            'leather' => 'Leather',
-            'other' => 'Other',
+            'Cloth',
+            'Leather',
+            'Other'
         ];
     }
 
@@ -88,9 +88,9 @@ class Car extends Model implements HasMedia
     public function transmissionTypes()
     {
         return [
-            'manual' => 'Manual',
-            'automatic' => 'Automatic',
-            'other' => 'Other',
+            'Manual',
+            'Automatic',
+            'Other'
         ];
     }
 
@@ -100,10 +100,10 @@ class Car extends Model implements HasMedia
     public function dutyTypes()
     {
         return [
-            'Duty-excempted' => 'Duty Excempted',
-            'Duty-not-paid' => 'Duty Not Paid',
-            'Duty-paid' => 'Duty Paid',
-            'Not-specified' => 'Not Specified',
+            'Duty-excempted',
+            'Duty-not-paid',
+            'Duty-paid',
+            'Not-specified'
         ];
     }
 
@@ -113,11 +113,11 @@ class Car extends Model implements HasMedia
     public function fuelTypes()
     {
         return [
-            'petrol' => 'Petrol',
-            'diesel' => 'Diesel',
-            'diesel-hybrid' => 'Diesel-Hybrid',
-            'electric' => 'Electric',
-            'other' => 'Other',
+            'Petrol',
+            'Diesel',
+            'Diesel-Hybrid',
+            'Electric',
+            'Other'
         ];
     }
 
@@ -127,26 +127,26 @@ class Car extends Model implements HasMedia
     public function colorTypes()
     {
         return [
-            'Black' => 'Black',
-            'Silver' => 'Silver',
-            'Red' => 'Red',
-            'Maroon' => 'Maroon',
-            'Brown' => 'Brown',
-            'Blue' => 'Blue',
-            'Dark-Blue' => 'Dark Blue',
-            'yellow' => 'Yellow',
-            'White' => 'White',
-            'Green' => 'Green',
-            'Dark-Green' => 'Dark Green',
-            'Purple' => 'Purple',
-            'Pink' => 'Pink',
-            'Orange' => 'Orange',
-            'Grey' => 'Grey',
-            'Dark-grey' => 'Dark Grey',
-            'Gold' => 'Gold',
-            'Beige' => 'Beige',
-            'Pearl' => 'Pearl',
-            'Other' => 'Other',
+            'Black',
+            'Silver',
+            'Red',
+            'Maroon',
+            'Brown',
+            'Blue',
+            'Dark Blue',
+            'Yellow',
+            'White',
+            'Green',
+            'Dark Green',
+            'Purple',
+            'Pink',
+            'Orange',
+            'Grey',
+            'Dark Grey',
+            'Gold',
+            'Beige',
+            'Pearl',
+            'Other'
         ];
     }
 
@@ -182,6 +182,25 @@ class Car extends Model implements HasMedia
         $this->addMediaConversion('thumb')
             ->width(368)
             ->height(232)
-            ->sharpen(10);
+            ->sharpen(10)
+            ->withResponsiveImages();
+    }
+
+    // The features that belong to a car
+    public function features()
+    {
+        return $this->belongsToMany(Feature::class)->withTimestamps();
+    }
+
+    // returns images of a car with its imageURL
+    public function imagesWithURL()
+    {
+        $carImages = $this->images();
+
+        foreach ($carImages as $image) {
+            $image["imageURL"] = $image->getUrl('thumb');
+        }
+
+        return $carImages;
     }
 }
