@@ -15,8 +15,10 @@
 
     <title>{{ config('app.name') }}</title>
 
+    
     <!-- Bootstrap core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="/assets/css/fontawesome.css">
@@ -88,9 +90,9 @@
 
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('about') }}">About Us</a>
-                                    <a class="dropdown-item" href="{{ route('blog') }}">Blog</a>
-                                    <a class="dropdown-item" href="{{ route('team') }}">Team</a>
-                                    <a class="dropdown-item" href="#">Testimonials</a>
+                                    
+                                    {{-- <a class="dropdown-item" href="{{ route('team') }}">Team</a> --}}
+                                    {{-- <a class="dropdown-item" href="#">Testimonials</a> --}}
                                     <a class="dropdown-item" href="{{ route('faq') }}">FAQ</a>
                                     <a class="dropdown-item" href="{{ route('terms') }}">Terms</a>
                                 </div>
@@ -168,8 +170,8 @@
                     <div class="col-md-3 footer-item">
                         <h4>Additional Pages</h4>
                         <ul class="menu-list">
+                            <li><a href="#">Home</a></li>
                             <li><a href="#">About Us</a></li>
-                            <li><a href="#">Blog</a></li>
                             <li><a href="#">FAQ</a></li>
                             <li><a href="#">Contact Us</a></li>
                             <li><a href="#">Terms</a></li>

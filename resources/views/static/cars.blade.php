@@ -14,171 +14,197 @@
   
       <div class="services">
         <div class="container">
-          <form action="#" id="contact">
+          <form action="{{ route('search')}}" id="contact" method="GET" role="search">
+            @csrf
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Used/New:</label>
+                        <label for="condition"> Condition_Type: </label>
              
-                         <select class="form-control">
-                              <option value="">All</option>
-                              <option value="new">New vehicle</option>
-                              <option value="used">Used vehicle</option>
+                         <select class="form-control" name="condition" data-toggle="tooltip" >
+                              <option >Select Car Condition</option>
+                              @foreach ($car->conditionTypes() as $optionKey => $optionValue) 
+                                <option value="{{ $optionKey }}">
+                                  {{ $optionValue }}
+                                </option>
+                              @endforeach
                          </select>
+
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Vehicle Type:</label>
+                      <label for="bodytype"> Body_Type: </label>
              
-                         <select class="form-control">
-                              <option value="">--All --</option>
-                              <option value="">--All --</option>
-                              <option value="">--All --</option>
-                              <option value="">--All --</option>
-                              <option value="">--All --</option>
-                         </select>
+                      <select class="form-control" name="bodytype" data-toggle="tooltip" >
+                           <option  value="">Select Car Body_Type</option>
+                           @foreach ($car->bodyTypes() as $optionKey => $optionValue ) 
+                             <option value="{{ $optionKey}}">
+                               {{ $optionValue }}
+                             </option>
+                           @endforeach
+                           BUG
+                           
+                      </select>
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Make:</label>
-             
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
+                      <label for="carmake"> Car_Make: </label>
+                      <select name="car_make_id" class="form-control" id="car_make_id">
+                        <option  value="">Select Car Make</option>  
+                        @foreach ($carMakes as $carMake)
+                          
+                          <option value="{{ $carMake->id }}"
+                            {{ (isset($car->car_make_id) && $car->car_make_id == $carMake->id) ? 'selected' : ''}}>
+                            {{ $carMake->name }}</option>
+                          
+                        @endforeach
+                      </select>
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Model:</label>
+                      <label for="carmodel"> Car_Model: </label>
              
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
+                      <select name="car_model_id" class="form-control" id="car_model_id">
+                          <option  value="">Select Car Model</option>
+                          @foreach ($carMakes as $carMake)
+                          @foreach ($carMake->carModels as $carModel)
+                          <option value="{{ $carModel->id }}"
+                            {{ (isset($car->car_model_id) && $car->car_model_id == $carModel->id) ? 'selected' : ''}}>
+                            {{ $carModel->name }}</option>
+                          @endforeach
+                          @endforeach
+                      </select>
+                    </div>
+                </div>
+        
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                  <div class="form-group">
+                    <label for="price"> Price: </label>
+             
+                    <input type="number" class="form-control" name="price" data-toggle="tooltip" placeholder="250000 Ksh" >
+                           
+                           
+                        {{-- BUG --}}  
+                  </div>
+                </div>
+        
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                      <label for="mileage"> Mileage: </label>
+             
+                      <input type="number" class="form-control" name="mileage" data-toggle="tooltip" placeholder="120000  miles">
+                           
+                           
+                           {{-- BUG --}}
+                           
+                      
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Price:</label>
+                      <label for="enginesize"> Engine_size: </label>
              
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
+                      <input type="search" class="form-control" name="enginesize" data-toggle="tooltip" placeholder="1500  cc" >
+                           
+                           
+                           {{-- BUG --}}
+                           
+                      
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Mileage:</label>
-             
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
+                      <label for="colortype"> Color_Type: </label>
+                      
+                      <select class="form-control" name="colortype" data-toggle="tooltip" >
+                           <option  value="" {{ !isset($selectedcar) ? 'selected' : ''}}>Select Car Color</option>
+                           @foreach ($car->colorTypes() as $optionKey => $optionValue ) 
+                             <option value="{{ $optionKey}}">
+                               {{ $optionValue }}
+                             </option>
+                           @endforeach
+                           BUG
+                           
+                      </select>
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Engine size:</label>
+                        <label for="fueltype">Fuel Type:</label>
              
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
+                        <select class="form-control" name="fueltype" data-toggle="tooltip" >
+                            <option  value="" {{ !isset($selectedcar) ? 'selected' : ''}}>Select Car fuel</option>
+                            @foreach ($car->fuelTypes() as $optionKey => $optionValue ) 
+                              <option value="{{ $optionKey}}">
+                                {{ $optionValue }}
+                              </option>
+                            @endforeach
+                          BUG
+                        </select>
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Power:</label>
+                        <label for="transmissiontype">Transmission_type:</label>
              
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
+                        <select class="form-control" name="transmissiontype" data-toggle="tooltip" >
+                          <option  value="" {{ !isset($selectedcar) ? 'selected' : ''}}>Select Transmission Type</option>
+                          @foreach ($car->transmissionTypes() as $optionKey => $optionValue ) 
+                            <option value="{{ $optionKey}}">
+                              {{ $optionValue }}
+                            </option>
+                          @endforeach
+                          BUG
+                        </select>
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Fuel:</label>
+                        <label for="interiortype">Interior Type:</label>
              
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
+                        <select class="form-control" name="interiortype" data-toggle="tooltip" >
+                          <option  value="" {{ !isset($selectedcar) ? 'selected' : ''}}>Select Interior Type</option>
+                          @foreach ($car->interiorTypes() as $optionKey => $optionValue ) 
+                            <option value="{{ $optionKey}}">
+                              {{ $optionValue }}
+                            </option>
+                          @endforeach
+                          BUG
+                        </select>
                     </div>
                 </div>
         
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        <label>Gearbox:</label>
+                        <label for="dutystatus">Duty Status:</label>
              
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
-                    </div>
-                </div>
-        
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Doors:</label>
-             
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
-                    </div>
-                </div>
-        
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>Number of seats:</label>
-             
-                         <select class="form-control">
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                              <option value="">-- All --</option>
-                         </select>
+                        <select class="form-control" name="dutystatus" data-toggle="tooltip" >
+                          <option  value="" {{ !isset($selectedcar) ? 'selected' : ''}}>Select Duty Type</option>
+                          @foreach ($car->dutyTypes() as $optionKey => $optionValue ) 
+                            <option value="{{ $optionKey}}">
+                              {{ $optionValue }}
+                            </option>
+                          @endforeach
+                          BUG
+                        </select>
                     </div>
                 </div>
             </div>
             
             <div class="col-sm-4 offset-sm-4">
               <div class="main-button text-center">
-                  <a href="#" class="filled-button">Search</a>
+                  <button type="submit" class="filled-button btn btn-primary">Search</button>
               </div>
             </div>
             <br>
@@ -328,7 +354,7 @@
           <br>
           <br>
   
-          <nav>
+          {{-- <nav>
             <ul class="pagination pagination-lg justify-content-center">
               <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
@@ -346,8 +372,15 @@
                 </a>
               </li>
             </ul>
-          </nav>
-  
+          </nav> --}}
+
+          <div>
+            {{ $cars->links() }}
+          </div>
+        
+
+          {{-- <div class="pagination-wrapper"> {!! $cars->appends(['search' => Request::get('search')])->render() !!} </div> --}}
+
           <br>
           <br>
           <br>

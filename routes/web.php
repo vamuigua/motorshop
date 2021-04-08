@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CarsDisplayController;
 use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CarMakeController;
@@ -43,9 +44,7 @@ Route::get('/contact', function () {
     return view('static/contact-us');
 })->name('contact-us');
 
-Route::get('/cars', function () {
-    return view('static/cars');
-})->name('cars');
+Route::get('/cars', [CarsDisplayController::class, 'index'])->name('cars');
 // END Static Page ROUTES
 
 // Main Page/Home route
@@ -68,3 +67,6 @@ Route::get('/admin/all_car_makes', [CarMakeController::class, 'getAllCarMakes'])
 
 // Car-Model routes
 Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
+
+Route::get('/results', [CarsDisplayController::class, 'searchForm'])->name('search');
+// Route::get('static/cars', [CarsController::class, 'searchForm'])->name('search');
