@@ -27,6 +27,16 @@ require("datatables.net-fixedheader-bs4");
 require("datatables.net-responsive-bs4");
 require("./datatables");
 
+// Eko Lightbox
+require("ekko-lightbox");
+
+$(document).on("click", '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox({
+        alwaysShowClose: true
+    });
+});
+
 window.Vue = require("vue").default;
 
 /**
