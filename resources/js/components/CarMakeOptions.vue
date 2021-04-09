@@ -11,11 +11,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <select
-      name="car_make_id"
-      class="form-control specialCarMake"
-      id="car_make_id"
-    >
+    <select name="car_make_id" class="form-control specialCarMake">
       <option disabled>Select a car make</option>
       <option
         v-for="car_make in carMakes"
@@ -33,6 +29,7 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
+  name: "CarMakeOptions",
   props: ["carmodel"],
   data() {
     return {

@@ -75,8 +75,8 @@
                     <!-- Car Make Options Component -->
                     <div class="form-group" id="specialDiv">
                         <label for="car_make_id" class="control-label">{{ "Car Make" }}</label>
-                        <car-make-options :carmodel="carmodel">
-                        </car-make-options>
+                        <car-make-options-comp :carmodel="carmodel">
+                        </car-make-options-comp>
                     </div>
 
                       <div class="form-group">
@@ -116,7 +116,11 @@
 import { mapActions } from "vuex";
 
 export default {
+  name: "NewCarModelModal",
   props: ["carmodel"],
+  components: {
+    CarMakeOptionsComp: () => import("./CarMakeOptions"),
+  },
   data() {
     return {
       car_model_name: null,

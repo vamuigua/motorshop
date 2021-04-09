@@ -27,6 +27,16 @@ require("datatables.net-fixedheader-bs4");
 require("datatables.net-responsive-bs4");
 require("./datatables");
 
+// Eko Lightbox
+require("ekko-lightbox");
+
+$(document).on("click", '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox({
+        alwaysShowClose: true
+    });
+});
+
 window.Vue = require("vue").default;
 
 /**
@@ -40,6 +50,7 @@ window.Vue = require("vue").default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+// Globally registration on vue components
 Vue.component(
     "NewCarMakeModal",
     require("./components/NewCarMakeModal.vue").default

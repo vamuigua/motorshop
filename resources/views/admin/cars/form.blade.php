@@ -9,7 +9,6 @@
             {!! $errors->first('car_make_id', '<p class="help-block">:message</p>') !!}
         </div>
 
-
         {{-- Add car-make component --}}
         <div class="new-car-make-modal">
             <new-car-make-modal>
