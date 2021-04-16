@@ -4,6 +4,10 @@
 <div class="page-heading header-text">
 
     <div class="container">
+        {{-- @php
+        $car_make_name = $cars->carMake($cars->car_make_id)->name;
+        $car_model_name = $cars->carModel($cars->car_model_id)->name;
+        @endphp --}}
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -11,28 +15,27 @@
                     <th>Condition_Type</th>
                     <th>Car_Make</th>
                     <th>Car_Model</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                    <th>Negotiable</th>
                 </thead>
 
                 <tbody>
-                    @foreach ($car as $item)
-                    
+                    @foreach ($cars as $item)
+                    <tr>
                         <td> {{ $item->body_type }} </td>
                         <td> {{ $item->condition_type }} </td>
-                    
-                    @endforeach
-                    @foreach ($carMakes as $carMake)
-                    
-
-                        <td>{{ $carMake->name}}</td>
-                    
-                    @endforeach
-                    @foreach ($carMake->carModels as $carModel)
-                    
-
-                        <td>{{$carModel->name}}</td>
-                    
+                        <td> {{ $item->carMake($item->car_make_id)->name}} </td>
+                        <td> {{ $item->carModel($item->car_model_id)->name}} </td>
+                        <td> {{ $item->color_type}} </td>
+                        <td> {{ $item->price }}</td>
+                        <td> {{ $item->negotiable == 1 ? 'Yes' : 'No' }}</td>
                        
-                    @endforeach  
+                        <td> <img src="{{ $item->images($item->car_image) }}" alt="">  </td>
+                    </tr>
+                    
+                    @endforeach
+                    
                     {{-- <tr>
                         <th> Images </th>
                         @if (count($carImages) > 0)
@@ -54,7 +57,7 @@
                 </tbody>
             </table> 
             <div>
-                {{ $car->links() }}
+                {{ $cars->links() }}
             </div>
         </div>
          
