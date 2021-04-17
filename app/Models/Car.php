@@ -3,15 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-//use Spatie\MediaLibrary\Models\Media;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
-
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
 class Car extends Model implements HasMedia
 {
-    use InteractsWithMedia;
+    use HasMediaTrait;
 
     /**
      * The database table used by the model.
@@ -173,10 +171,7 @@ class Car extends Model implements HasMedia
     }
 
     // Media conversions
-
-    public $registerMediaConversionsUsingModelInstance = true;
-
-    public function registerMediaConversions(Media $media = null): void 
+    public function registerMediaConversions(Media $media = null)
     {
         // make a thumbnail
         $this->addMediaConversion('thumb')

@@ -13,7 +13,7 @@
                     <p>Magni deserunt dolorem consectetur adipisicing elit. Corporis molestiae optio, laudantium
                         odio quod rerum
                         maiores, omnis unde quae illo.</p>
-                    <a href="#" class="filled-button">Cars</a>
+                    <a href="{{ route('cars') }}" class="filled-button">Cars</a>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa cupiditate mollitia
                         adipisci assumenda
                         laborum eius quae quo excepturi, eveniet. Dicta nulla ea beatae consequuntur?</p>
-                    <a href="#" class="filled-button">About Us</a>
+                    <a href="{{ route('about') }}" class="filled-button">About Us</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate mi. Sed nec cursus augue. Phasellus
                         lacinia ac
                         sapien vitae dapibus. Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</p>
-                    <a href="#" class="filled-button">Contact Us</a>
+                    <a href="{{ route('contact-us') }}" class="filled-button">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
                 <span>Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</span>
             </div>
             <div class="col-md-4">
-                <a href="contact.html" class="border-button">Contact Us</a>
+                <a href="{{ route('contact-us') }}" class="border-button">Contact Us</a>
             </div>
         </div>
     </div>
@@ -161,139 +161,6 @@
                             molestie felis sagittis ut. Nam ullamcorper tempus ipsum in cursus</p>
                         <a href="about.html" class="filled-button">Read More</a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="more-info">
-    <div class="container">
-        <div class="section-heading">
-            <h2>Read our <em>Blog</em></h2>
-            <span>Aliquam id urna imperdiet libero mollis hendrerit</span>
-        </div>
-
-        <div class="row" id="tabs">
-            <div class="col-md-4">
-                <ul>
-                    <li><a href='#tabs-1'>Lorem ipsum dolor sit amet, consectetur adipisicing <br> <small>John Doe
-                                &nbsp;|&nbsp;
-                                27.07.2020 10:10</small></a></li>
-                    <li><a href='#tabs-2'>Mauris lobortis quam id dictum dignissim <br> <small>John Doe
-                                &nbsp;|&nbsp; 27.07.2020
-                                10:10</small></a></li>
-                    <li><a href='#tabs-3'>Class aptent taciti sociosqu ad litora torquent per <br> <small>John Doe
-                                &nbsp;|&nbsp;
-                                27.07.2020 10:10</small></a></li>
-                </ul>
-
-                <br>
-
-                <div class="text-center">
-                    <a href="blog.html" class="filled-button">Read More</a>
-                </div>
-
-                <br>
-            </div>
-
-            <div class="col-md-8">
-                <section class='tabs-content'>
-                    <article id='tabs-1'>
-                        <img src="assets/images/blog-image-1-940x460.jpg" alt="">
-                        <h4><a href="blog-details.html">Lorem ipsum dolor sit amet, consectetur adipisicing.</a>
-                        </h4>
-                        <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in,
-                            tincidunt vel
-                            diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris ante, quis
-                            posuere nibh
-                            vestibulum sit amet.</p>
-                    </article>
-                    <article id='tabs-2'>
-                        <img src="assets/images/blog-image-2-940x460.jpg" alt="">
-                        <h4><a href="blog-details.html">Mauris lobortis quam id dictum dignissim</a></h4>
-                        <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in,
-                            tincidunt vel
-                            diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris ante, quis
-                            posuere nibh
-                            vestibulum sit amet</p>
-                    </article>
-                    <article id='tabs-3'>
-                        <img src="assets/images/blog-image-3-940x460.jpg" alt="">
-                        <h4><a href="blog-details.html">Class aptent taciti sociosqu ad litora torquent per</a></h4>
-                        <p>Mauris lobortis quam id dictum dignissim. Donec pellentesque erat dolor, cursus dapibus
-                            turpis
-                            hendrerit quis. Suspendisse at suscipit arcu. Nulla sed erat lectus. Nulla facilisi. In
-                            sit amet neque
-                            sapien. Donec scelerisque mi at gravida efficitur. Nunc lacinia a est eu malesuada.
-                            Curabitur eleifend
-                            elit sapien, sed pulvinar orci luctus eget.
-                        </p>
-                    </article>
-                </section>
-            </div>
-        </div>
-
-
-    </div>
-</div>
-
-<div class="testimonials">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-heading">
-                    <h2>What they say <em>about us</em></h2>
-                    <span>testimonials from our greatest clients</span>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="owl-testimonials owl-carousel">
-
-                    <div class="testimonial-item">
-                        <div class="inner-content">
-                            <h4>George Walker</h4>
-                            <span>Chief Financial Analyst</span>
-                            <p>"Nulla ullamcorper, ipsum vel condimentum congue, mi odio vehicula tellus, sit amet
-                                malesuada justo
-                                sem sit amet quam. Pellentesque in sagittis lacus."</p>
-                        </div>
-                        <img src="http://placehold.it/60x60" alt="">
-                    </div>
-
-                    <div class="testimonial-item">
-                        <div class="inner-content">
-                            <h4>John Smith</h4>
-                            <span>Market Specialist</span>
-                            <p>"In eget leo ante. Sed nibh leo, laoreet accumsan euismod quis, scelerisque a nunc.
-                                Mauris accumsan,
-                                arcu id ornare malesuada, est nulla luctus nisi."</p>
-                        </div>
-                        <img src="http://placehold.it/60x60" alt="">
-                    </div>
-
-                    <div class="testimonial-item">
-                        <div class="inner-content">
-                            <h4>David Wood</h4>
-                            <span>Chief Accountant</span>
-                            <p>"Ut ultricies maximus turpis, in sollicitudin ligula posuere vel. Donec finibus
-                                maximus neque, vitae
-                                egestas quam imperdiet nec. Proin nec mauris eu tortor consectetur tristique."</p>
-                        </div>
-                        <img src="http://placehold.it/60x60" alt="">
-                    </div>
-
-                    <div class="testimonial-item">
-                        <div class="inner-content">
-                            <h4>Andrew Boom</h4>
-                            <span>Marketing Head</span>
-                            <p>"Curabitur sollicitudin, tortor at suscipit volutpat, nisi arcu aliquet dui, vitae
-                                semper sem turpis
-                                quis libero. Quisque vulputate lacinia nisl ac lobortis."</p>
-                        </div>
-                        <img src="http://placehold.it/60x60" alt="">
-                    </div>
-
                 </div>
             </div>
         </div>
