@@ -17,7 +17,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="contact-item">
-          <i class="fas fa-phone-alt"></i>
+          <i class="fa fa-phone"></i>
           <h4>Phone</h4>
           <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate nec cursus augue.</p>
           <a href="#">+1 333 4040 5566</a>
@@ -25,7 +25,7 @@
       </div>
       <div class="col-md-4">
         <div class="contact-item">
-          <i class="fas fa-envelope"></i>
+          <i class="fa fa-envelope"></i>
           <h4>Email</h4>
           <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate nec cursus augue.</p>
           <a href="#">contact@company.com</a>
@@ -33,7 +33,7 @@
       </div>
       <div class="col-md-4">
         <div class="contact-item">
-          <i class="fas fa-map-marker-alt "></i>
+          <i class="fa fa-map-marker "></i>
           <h4>Location</h4>
           <p>212 Barrington Court New York str <br> USA</p>
           <a href="#">View on Google Maps</a>
