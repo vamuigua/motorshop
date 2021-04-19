@@ -71,13 +71,16 @@ Route::get('/admin/all_car_makes', [CarMakeController::class, 'getAllCarMakes'])
 
 // Car-Model routes
 Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
-// individual car details display
-Route::get('/static/result{id}', [CarsDisplayController::class, 'show'])->name('result');
-//results of search form
-Route::get('/results', [CarsDisplayController::class, 'searchForm'])->name('search');
- //Route::get('static/cars', [CarsController::class, 'searchForm'])->name('search');
 Route::post('/admin/new_car_model', [CarModelController::class, 'addCarModel']);
 Route::get('/admin/all_car_models', [CarModelController::class, 'getAllCarModels']);
 
 // Car-Features routes
 Route::resource('admin/features', 'App\Http\Controllers\Admin\FeaturesController');
+
+// END Admin Routes
+
+// Individual car details display
+Route::get('/cars/{id}', [CarsDisplayController::class, 'show'])->name('car-details');
+
+// Route for searching for vehicles
+Route::get('/results', [CarsDisplayController::class, 'searchForm'])->name('search');
