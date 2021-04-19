@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }} Admin Panel</title>
+    <title>Admin Panel</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -46,7 +46,7 @@
             <a href="#" class="brand-link">
                 <img src="/img/logo_3.png" alt="{{config('app.name')}} Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">{{ config('app.name') }} Admin</span>
+                <span class="brand-text font-weight-light">Gevmist VL Admin</span>
             </a>
 
             <!-- Sidebar -->
@@ -182,7 +182,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">{{ config('app.name') }} Admin</h1>
+                            <h1 class="m-0 text-dark">{{ config('app.name') }}</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">

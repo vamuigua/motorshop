@@ -53,7 +53,9 @@ Route::get('/cars', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Authentication Routes
-Auth::routes();
+Auth::routes([
+    'register' => false,    // removes the Register route
+]);
 
 // Admin routes
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
