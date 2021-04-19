@@ -46,6 +46,7 @@ Route::get('/contact', function () {
 })->name('contact-us');
 
 Route::get('/cars', [CarsDisplayController::class, 'index'])->name('cars');
+
 // END Static Page ROUTES
 
 // Main Page/Home route
@@ -68,9 +69,11 @@ Route::get('/admin/all_car_makes', [CarMakeController::class, 'getAllCarMakes'])
 
 // Car-Model routes
 Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
-
+// individual car details display
+Route::get('/static/result{id}', [CarsDisplayController::class, 'show'])->name('result');
+//results of search form
 Route::get('/results', [CarsDisplayController::class, 'searchForm'])->name('search');
-// Route::get('static/cars', [CarsController::class, 'searchForm'])->name('search');
+ //Route::get('static/cars', [CarsController::class, 'searchForm'])->name('search');
 Route::post('/admin/new_car_model', [CarModelController::class, 'addCarModel']);
 Route::get('/admin/all_car_models', [CarModelController::class, 'getAllCarModels']);
 

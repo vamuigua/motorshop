@@ -7,7 +7,6 @@ use App\Http\Requests;
 use App\Models\CarMake;
 use App\Models\CarModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
@@ -20,7 +19,7 @@ class CarsDisplayController extends Controller
      */
     public function index(Request $request)
     {
-        $perpage = 1;
+        $perpage = 15;
         $car = new Car();
         $carMakes = CarMake::with(['carModels'])->get();
         $cars = Car::latest()->simplePaginate($perpage);
@@ -29,6 +28,9 @@ class CarsDisplayController extends Controller
     
     public function searchForm(Request $request)
     {
+        $car = new Car();
+        $carMakes = CarMake::with(['carModels'])->get();
+
         $perPage = 15;
 
         $condition_type = $request->get('condition_type');
@@ -94,33 +96,10 @@ class CarsDisplayController extends Controller
                         })
                         ->when(request()->negotiable, function($query) {
                             $query->where('negotiable', 'LIKE', '%' . request()->negotiable . '%');
-                        })->latest()->paginate($perPage);
+                        })->latest()->simplePaginate($perPage);
 
-                
-
-            return view('static.results',compact('cars'));
+            return view('static.cars',compact('cars', 'car', 'carMakes'));
         }                
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -132,39 +111,9 @@ class CarsDisplayController extends Controller
     public function show($id)
     {
         //
-    }
+        $car = Car::findOrFail($id);
+        $carImages =  $car->images();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('static.results',compact('car', 'carImages'));
     }
 }

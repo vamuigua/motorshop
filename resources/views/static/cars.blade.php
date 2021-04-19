@@ -208,31 +208,41 @@
             <br>
             <br>
           </form>
-  
+          
+          @foreach ($cars as $car)
           <div class="row">
             <div class="col-md-4">
               <div class="service-item">
-                <img src="assets/images/product-1-720x480.jpg" alt="">
+                @if (count($car->images()) > 0) 
+                <img src="{{$car->images()[0]->getUrl()}}" alt="">
+                @else
+                <div class="col-sm-12">
+                  <p><b>No images Provided!</b></p>
+                </div>
+                @endif
                 <div class="down-content">
-                  <h4>Lorem ipsum dolor sit amet</h4>
+                  <h4>{{ $car->carMake($car->car_make_id)->name}} {{$car->carModel($car->car_model_id)->name}}</h4>
                   <div style="margin-bottom:10px;">
                     <span>
-                        <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
+                        <sup>Ksh</sup>{{ $car->price }} Ksh
                     </span>
                   </div>
   
                   <p>
-                    <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                    <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-dashboard"></i> 1{{ $car->mileage }} km &nbsp;&nbsp;&nbsp;
+                    <br>
+                    <i class="fa fa-cube"></i> {{ $car->engine_size }} cc &nbsp;&nbsp;&nbsp;
+                    <br>
+                    <i class="fa fa-cog"></i> {{ $car->transmission_type }} &nbsp;&nbsp;&nbsp;
                   </p>
-                  <a href="car-details.html" class="filled-button">View More</a>
+                  <a href="{{ route('result', ['id' => $car->id]) }}" class="filled-button">View More</a>
                 </div>
               </div>
   
               <br>
             </div>
           </div>
+          @endforeach
   
           <br>
           <br>
