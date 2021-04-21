@@ -286,7 +286,7 @@
     var uploadedImageMap = {}
     Dropzone.options.imageDropzone = {
         url: '{{ route('cars.storeMedia') }}',
-        maxFilesize: 2, // MB
+        maxFilesize: 5, // MB
         addRemoveLinks: true,
         resizeWidth: 650,
         acceptedFiles: 'image/jpeg,image/png,image/jpg',

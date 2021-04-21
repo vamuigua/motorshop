@@ -76,6 +76,7 @@ class Car extends Model implements HasMedia
         return [
             'Cloth',
             'Leather',
+            'Half-Leather',
             'Other'
         ];
     }

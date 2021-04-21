@@ -17,7 +17,7 @@ require("bootstrap-select");
 var pdfMake = require("pdfmake");
 var pdfFonts = require("pdfmake/build/vfs_fonts.js");
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
+window.JSZip = require("jszip/dist/jszip");
 require("datatables.net-bs4");
 require("datatables.net-buttons-bs4");
 require("datatables.net-buttons/js/buttons.colVis.js")();

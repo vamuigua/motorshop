@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CarsDisplayController;
 use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CarMakeController;
@@ -44,16 +45,17 @@ Route::get('/contact', function () {
     return view('static/contact-us');
 })->name('contact-us');
 
-Route::get('/cars', function () {
-    return view('static/cars');
-})->name('cars');
+Route::get('/cars', [CarsDisplayController::class, 'index'])->name('cars');
+
 // END Static Page ROUTES
 
 // Main Page/Home route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Authentication Routes
-Auth::routes();
+Auth::routes([
+    'register' => false,    // removes the Register route
+]);
 
 // Admin routes
 Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
@@ -74,3 +76,11 @@ Route::get('/admin/all_car_models', [CarModelController::class, 'getAllCarModels
 
 // Car-Features routes
 Route::resource('admin/features', 'App\Http\Controllers\Admin\FeaturesController');
+
+// END Admin Routes
+
+// Individual car details display
+Route::get('/cars/{id}', [CarsDisplayController::class, 'show'])->name('car-details');
+
+// Route for searching for vehicles
+Route::get('/results', [CarsDisplayController::class, 'searchForm'])->name('search');
