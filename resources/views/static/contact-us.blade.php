@@ -49,12 +49,13 @@
       <div class="col-md-12">
         <div class="section-heading">
           <h2>Send us a <em>message</em></h2>
-          <span>Suspendisse a ante in neque iaculis lacinia</span>
+          <span>Got a Question? We'd love to hear from you. Send us a message and we'll respond as soon as
+            possible.</span>
         </div>
       </div>
       <div class="col-md-12">
         <div class="contact-form">
-          <form id="contact" action="" method="get">
+          <form id="contact" action="https://formspree.io/f/mgervrgw" method="POST">
             <div class="row">
               <div class="col-lg-4 col-md-12 col-sm-12">
                 <fieldset>
