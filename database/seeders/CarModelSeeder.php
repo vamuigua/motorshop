@@ -23,7 +23,7 @@ class CarModelSeeder extends Seeder
 
         $car_make2 = CarMake::where('id', '2')->first();
         $car_model2 = new CarModel();
-        $car_model2->name = 'maybach s650';
+        $car_model2->name = 'Maybach s650';
         $car_model2->car_make_id = $car_make2->id;
         $car_model2->save();
     }
