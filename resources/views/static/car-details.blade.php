@@ -20,33 +20,29 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7">
+        @if (count($car->images()) > 0)
         <div>
-          @if (count($car->images()) > 0)
-          <img src=" {{$car->images()[0]->getUrl()}} " alt="" class="img-fluid wc-image">
-          @else
-          <div class="col-sm-12">
-            <p><b>No image Provided!</b></p>
-          </div>
-          @endif
+          <img src="{{$car->images()[0]->getUrl()}}" alt="car-image" class="img-fluid wc-image">
         </div>
-
         <br>
 
         <div class="row">
-          @if (count($carImages) > 0)
           @foreach ($carImages as $image)
-          <div class="col-10 col-md-6">
+          <div class="col-sm-4 col-6">
             <a href="{{ $image->getUrl() }}" data-toggle="lightbox" data-gallery="car-gallery">
-              <img src="{{ $image->getUrl('thumb') }}" class="img-thumbnail img-fluid mb-2" alt="vehicle image" />
+              <img src="{{ $image->getUrl('thumb') }}" class="img-thumbnail img-fluid mb-2" alt="car-thumbmail" />
             </a>
           </div>
           @endforeach
-          @else
-          <div class="col-sm-12">
-            <p><b>No images Provided!</b></p>
-          </div>
-          @endif
         </div>
+
+        @else
+        <div class="col-sm-12">
+          <div class="d-flex justify-content-center">
+            <img src="/images/no-image-available.png" class="img-fluid" alt="no-image-available.png">
+          </div>
+        </div>
+        @endif
 
         <br>
 

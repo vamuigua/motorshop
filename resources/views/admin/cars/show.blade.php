@@ -54,13 +54,14 @@
                                         @else
                                         <div class="col-sm-12">
                                             <p><b>No images Provided!</b></p>
-                                            <a href="{{ url('/admin/cars/' . $car->id . '/edit') }}"
+                                            <a href="{{ url('/admin/cars/' . $car->id . '/edit#image-dropzone') }}"
                                                 title="Upload Images">
                                                 <button class="btn btn-primary btn-sm">
                                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     Upload Images
                                                 </button>
                                             </a>
+                                            <br>
                                         </div>
                                         @endif
                                     </div>

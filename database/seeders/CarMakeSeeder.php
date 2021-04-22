@@ -15,15 +15,15 @@ class CarMakeSeeder extends Seeder
     public function run()
     {
         $car_make = new CarMake();
-        $car_make->name = 'subaru';
+        $car_make->name = 'Subaru';
         $car_make->save();
 
         $car_make2 = new CarMake();
-        $car_make2->name = 'mercedes benz';
+        $car_make2->name = 'Mercedes-Benz';
         $car_make2->save();
 
         $car_make3 = new CarMake();
-        $car_make3->name = 'volkswagen';
+        $car_make3->name = 'Volkswagen';
         $car_make3->save();
     }
 }

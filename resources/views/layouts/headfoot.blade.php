@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="/assets/css/fontawesome.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/assets/css/owl.css">
+
+    {{-- Ekko Lightbox CSS --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
 </head>
 
 <style>
@@ -143,9 +146,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 footer-item">
-                        <h4>Car Dealer Website</h4>
-                        <p>Vivamus tellus mi. Nulla ne cursus elit,vulputate. Sed ne cursus augue hasellus lacinia
-                            sapien vitae.</p>
+                        <h4>{{ config('app.name') }}</h4>
+                        <p>We got your ride!</p>
                         <ul class="social-icons">
                             <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -232,6 +234,19 @@
     <script src="/assets/js/owl.js"></script>
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/accordions.js"></script>
+
+    {{-- Ekko Lightbox JS--}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+    {{-- Initialization of Ekko Lightbox --}}
+    <script lang="text/javascript">
+        $(document).on("click", '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox({
+                alwaysShowClose: true
+            });
+        });
+    </script>
 
     <script language="text/Javascript">
         cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
