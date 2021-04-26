@@ -19,7 +19,7 @@
           <div class="row">
             <div class="col-md-6 align-self-center">
               <div class="right-content">
-                <span>Lorem ipsum dolor sit amet</span>
+                <span>Who are we &#x2753;</span>
                 <h2>Get to know about <em>our company</em></h2>
                 <p>Fusce nec ultrices lectus. Duis nec scelerisque risus. Ut id tempor turpis, ac dignissim ipsum. Nulla
                   ullamcorper, ipsum vel condimentum congue, mi odio vehicula tellus, sit amet malesuada justo sem.

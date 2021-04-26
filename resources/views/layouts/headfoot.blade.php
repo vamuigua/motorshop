@@ -177,7 +177,7 @@
                     <div class="col-md-3 footer-item last-item">
                         <h4>Contact Us</h4>
                         <div class="contact-form">
-                            <form id="contact footer-contact" action="" method="post">
+                            <form id="contact footer-contact" action="https://formspree.io/f/mgervrgw" method="post">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
@@ -187,7 +187,7 @@
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12">
                                         <fieldset>
-                                            <input name="email" type="text" class="form-control" id="email_contact"
+                                            <input name="email" type="email" class="form-control" id="email_contact"
                                                 pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
                                         </fieldset>
                                     </div>

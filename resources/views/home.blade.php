@@ -8,11 +8,11 @@
         <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>lorem ipsum dolor sit amet!</h6>
-                    <h4>Quam temporibus accusam <br> hic ducimus quia</h4>
-                    <p>Magni deserunt dolorem consectetur adipisicing elit. Corporis molestiae optio, laudantium
-                        odio quod rerum
-                        maiores, omnis unde quae illo.</p>
+                    <h6>A Wide Variety of Vehicles Available for Sale!</h6>
+                    <h4>WELCOME TO  <br> GEMVIST MOTORSHOP CORPORATION </h4>
+                    <p style="font-size:0.895em" >Here at Gemvist we offer all the best prices on all avilable cars and car brands. we pride
+                        ourselves in best quality at affordable prices,
+                        customer service and also legal  expertise. To view some of our Products click on the <b>cars</b> link below.</p>
                     <a href="{{ route('cars') }}" class="filled-button">Cars</a>
                 </div>
             </div>
@@ -22,11 +22,11 @@
         <div class="item item-2">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>magni deserunt dolorem harum quas!</h6>
-                    <h4>Aliquam iusto harum <br> ratione porro odio</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa cupiditate mollitia
-                        adipisci assumenda
-                        laborum eius quae quo excepturi, eveniet. Dicta nulla ea beatae consequuntur?</p>
+                    <h6>Karibu  Gemvist Motorshop Corporation!</h6>
+                    <h4>WELCOME TO  <br> GEMVIST MOTORSHOP CORPORATION </h4>
+                    <p>Here at Gemvist we deal with, all brands, makes, models of cars. We fame ourselves with providing the best cars in the market both used,
+                        and new.
+                        We have over <b>20 Years</b> experience in the car dealership market, and have been marked among the best corporations in Kenya &#x1F3C5; .</p>
                     <a href="{{ route('about') }}" class="filled-button">About Us</a>
                 </div>
             </div>
@@ -36,11 +36,11 @@
         <div class="item item-3">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>alias officia qui quae vitae natus!</h6>
-                    <h4>Lorem ipsum dolor <br>sit amet, consectetur.</h4>
-                    <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate mi. Sed nec cursus augue. Phasellus
-                        lacinia ac
-                        sapien vitae dapibus. Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</p>
+                    <h6>Karibu  Gemvist Motorshop Corporation!</h6>
+                    <h4>WELCOME TO  <br> GEMVIST MOTORSHOP CORPORATION </h4>
+                    <p>Gemvist, we are located in Kajiado County, in the district of Ongata Rongai. 
+                        In Kenya &#x1F1F0;&#x1F1EA;
+                        .</p>
                     <a href="{{ route('contact-us') }}" class="filled-button">Contact Us</a>
                 </div>
             </div>
@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h4>Request a call back right now ?</h4>
-                <span>Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</span>
+                <span>Please click the <b>Contact Us </b> button on your right to head to the contact page. Thank you  &#x1F600; </span>
             </div>
             <div class="col-md-4">
                 <a href="{{ route('contact-us') }}" class="border-button">Contact Us</a>
@@ -156,10 +156,10 @@
                     <div class="right-content">
                         <span>Who we are</span>
                         <h2>Get to know about <em>our company</em></h2>
-                        <p>Curabitur pulvinar sem a leo tempus facilisis. Sed non sagittis neque. Nulla conse quat
-                            tellus nibh, id
-                            molestie felis sagittis ut. Nam ullamcorper tempus ipsum in cursus</p>
-                        <a href="about.html" class="filled-button">Read More</a>
+                        <p>Here at Gemvist we deal with, all brands, makes, models of cars. We fame ourselves with providing the best cars in the market both used,
+                            and new.
+                            We have over <b>20 Years</b> experience in the car dealership market, and have been marked among the best corporations in Kenya &#x1F3C5; .</p>
+                        <a href="{{ route('about') }}" class="filled-button">Read More</a>
                     </div>
                 </div>
             </div>
@@ -173,12 +173,12 @@
             <div class="col-md-12">
                 <div class="section-heading">
                     <h2>Request a <em>call back</em></h2>
-                    <span>Etiam suscipit ante a odio consequat</span>
+                    <span>Please write us a Message and we will respond in the shortest time possible.</span>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="contact-form">
-                    <form id="contact" action="" method="post">
+                    <form id="contact" action="https://formspree.io/f/mgervrgw" method="post">
                         <div class="row">
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
@@ -188,7 +188,7 @@
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="email" type="text" class="form-control" id="email"
+                                    <input name="email" type="email" class="form-control" id="email"
                                         pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
                                 </fieldset>
                             </div>
