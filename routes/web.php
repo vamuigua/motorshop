@@ -20,6 +20,9 @@ use App\Http\Controllers\Admin\CarModelController;
 |
 */
 
+// Home page route
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
 // Static Page ROUTES
 Route::get('/about', function () {
     return view('static/about');
@@ -48,9 +51,6 @@ Route::get('/contact', function () {
 Route::get('/cars', [CarsDisplayController::class, 'index'])->name('cars');
 
 // END Static Page ROUTES
-
-// Main Page/Home route
-Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Authentication Routes
 Auth::routes([
