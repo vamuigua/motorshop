@@ -9,10 +9,12 @@
             <div class="img-fill">
                 <div class="text-content">
                     <h6>A Wide Variety of Vehicles Available for Sale!</h6>
-                    <h4>WELCOME TO  <br> GEMVIST MOTORSHOP CORPORATION </h4>
-                    <p style="font-size:0.895em" >Here at Gemvist we offer all the best prices on all avilable cars and car brands. we pride
-                        ourselves in best quality at affordable prices,
-                        customer service and also legal  expertise. To view some of our Products click on the <b>cars</b> link below.</p>
+                    <h4>WELCOME TO <br> {{config('app.name')}} </h4>
+                    <p style="font-size:0.895em">Here at {{config('app.name')}} we offer all the best prices on all
+                        available cars and car brands. We pride ourselves in best quality at affordable prices, customer
+                        service and also
+                        legal expertise. To view some of our machines click on the <b>cars</b> link below.
+                    </p>
                     <a href="{{ route('cars') }}" class="filled-button">Cars</a>
                 </div>
             </div>
@@ -22,11 +24,11 @@
         <div class="item item-2">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>Karibu  Gemvist Motorshop Corporation!</h6>
-                    <h4>WELCOME TO  <br> GEMVIST MOTORSHOP CORPORATION </h4>
-                    <p>Here at Gemvist we deal with, all brands, makes, models of cars. We fame ourselves with providing the best cars in the market both used,
-                        and new.
-                        We have over <b>20 Years</b> experience in the car dealership market, and have been marked among the best corporations in Kenya &#x1F3C5; .</p>
+                    <h6>Karibu to {{config('app.name')}}!</h6>
+                    <h4>WELCOME TO <br> {{config('app.name')}}</h4>
+                    <p>We deal with, all brands, makes & models of cars. We fame ourselves with providing the best cars
+                        in the market both used and new. We have over <b>20 Years</b> experience in the car dealership
+                        market, and have been marked among the best corporations in Kenya &#x1F3C5;</p>
                     <a href="{{ route('about') }}" class="filled-button">About Us</a>
                 </div>
             </div>
@@ -36,11 +38,9 @@
         <div class="item item-3">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>Karibu  Gemvist Motorshop Corporation!</h6>
-                    <h4>WELCOME TO  <br> GEMVIST MOTORSHOP CORPORATION </h4>
-                    <p>Gemvist, we are located in Kajiado County, in the district of Ongata Rongai. 
-                        In Kenya &#x1F1F0;&#x1F1EA;
-                        .</p>
+                    <h6>Karibu to {{config('app.name')}}!</h6>
+                    <h4>WELCOME TO <br> GEMVIST MOTORSHOP CORPORATION </h4>
+                    <p>We are located in Kajiado County, in the district of Ongata Rongai, Kenya &#x1F1F0;&#x1F1EA;</p>
                     <a href="{{ route('contact-us') }}" class="filled-button">Contact Us</a>
                 </div>
             </div>
@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h4>Request a call back right now ?</h4>
-                <span>Please click the <b>Contact Us </b> button on your right to head to the contact page. Thank you  &#x1F600; </span>
+                <span>Click on the <b>Contact Us </b> button to view our contact details. Thank you &#x1F600;</span>
             </div>
             <div class="col-md-4">
                 <a href="{{ route('contact-us') }}" class="border-button">Contact Us</a>
@@ -70,77 +70,50 @@
             <div class="col-md-12">
                 <div class="section-heading">
                     <h2>Featured <em>Cars</em></h2>
-                    <span>Aliquam id urna imperdiet libero mollis hendrerit</span>
+                    <span>Buy a car today!</span>
                 </div>
             </div>
+            @foreach ($cars as $car)
             <div class="col-md-4">
                 <div class="service-item">
-                    <img src="assets/images/product-1-720x480.jpg" alt="">
+                    @if (count($car->images()) > 0)
+                    <img src="{{$car->images()[0]->getUrl()}}" class="img-fluid" alt="car image">
+                    @else
+                    <div class="col-sm-12">
+                        <div class="d-flex justify-content-center">
+                            <img src="/images/no-image-available.png" class="img-fluid" alt="no-image-available.png">
+                        </div>
+                    </div>
+                    @endif
                     <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet</h4>
+                        <h4>{{ $car->carMake($car->car_make_id)->name}} {{$car->carModel($car->car_model_id)->name}}
+                        </h4>
                         <div style="margin-bottom:10px;">
                             <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
+                                {{ number_format($car->price) }}.KSH
                             </span>
                         </div>
 
                         <p>
-                            <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-dashboard"></i> 1{{ number_format($car->mileage) }} km &nbsp;&nbsp;&nbsp;
+                            <br>
+                            <i class="fa fa-cube"></i> {{ number_format($car->engine_size) }} cc &nbsp;&nbsp;&nbsp;
+                            <br>
+                            <i class="fa fa-cog"></i> {{ $car->transmission_type }} &nbsp;&nbsp;&nbsp;
                         </p>
-                        <a href="car-details.html" class="filled-button">View More</a>
+                        <a href="{{ route('car-details', ['id' => $car->id]) }}" class="filled-button">View More</a>
                     </div>
                 </div>
 
                 <br>
             </div>
-            <div class="col-md-4">
-                <div class="service-item">
-                    <img src="assets/images/product-2-720x480.jpg" alt="">
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <div style="margin-bottom:10px;">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-                        </div>
-
-                        <p>
-                            <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                        </p>
-                        <a href="car-details.html" class="filled-button">View More</a>
-                    </div>
-                </div>
-
-                <br>
-            </div>
-            <div class="col-md-4">
-                <div class="service-item">
-                    <img src="assets/images/product-3-720x480.jpg" alt="">
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <div style="margin-bottom:10px;">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-                        </div>
-
-                        <p>
-                            <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                        </p>
-                        <a href="car-details.html" class="filled-button">View More</a>
-                    </div>
-                </div>
-
-                <br>
-            </div>
+            @endforeach
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{{ route('cars') }}" class="btn btn-primary btn-lg btn-block">Checkout more Cars!</a>
         </div>
     </div>
+</div>
 </div>
 
 <div class="fun-facts">
@@ -156,9 +129,10 @@
                     <div class="right-content">
                         <span>Who we are</span>
                         <h2>Get to know about <em>our company</em></h2>
-                        <p>Here at Gemvist we deal with, all brands, makes, models of cars. We fame ourselves with providing the best cars in the market both used,
-                            and new.
-                            We have over <b>20 Years</b> experience in the car dealership market, and have been marked among the best corporations in Kenya &#x1F3C5; .</p>
+                        <p>Here at {{config('app.name')}} we deal with, all brands, makes & models of cars. We fame
+                            ourselves with providing the best cars in the market both used and new.
+                            We have over <b>20 Years</b> experience in the car dealership market, and have been marked
+                            among the best corporations in Kenya &#x1F3C5; .</p>
                         <a href="{{ route('about') }}" class="filled-button">Read More</a>
                     </div>
                 </div>
