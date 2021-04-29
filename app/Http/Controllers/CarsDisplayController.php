@@ -67,43 +67,35 @@ class CarsDisplayController extends Controller
         ) {
             return redirect()->back()->with('flash_message_error', "You did not select any search parameter.");
         } else {
-            $cars = Car::where('price', '>=', $lowest_price_range)->where('price', '<=', $highest_price_range)
-                ->when(request()->body_type, function ($query) {
-                    $query->where('body_type', request()->body_type);
-                })
-                ->when(request()->car_make_id, function ($query) {
-                    $query->where('car_make_id', 'LIKE', '%' . request()->car_make_id . '%');
-                })
-                ->when($price, function ($query) {
-                    $query->where('condition_type', 'LIKE', '%' . request()->condition_type . '%');
-                })
-                ->when(request()->mileage, function ($query) {
-                    $query->where('mileage', 'LIKE', '%' . request()->mileage . '%');
-                })
-                ->when(request()->engine_size, function ($query) {
-                    $query->where('engine_size', 'LIKE', '%' . request()->engine_size . '%');
-                })
-                ->when(request()->color_type, function ($query) {
-                    $query->where('color_type', 'LIKE', '%' . request()->color_type . '%');
-                })
-                ->when(request()->fuel_type, function ($query) {
-                    $query->where('fuel_type', 'LIKE', '%' . request()->fuel_type . '%');
-                })
-                ->when(request()->transmission_type, function ($query) {
-                    $query->where('transmission_type', 'LIKE', '%' . request()->transmission_type . '%');
-                })
-                ->when(request()->interior_type, function ($query) {
-                    $query->where('interior_type', 'LIKE', '%' . request()->interior_type . '%');
-                })
-                ->when(request()->duty, function ($query) {
-                    $query->where('duty', 'LIKE', '%' . request()->duty . '%');
-                })
-                ->when(request()->year, function ($query) {
-                    $query->where('year', 'LIKE', '%' . request()->year . '%');
-                })
-                ->when(request()->negotiable, function ($query) {
-                    $query->where('negotiable', 'LIKE', '%' . request()->negotiable . '%');
-                })->latest()->paginate($perPage);
+
+            $cars = Car::when($condition_type, function ($query) {
+                $query->where('condition_type', 'LIKE', '%' . request()->condition_type . '%');
+            })->when($body_type, function ($query) {
+                $query->where('body_type', 'LIKE', '%' . request()->body_type . '%');
+            })->when($car_make_id, function ($query) {
+                $query->where('car_make_id', 'LIKE', '%' . request()->car_make_id . '%');
+            })->when($price, function ($query) use ($lowest_price_range, $highest_price_range) {
+                $query->where('price', '>=', $lowest_price_range)
+                    ->Where('price', '<=', $highest_price_range);
+            })->when($mileage, function ($query) {
+                $query->where('mileage', 'LIKE', '%' . request()->mileage . '%');
+            })->when($engine_size, function ($query) {
+                $query->where('engine_size', 'LIKE', '%' . request()->engine_size . '%');
+            })->when($color_type, function ($query) {
+                $query->where('color_type', 'LIKE', '%' . request()->color_type . '%');
+            })->when($fuel_type, function ($query) {
+                $query->where('fuel_type', 'LIKE', '%' . request()->fuel_type . '%');
+            })->when($transmission_type, function ($query) {
+                $query->where('transmission_type', 'LIKE', '%' . request()->transmission_type . '%');
+            })->when($interior_type, function ($query) {
+                $query->where('interior_type', 'LIKE', '%' . request()->interior_type . '%');
+            })->when($duty, function ($query) {
+                $query->where('duty', 'LIKE', '%' . request()->duty . '%');
+            })->when($year, function ($query) {
+                $query->where('year', 'LIKE', '%' . request()->year . '%');
+            })->when($negotiable, function ($query) {
+                $query->where('negotiable', 'LIKE', '%' . request()->negotiable . '%');
+            })->latest()->paginate($perPage);
 
             return view('static.cars', compact('cars', 'car', 'carMakes'));
         }
