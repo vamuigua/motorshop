@@ -19,7 +19,7 @@ class CarsDisplayController extends Controller
         $perpage = 15;
         $car = new Car();
         $carMakes = CarMake::with(['carModels'])->get();
-        $cars = Car::latest()->simplePaginate($perpage);
+        $cars = Car::latest()->paginate($perpage);
         return view('static.cars', compact('car', 'cars', 'carMakes'));
     }
 
@@ -98,7 +98,7 @@ class CarsDisplayController extends Controller
                 })
                 ->when(request()->negotiable, function ($query) {
                     $query->where('negotiable', 'LIKE', '%' . request()->negotiable . '%');
-                })->latest()->simplePaginate($perPage);
+                })->latest()->paginate($perPage);
 
             return view('static.cars', compact('cars', 'car', 'carMakes'));
         }

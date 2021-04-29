@@ -257,10 +257,11 @@
 
     <br>
     <br>
-    <div>
-      {{ $cars->links() }}
+    <div class="d-flex">
+      <div class="mx-auto">
+        {{ $cars->links() }}
+      </div>
     </div>
-
     <br>
     <br>
     <br>
