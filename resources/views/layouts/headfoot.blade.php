@@ -25,6 +25,10 @@
 
     {{-- Ekko Lightbox CSS --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
+
+    {{-- Ion Range Slider Plugin CSS file with desired skin --}}
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
 </head>
 
 <style>
@@ -225,29 +229,18 @@
     <script src="/assets/js/slick.js"></script>
     <script src="/assets/js/accordions.js"></script>
 
-    {{-- Ekko Lightbox JS--}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-
-    {{-- Initialization of Ekko Lightbox --}}
-    <script lang="text/javascript">
-        $(document).on("click", '[data-toggle="lightbox"]', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox({
-                alwaysShowClose: true
-            });
-        });
-    </script>
-
     <script language="text/Javascript">
         cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-            function clearField(t){                   //declaring the array outside of the
+        function clearField(t){                   //declaring the array outside of the
             if(! cleared[t.id]){                      // function makes it static and global
                 cleared[t.id] = 1;  // you could use true and false, but that's more typing
                 t.value='';         // with more chance of typos
                 t.style.color='#fff';
-                }
             }
+        }
     </script>
+
+    @yield('scripts')
 </body>
 
 </html>

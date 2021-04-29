@@ -41,7 +41,12 @@ class CarsDisplayController extends Controller
         $body_type = $request->get('body_type');
         $car_make_id = $request->get('car_make_id');
         $car_model_id = $request->get('car_model_id');
-        $price = $request->get('price');
+
+        $price = $request->get('price');        // price value example (string) "2000000;8000000"
+        $price_range = explode(";", $price);    // converts to array ["2000000", "8000000"]
+        $lowest_price_range = $price_range[0];
+        $highest_price_range = $price_range[1];
+
         $mileage = $request->get('mileage');
         $engine_size = $request->get('engine_size');
         $color_type = $request->get('color_type');
@@ -62,15 +67,15 @@ class CarsDisplayController extends Controller
         ) {
             return redirect()->back()->with('flash_message_error', "You did not select any search parameter.");
         } else {
-            $cars = Car::where('condition_type', 'LIKE', '%' . request()->condition_type . '%')
+            $cars = Car::where('price', '>=', $lowest_price_range)->where('price', '<=', $highest_price_range)
                 ->when(request()->body_type, function ($query) {
                     $query->where('body_type', request()->body_type);
                 })
                 ->when(request()->car_make_id, function ($query) {
                     $query->where('car_make_id', 'LIKE', '%' . request()->car_make_id . '%');
                 })
-                ->when(request()->price, function ($query) {
-                    $query->where('price', 'LIKE', '%' . request()->price . '%');
+                ->when($price, function ($query) {
+                    $query->where('condition_type', 'LIKE', '%' . request()->condition_type . '%');
                 })
                 ->when(request()->mileage, function ($query) {
                     $query->where('mileage', 'LIKE', '%' . request()->mileage . '%');

@@ -88,14 +88,6 @@
           </div>
         </div>
 
-        {{-- Price --}}
-        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-          <div class="form-group">
-            <label for="price"> Price (KSH): </label>
-            <input type="number" class="form-control" name="price" data-toggle="tooltip" placeholder="250000.Ksh">
-          </div>
-        </div>
-
         {{-- Mileage --}}
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
           <div class="form-group">
@@ -210,6 +202,14 @@
         </div>
       </div>
 
+      {{-- Price --}}
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="price" class="py-3"> Price Range (KSH): </label>
+          <input type="text" class="js-range-slider form-control" name="price">
+        </div>
+      </div>
+
       <div class="col-sm-4 offset-sm-4">
         <div class="main-button text-center">
           <button type="submit" class="filled-button btn btn-primary">Search</button>
@@ -220,6 +220,7 @@
     </form>
 
     <div class="row">
+      @if (count($cars) > 0)
       @foreach ($cars as $car)
       <div class="col-md-4">
         <div class="service-item">
@@ -253,6 +254,13 @@
         <br>
       </div>
       @endforeach
+      @else
+      <div class="col-sm-12">
+        <div class="alert alert-danger" role="alert">
+          <strong>Sorry!</strong> Search results not found for your car specifications.
+        </div>
+      </div>
+      @endif
     </div>
 
     <br>
@@ -268,5 +276,28 @@
     <br>
   </div>
 </div>
+
+@section('scripts')
+<!--Ion Range Plugin JavaScript file-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+<script lang="text/javascript">
+  jQuery(function() {
+      $(".js-range-slider").ionRangeSlider({
+        type: "double",
+        grid: true,
+        min: 0,
+        max: 10000000,
+        from: 2000000,
+        to: 8000000,
+        step: 10000,
+        prettify_enabled: true,
+        prettify_separator: ",",
+        prefix: "KSH.",
+        skin: "round"
+      });
+  });
+</script>
+@endsection
 
 @endsection
