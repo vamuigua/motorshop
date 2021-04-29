@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-md-12">
         <h1>FAQ</h1>
-        <span>Lorem ipsum dolor sit amet.</span>
+        <span>Got Questions or Concerns?</span>
       </div>
     </div>
   </div>
