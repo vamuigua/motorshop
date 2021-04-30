@@ -149,7 +149,7 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 footer-item">
+                    <div class="col-md-4 footer-item">
                         <h4>{{ config('app.name') }}</h4>
                         <p>We got your ride!</p>
                         <ul class="social-icons">
@@ -158,7 +158,7 @@
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
-                    <div class="col-md-3 footer-item">
+                    <div class="col-md-4 footer-item">
                         <h4>Pages to explore</h4>
                         <ul class="menu-list">
                             <li><a href="{{ route('home') }}">Home</a></li>
@@ -168,7 +168,7 @@
                             <li><a href="{{ route('terms') }}">Terms</a></li>
                         </ul>
                     </div>
-                    <div class="col-md-3 footer-item last-item">
+                    <div class="col-md-4 footer-item last-item">
                         <h4>Contact Us</h4>
                         <div class="contact-form">
                             <form id="contact footer-contact" action="https://formspree.io/f/mgervrgw" method="post">
