@@ -79,7 +79,7 @@
                     @if (count($car->images()) > 0)
                     <img src="{{$car->images()[0]->getUrl()}}" class="img-fluid" alt="car image">
                     @else
-                    <div class="col-sm-12">
+                    <div class="col-sm-9">
                         <div class="d-flex justify-content-center">
                             <img src="/images/no-image-available.png" class="img-fluid" alt="no-image-available.png">
                         </div>
