@@ -60,9 +60,10 @@
                     </div>
                     <div class="col-md-4">
                         <ul class="right-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-instagram"> </i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -153,14 +154,15 @@
                         <h4>{{ config('app.name') }}</h4>
                         <p>We got your ride!</p>
                         <ul class="social-icons">
-                            <li><a rel="nofollow" href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a rel="nofollow" href="#" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-instagram"> </i></a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 footer-item">
                         <h4>Pages to explore</h4>
-                        <ul class="menu-list">
+                        <ul class="menu-list justify-content-center">
                             <li><a href="{{ route('home') }}">Home</a></li>
                             <li><a href="{{ route('about') }}">About Us</a></li>
                             <li><a href="{{ route('faq') }}">FAQ</a></li>
@@ -238,6 +240,14 @@
                 t.style.color='#fff';
             }
         }
+    </script>
+
+    <script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+
     </script>
 
     @yield('scripts')
