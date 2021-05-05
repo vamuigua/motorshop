@@ -1153,7 +1153,7 @@ footer .contact-form button.filled-button:hover {
 }
 
 .page-heading h1 {
-	text-transform: capitalize;
+	text-transform: uppercase;
 	font-size: 36px;
 	font-weight: 700;
 	letter-spacing: 2px;
@@ -1161,7 +1161,17 @@ footer .contact-form button.filled-button:hover {
 }
 
 .page-heading span {
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #fff;
+	display: block;
+}
+
+.page-heading span p {
 	font-size: 15px;
+	font-weight: normal;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	color: #fff;
