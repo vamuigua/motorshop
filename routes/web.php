@@ -28,10 +28,6 @@ Route::get('/about', function () {
     return view('static/about');
 })->name('about');
 
-Route::get('/blog', function () {
-    return view('static/blog');
-})->name('blog');
-
 Route::get('/faq', function () {
     return view('static/FAQ');
 })->name('faq');
@@ -40,47 +36,45 @@ Route::get('/terms', function () {
     return view('static/terms');
 })->name('terms');
 
-Route::get('/team', function () {
-    return view('static/team');
-})->name('team');
-
 Route::get('/contact', function () {
     return view('static/contact-us');
 })->name('contact-us');
-
-Route::get('/cars', [CarsDisplayController::class, 'index'])->name('cars');
-
 // END Static Page ROUTES
 
-// Authentication Routes
-Auth::routes([
-    'register' => false,    // removes the Register route
-]);
 
-// Admin routes
-Route::get('admin/dashboard', [AdminController::class, 'index'])->name('dashboard');
-
-// Car Routes
-Route::resource('admin/cars', 'App\Http\Controllers\Admin\CarsController');
-Route::post('/admin/cars/media', [CarsController::class, 'storeMedia'])->name('cars.storeMedia');
-
-// Car-Make routes
-Route::resource('admin/car-make', 'App\Http\Controllers\Admin\CarMakeController');
-Route::post('/admin/new_car_make', [CarMakeController::class, 'addCarMake']);
-Route::get('/admin/all_car_makes', [CarMakeController::class, 'getAllCarMakes']);
-
-// Car-Model routes
-Route::resource('admin/car-model', 'App\Http\Controllers\Admin\CarModelController');
-Route::post('/admin/new_car_model', [CarModelController::class, 'addCarModel']);
-Route::get('/admin/all_car_models', [CarModelController::class, 'getAllCarModels']);
-
-// Car-Features routes
-Route::resource('admin/features', 'App\Http\Controllers\Admin\FeaturesController');
-
-// END Admin Routes
-
-// Individual car details display
-Route::get('/cars/{id}', [CarsDisplayController::class, 'show'])->name('car-details');
-
+// All cars page route
+Route::get('/cars', [CarsDisplayController::class, 'index'])->name('cars');
 // Route for searching for vehicles
 Route::get('/results', [CarsDisplayController::class, 'searchForm'])->name('search');
+// Individual car-details display route
+Route::get('/cars/{id}', [CarsDisplayController::class, 'show'])->name('car-details');
+
+
+// AUTHENTICATION ROUTES
+Auth::routes([
+    'register' => false,    // removes the Register route & view page
+]);
+
+// ADMIN ROUTES
+Route::group(['prefix' => 'admin'], function () {
+    // Admin dashboard route
+    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+    // Car Routes
+    Route::resource('cars', 'App\Http\Controllers\Admin\CarsController');
+    Route::post('cars/media', [CarsController::class, 'storeMedia'])->name('cars.storeMedia');
+
+    // Car-Make routes
+    Route::resource('car-make', 'App\Http\Controllers\Admin\CarMakeController');
+    Route::post('new_car_make', [CarMakeController::class, 'addCarMake']);
+    Route::get('all_car_makes', [CarMakeController::class, 'getAllCarMakes']);
+
+    // Car-Model routes
+    Route::resource('car-model', 'App\Http\Controllers\Admin\CarModelController');
+    Route::post('new_car_model', [CarModelController::class, 'addCarModel']);
+    Route::get('all_car_models', [CarModelController::class, 'getAllCarModels']);
+
+    // Car-Features routes
+    Route::resource('features', 'App\Http\Controllers\Admin\FeaturesController');
+});
+// END OF ADMIN ROUTES
