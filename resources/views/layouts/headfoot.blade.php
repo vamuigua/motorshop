@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="{{ config('app.name') }}">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -16,19 +16,12 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="/assets/css/fontawesome.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/owl.css">
-
-    {{-- Ekko Lightbox CSS --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
-
-    {{-- Ion Range Slider Plugin CSS file with desired skin --}}
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css" />
+    <link rel="stylesheet" href="{{ asset('/assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/css/owl.css') }}">
 </head>
 
 <style>
@@ -54,16 +47,23 @@
                 <div class="row">
                     <div class="col-md-8 col-xs-12">
                         <ul class="left-info">
-                            <li><a href="#"><i class="fa fa-envelope"></i>contact@company.com</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>123-456-7890</a></li>
+                            <li><a href="mailto:gemvist@gmail.com" target="_blank"><i
+                                        class="fa fa-envelope"></i>gemvist@gmail.com</a>
+                            </li>
+                            <li><a href="tel:+254720720256"><i class="fa fa-phone"></i>+254720720256</a></li>
+                            <li><a href="tel:+254725249932"><i class="fa fa-phone"></i>+254725249932</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4">
                         <ul class="right-icons">
-                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-instagram"> </i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                                        class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                                        class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                                        class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                                        class="fa fa-instagram"> </i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -154,10 +154,15 @@
                         <h4>{{ config('app.name') }}</h4>
                         <p>We got your ride!</p>
                         <ul class="social-icons">
-                            <li><a rel="nofollow" href="#" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Gemvist_motors " ><i class="fa fa-instagram"> </i></a></li>
+                            <li><a rel="nofollow" href="#" target="_blank" data-toggle="tooltip" data-placement="top"
+                                    title="Gemvist_motors "><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                                        class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                                        class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                                        class="fa fa-instagram"> </i></a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 footer-item">
@@ -221,15 +226,17 @@
         </div>
     </div>
 
+    <!-- JQuery -->
+    <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
     <!-- Bootstrap core JavaScript -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="/assets/js/bootstrap.bundle.min.js"></script> --}}
 
     <!-- Additional Scripts -->
-    <script src="/assets/js/custom.js"></script>
-    <script src="/assets/js/owl.js"></script>
-    <script src="/assets/js/slick.js"></script>
-    <script src="/assets/js/accordions.js"></script>
+    <script src="{{ asset('/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('/assets/js/owl.js') }}"></script>
+    <script src="{{ asset('/assets/js/slick.js') }}"></script>
+    <script src="{{ asset('/assets/js/accordions.js') }}"></script>
 
     <script language="text/Javascript">
         cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
@@ -242,12 +249,11 @@
         }
     </script>
 
+    {{-- Initialize all tooltips on the page --}}
     <script>
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-    });
-
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
     </script>
 
     @yield('scripts')
