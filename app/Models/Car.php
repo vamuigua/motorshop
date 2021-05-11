@@ -89,6 +89,7 @@ class Car extends Model implements HasMedia
         return [
             'Manual',
             'Automatic',
+            'Tiptronic',
             'Other'
         ];
     }
@@ -99,10 +100,8 @@ class Car extends Model implements HasMedia
     public function dutyTypes()
     {
         return [
-            'Duty-excempted',
-            'Duty-not-paid',
             'Duty-paid',
-            'Not-specified'
+            'Duty-not-paid',
         ];
     }
 
@@ -114,6 +113,7 @@ class Car extends Model implements HasMedia
         return [
             'Petrol',
             'Diesel',
+            'Petrol-Hybrid',
             'Diesel-Hybrid',
             'Electric',
             'Other'
