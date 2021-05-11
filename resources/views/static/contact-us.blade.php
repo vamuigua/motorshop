@@ -19,24 +19,25 @@
         <div class="contact-item">
           <i class="fa fa-phone"></i>
           <h4>Phone</h4>
-          <p>Here is a way of contacting us.The Number below is directly linked to our customer service team official , who also handle Sales inquires and problems.</p>
-          <a href="#">+1 333 4040 5566</a>
+          <p>You can reach out to us by using any of the mobile numbers below.</p>
+          <a>+254720720256</a>
+          <a>+254725249932</a>
         </div>
       </div>
       <div class="col-md-4">
         <div class="contact-item">
           <i class="fa fa-envelope"></i>
           <h4>Email</h4>
-          <p>Here is another way of contacting us.The Email below is directly linked to our customer service team , who also handle Sales inquires and problems .</p>
-          <a href="#">gemvist@gmail.com</a>
+          <p>We also have a mailing contact that you can use to reach out to us!</p>
+          <a href="mailto:gemvist@gmail.com" target="_blank">gemvist@gmail.com</a>
         </div>
       </div>
       <div class="col-md-4">
         <div class="contact-item">
           <i class="fa fa-map-marker "></i>
           <h4>Location</h4>
-          <p>Ongata Rongai <br> Kenya &#x1F1F0;&#x1F1EA;</p>
-          <a href="https://goo.gl/maps/eyDhTEKJzgp9NVto6">View on Google Maps</a>
+          <p>Motorshop Dealers, Kiambu Road<br> Kenya &#x1F1F0;&#x1F1EA;</p>
+          <a href="https://g.page/motorshop-dealers-ltd?share" target="_blank">View on Google Maps</a>
         </div>
       </div>
     </div>
@@ -100,8 +101,8 @@
       4. Copy only URL and paste it within the src="" field below
   -->
   <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63818.14427392165!2d36.71402879026963!3d-1.3960573807360421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f05cf50f94e8d%3A0x51c29656e6fd8ca9!2sOngata%20Rongai!5e0!3m2!1sen!2ske!4v1619443200211!5m2!1sen!2ske"
-    width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen loading="lazy" ></iframe>
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.647871697594!2d36.8352929!3d-1.2212873!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x95b3618a25d83bab!2sMotorshop%20Dealers%20LTD!5e0!3m2!1sen!2ske!4v1620650399809!5m2!1sen!2ske"
+    width="100%" height="500px" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 
