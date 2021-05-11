@@ -39,8 +39,8 @@
             <div class="img-fill">
                 <div class="text-content">
                     <h6>Karibu to {{config('app.name')}}!</h6>
-                    <h4>WELCOME TO <br> GEMVIST MOTORSHOP CORPORATION </h4>
-                    <p>We are located in Kajiado County, in the district of Ongata Rongai, Kenya &#x1F1F0;&#x1F1EA;</p>
+                    <h4>WELCOME TO <br> {{config('app.name')}} </h4>
+                    <p>We are located on along Kiambu Road next to Runda Entrance, Nairobi &#x1F1F0;&#x1F1EA;</p>
                     <a href="{{ route('contact-us') }}" class="filled-button">Contact Us</a>
                 </div>
             </div>
