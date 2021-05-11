@@ -6,13 +6,17 @@
 
 // Bootstrap 4
 require("./bootstrap");
+
 // admin-lte
 require("admin-lte");
+
 // Datepicker
 require("bootstrap-datepicker");
 require("./datepicker");
+
 // Bootstrap-select
 require("bootstrap-select");
+
 // Datatables Depedencies
 var pdfMake = require("pdfmake");
 var pdfFonts = require("pdfmake/build/vfs_fonts.js");
@@ -29,13 +33,11 @@ require("./datatables");
 
 // Eko Lightbox
 require("ekko-lightbox");
+require("./ekko-lightbox");
 
-$(document).on("click", '[data-toggle="lightbox"]', function(event) {
-    event.preventDefault();
-    $(this).ekkoLightbox({
-        alwaysShowClose: true
-    });
-});
+// ion.rangeSlider
+require("ion-rangeslider");
+require("./ion-rangeslider");
 
 window.Vue = require("vue").default;
 
@@ -122,6 +124,6 @@ const store = new Vuex.Store({
 });
 
 const app = new Vue({
-    el: "#app-admin",
+    el: "#app",
     store
 });

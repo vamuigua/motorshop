@@ -19,12 +19,12 @@
           <div class="row">
             <div class="col-md-6 align-self-center">
               <div class="right-content">
-                <span>Lorem ipsum dolor sit amet</span>
+                <span>Who are we &#x2753;</span>
                 <h2>Get to know about <em>our company</em></h2>
-                <p>Fusce nec ultrices lectus. Duis nec scelerisque risus. Ut id tempor turpis, ac dignissim ipsum. Nulla
-                  ullamcorper, ipsum vel condimentum congue, mi odio vehicula tellus, sit amet malesuada justo sem.
-                  <br><br>Pellentesque in sagittis lacus, vel auctor sem. Quisque eu quam eleifend, ullamcorper dui nec,
-                  luctus quam.</p>
+                <p>Here at {{config('app.name')}} we deal with, all brands, makes & models of cars. We fame
+                  ourselves with providing the best cars in the market both used and new.
+                  We have over <b>20 Years</b> experience in the car dealership market, and have been marked
+                  among the best corporations in Kenya &#x1F3C5; .</p>
               </div>
             </div>
             <div class="col-md-6">

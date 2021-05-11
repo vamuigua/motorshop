@@ -52,7 +52,7 @@
           <h3>Car Details </h3><br>
           <li class="list-group-item">
             <div class="clearfix">
-              <span class="pull-left">Type</span>
+              <span class="pull-left">Condition</span>
               <strong class="pull-right">{{ $car->condition_type }}</strong>
             </div>
           </li>
