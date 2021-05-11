@@ -52,7 +52,7 @@
           <h3>Car Details </h3><br>
           <li class="list-group-item">
             <div class="clearfix">
-              <span class="pull-left">Type</span>
+              <span class="pull-left">Condition</span>
               <strong class="pull-right">{{ $car->condition_type }}</strong>
             </div>
           </li>
@@ -186,19 +186,4 @@
     <br>
   </div>
 </div>
-
-@section('scripts')
-{{-- Ekko Lightbox JS--}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
-
-{{-- Initialization of Ekko Lightbox --}}
-<script lang="text/javascript">
-  $(document).on("click", '[data-toggle="lightbox"]', function(event) {
-              event.preventDefault();
-              $(this).ekkoLightbox({
-                  alwaysShowClose: true
-              });
-          });
-</script>
-@endsection
 @endsection
