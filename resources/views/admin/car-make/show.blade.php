@@ -33,8 +33,8 @@
                                 <tr>
                                     <th> Model Name </th>
                                     <td> {{ $carModel->name }} </td>
-                                    <th> Year </th>
-                                    <td> {{ $carModel->year }} </td>
+                                    <th> Created </th>
+                                    <td> {{ $carModel->updated_at->diffForHumans() }} </td>
                                     <th> Actions </th>
                                     <td> <a href="{{ url('/admin/car-model/' . $carModel->id) }}"
                                             title="View CarModel"><button class="btn btn-info btn-sm"><i
