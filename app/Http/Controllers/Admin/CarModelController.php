@@ -29,8 +29,8 @@ class CarModelController extends Controller
      */
     public function index(Request $request)
     {
-        $carmodel = CarModel::latest()->with(['carMake'])->paginate();
-        return view('admin.car-model.index', compact('carmodel'));
+        $carmodels = CarModel::latest()->with(['carMake'])->paginate();
+        return view('admin.car-model.index', compact('carmodels'));
     }
 
     /**
