@@ -76,5 +76,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     // Car-Features routes
     Route::resource('features', 'App\Http\Controllers\Admin\FeaturesController');
+
+    // Role routes
+    Route::resource('roles', 'App\Http\Controllers\Admin\RolesController');
 });
 // END OF ADMIN ROUTES

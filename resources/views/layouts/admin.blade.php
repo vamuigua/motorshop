@@ -46,7 +46,7 @@
             <a href="#" class="brand-link">
                 <img src="/img/logo_3.png" alt="{{config('app.name')}} Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">Gevmist VL Admin</span>
+                <span class="brand-text font-weight-light">ADMIN</span>
             </a>
 
             <!-- Sidebar -->
@@ -133,7 +133,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('roles.index') }}" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
                                         <p>
                                             Roles
