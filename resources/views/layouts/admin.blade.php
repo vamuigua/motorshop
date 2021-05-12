@@ -21,7 +21,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-footer-fixed layout-navbar-fixed layout-fixed">
-    <div id="app-admin">
+    <div id="app">
         <div class="wrapper">
 
             <!-- Navbar -->
