@@ -84,7 +84,48 @@
             </li>
           </ol>  
         </p>
+
         <br>
+
+        <span>F) </span>
+        <h5> Intellectual Property. </h5>
+        <br>
+        <p>GEMVIST_MOTORS owns all intellectual property rights over the website, its contents, features, functionalities,  images, videos, audios, texts, displays and designs. 
+          Users shall not cause or permit anything which may damage or endanger GEMVIST_MOTORS' Intellectual  Property. </p>
+
+        <br>
+
+        <span>G) </span>
+        <h5> Governing Law. </h5>
+        <br>
+        <p>These terms and conditions shall be governed by and construed in accordance with the laws of  Kenya. 
+          Any disputes relating to these terms and conditions shall be subject to the exclusive jurisdiction  of the Kenyan courts. </p>
+
+        <br>
+
+        <span>H) </span>
+        <h5> Severability. </h5>
+        <br>
+        <p>Each Clause in these Terms and conditions shall be and remain separate from and independent of  and severable from all and any other paragraphs herein except where otherwise indicated by the  context and content of this Agreement. 
+          The decision or declaration that one or more of the Clauses are null and  void under any enactment or rule of law shall have no effect on the remaining Clauses of these Terms and conditions. </p>
+
+        <br>
+
+        <span>I) </span>
+        <h5> Modification Of Terms. </h5>
+        <br>
+        <p>These terms shall be modified by GEMVIST_MOTORS from time to time as need arises without reference to  yourselves. GEMVIST_MOTORS shall notify its users of these modifications. </p>
+
+        <br>
+
+        <span>J) </span>
+        <h5> Intention To Be Bound. </h5>
+        <br>
+        <p>These terms and conditions are binding upon CHEKI and all its users upon launch and live usage.</p>
+
+        <br>
+
+
 
         <br>
         <br>
