@@ -14,10 +14,10 @@ class Role extends Model
     protected $table = 'roles';
 
     /**
-    * The database primary key value.
-    *
-    * @var string
-    */
+     * The database primary key value.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id';
 
     /**
@@ -27,5 +27,9 @@ class Role extends Model
      */
     protected $fillable = ['name', 'description'];
 
-    
+    // Role can have many users
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_role', 'role_id', 'user_id');
+    }
 }
