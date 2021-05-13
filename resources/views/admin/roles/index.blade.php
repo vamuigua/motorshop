@@ -14,7 +14,7 @@
                     <br />
                     <br />
                     <div class="table-responsive">
-                        <table id="datatable" class="table table table-hover table-striped table-bordered">
+                        <table id="datatable" class="table table-hover table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>

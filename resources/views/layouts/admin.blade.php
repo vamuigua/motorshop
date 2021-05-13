@@ -141,10 +141,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('user-roles.index') }}" class="nav-link">
                                         <i class="fas fa-user-plus nav-icon"></i>
                                         <p>
-                                            Assign Roles
+                                            User Roles
                                         </p>
                                     </a>
                                 </li>

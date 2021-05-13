@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CarMakeController;
 use App\Http\Controllers\Admin\CarModelController;
+use App\Http\Controllers\Admin\UserRolesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,10 @@ Route::group(
 
         // Role routes
         Route::resource('roles', 'App\Http\Controllers\Admin\RolesController');
+
+        // User-roles routes
+        Route::get('user-roles', [UserRolesController::class, 'index'])->name('user-roles.index');
+        Route::post('assign-roles', [UserRolesController::class, 'assignRoles'])->name('user-roles.assignRoles');
     }
 );
 // END OF ADMIN ROUTES
