@@ -231,7 +231,6 @@
     <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    {{-- <script src="/assets/js/bootstrap.bundle.min.js"></script> --}}
 
     <!-- Additional Scripts -->
     <script src="{{ asset('/assets/js/custom.js') }}"></script>
