@@ -56,13 +56,13 @@
                     </div>
                     <div class="col-md-4">
                         <ul class="right-icons">
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-instagram"> </i></a></li>
                         </ul>
                     </div>
@@ -142,6 +142,7 @@
                 </div>
             </nav>
         </header>
+
         <main class="py-0">
             @yield('content')
         </main>
@@ -155,13 +156,13 @@
                         <p>We got your ride!</p>
                         <ul class="social-icons">
                             <li><a rel="nofollow" href="#" target="_blank" data-toggle="tooltip" data-placement="top"
-                                    title="Gemvist_motors "><i class="fa fa-facebook"></i></a>
+                                    title="GEMVIST VENTURES LTD "><i class="fa fa-facebook"></i></a>
                             </li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-instagram"> </i></a></li>
                         </ul>
                     </div>
@@ -230,7 +231,6 @@
     <script src="{{ asset('/assets/js/jquery.min.js') }}"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    {{-- <script src="/assets/js/bootstrap.bundle.min.js"></script> --}}
 
     <!-- Additional Scripts -->
     <script src="{{ asset('/assets/js/custom.js') }}"></script>

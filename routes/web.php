@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CarMakeController;
 use App\Http\Controllers\Admin\CarModelController;
+use App\Http\Controllers\Admin\UserRolesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,25 +57,39 @@ Auth::routes([
 ]);
 
 // ADMIN ROUTES
-Route::group(['prefix' => 'admin'], function () {
-    // Admin dashboard route
-    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
+Route::group(
+    [
+        'prefix' => 'admin',
+        'middleware' => 'roles',
+        "roles" => ['Admin']
+    ],
+    function () {
+        // Admin dashboard route
+        Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-    // Car Routes
-    Route::resource('cars', 'App\Http\Controllers\Admin\CarsController');
-    Route::post('cars/media', [CarsController::class, 'storeMedia'])->name('cars.storeMedia');
+        // Car Routes
+        Route::resource('cars', 'App\Http\Controllers\Admin\CarsController');
+        Route::post('cars/media', [CarsController::class, 'storeMedia'])->name('cars.storeMedia');
 
-    // Car-Make routes
-    Route::resource('car-make', 'App\Http\Controllers\Admin\CarMakeController');
-    Route::post('new_car_make', [CarMakeController::class, 'addCarMake']);
-    Route::get('all_car_makes', [CarMakeController::class, 'getAllCarMakes']);
+        // Car-Make routes
+        Route::resource('car-make', 'App\Http\Controllers\Admin\CarMakeController');
+        Route::post('new_car_make', [CarMakeController::class, 'addCarMake']);
+        Route::get('all_car_makes', [CarMakeController::class, 'getAllCarMakes']);
 
-    // Car-Model routes
-    Route::resource('car-model', 'App\Http\Controllers\Admin\CarModelController');
-    Route::post('new_car_model', [CarModelController::class, 'addCarModel']);
-    Route::get('all_car_models', [CarModelController::class, 'getAllCarModels']);
+        // Car-Model routes
+        Route::resource('car-model', 'App\Http\Controllers\Admin\CarModelController');
+        Route::post('new_car_model', [CarModelController::class, 'addCarModel']);
+        Route::get('all_car_models', [CarModelController::class, 'getAllCarModels']);
 
-    // Car-Features routes
-    Route::resource('features', 'App\Http\Controllers\Admin\FeaturesController');
-});
+        // Car-Features routes
+        Route::resource('features', 'App\Http\Controllers\Admin\FeaturesController');
+
+        // Role routes
+        Route::resource('roles', 'App\Http\Controllers\Admin\RolesController');
+
+        // User-roles routes
+        Route::get('user-roles', [UserRolesController::class, 'index'])->name('user-roles.index');
+        Route::post('assign-roles', [UserRolesController::class, 'assignRoles'])->name('user-roles.assignRoles');
+    }
+);
 // END OF ADMIN ROUTES
