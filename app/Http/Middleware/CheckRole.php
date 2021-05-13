@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
@@ -16,8 +17,8 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next)
     {
-        // check if there is a user
-        if ($request->user() === null) {
+        // check if there is an authenticated user
+        if (Auth::user() === null) {
             return response("Insufficient permissions", 401);
         }
 
@@ -32,7 +33,7 @@ class CheckRole
          * if he/she has one of the roles required or
          * if no roles were assigned to that resource
          *  */
-        if ($request->user()->hasAnyRole($roles) || !$roles) {
+        if (Auth::user()->hasAnyRole($roles) || !$roles) {
             return $next($request);
         }
 

@@ -64,10 +64,11 @@ class User extends Authenticatable
         return false;
     }
 
-    // checks if a user has a specific role
+    // checks if a user has a specific role 
+    // (if role is not found, user will be redirected to 404 page)
     public function hasRole($role)
     {
-        if ($this->roles()->where('name', $role)->first()) {
+        if ($this->roles()->where('name', $role)->firstOrFail()) {
             return true;
         }
         return false;
