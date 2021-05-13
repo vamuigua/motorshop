@@ -56,13 +56,13 @@
                     </div>
                     <div class="col-md-4">
                         <ul class="right-icons">
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-facebook"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-instagram"> </i></a></li>
                         </ul>
                     </div>
@@ -155,13 +155,13 @@
                         <p>We got your ride!</p>
                         <ul class="social-icons">
                             <li><a rel="nofollow" href="#" target="_blank" data-toggle="tooltip" data-placement="top"
-                                    title="Gemvist_motors "><i class="fa fa-facebook"></i></a>
+                                    title="GEMVIST VENTURES LTD "><i class="fa fa-facebook"></i></a>
                             </li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-twitter"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Gemvist_motors "><i
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="GEMVIST VENTURES LTD "><i
                                         class="fa fa-instagram"> </i></a></li>
                         </ul>
                     </div>
