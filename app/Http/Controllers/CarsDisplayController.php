@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
-use App\Models\CarMake;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,9 +17,8 @@ class CarsDisplayController extends Controller
     {
         $perpage = 15;
         $car = new Car();
-        $carMakes = CarMake::with(['carModels'])->get();
         $cars = Car::latest()->paginate($perpage);
-        return view('static.cars', compact('car', 'cars', 'carMakes'));
+        return view('static.cars', compact('car', 'cars'));
     }
 
     /**
@@ -34,7 +32,6 @@ class CarsDisplayController extends Controller
     {
         $perPage = 15;
         $car = new Car();
-        $carMakes = CarMake::with(['carModels'])->get();
 
         // Retrieve all the search properties
         $condition_type = $request->get('condition_type');
@@ -106,20 +103,19 @@ class CarsDisplayController extends Controller
                 $query->where('negotiable', 'LIKE', '%' . request()->negotiable . '%');
             })->latest()->paginate($perPage);
 
-            return view('static.cars', compact('cars', 'car', 'carMakes'));
+            return view('static.cars', compact('cars', 'car'));
         }
     }
 
     /**
      * Display the specified car resource.
      *
-     * @param  int  $id
+     * @param  Car $car
      * 
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(Car $car)
     {
-        $car = Car::findOrFail($id);
         $carImages =  $car->images();
         return view('static.car-details', compact('car', 'carImages'));
     }

@@ -218,7 +218,6 @@
         data-actions-box="true" data-header="Select features of the car" data-dropup-auto="false">
 
         {{-- Common Vehicle Features --}}
-        {{-- @foreach ($car->features as $carFeature) --}}
         <optgroup label="Common Vehicle Features">
             @foreach ($features as $feature)
             @if ($feature->type === 'Common')
@@ -233,7 +232,6 @@
             @endif
             @endforeach
         </optgroup>
-        {{-- @endforeach --}}
 
         {{-- Extra Vehicle Features --}}
         <optgroup label="Extra Vehicle Features">

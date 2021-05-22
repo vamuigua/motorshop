@@ -1,3 +1,5 @@
+import "ion-rangeslider";
+
 jQuery(function() {
     $(".js-range-slider").ionRangeSlider({
         type: "double",

@@ -51,7 +51,7 @@ class CarSeeder extends Seeder
         $car_2->condition_type = 'Brand-new';
         $car_2->transmission_type = 'Automatic';
         $car_2->price = '3500000';
-        $car_2->duty = 'Duty-excempted';
+        $car_2->duty = 'Duty-paid';
         $car_2->negotiable = '0';
         $car_2->fuel_type = 'Petrol';
         $car_2->interior_type = 'Leather';

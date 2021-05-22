@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CarsDisplayController;
+use App\Http\Controllers\CarSearchController;
 use App\Http\Controllers\Admin\CarsController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\CarsDisplayController;
 use App\Http\Controllers\Admin\CarMakeController;
 use App\Http\Controllers\Admin\CarModelController;
 use App\Http\Controllers\Admin\UserRolesController;
@@ -48,7 +49,7 @@ Route::get('/cars', [CarsDisplayController::class, 'index'])->name('cars');
 // Route for searching for vehicles
 Route::get('/results', [CarsDisplayController::class, 'searchForm'])->name('search');
 // Individual car-details display route
-Route::get('/cars/{id}', [CarsDisplayController::class, 'show'])->name('car-details');
+Route::get('/cars/{car}', [CarsDisplayController::class, 'show'])->name('car-details');
 
 
 // AUTHENTICATION ROUTES
@@ -93,3 +94,10 @@ Route::group(
     }
 );
 // END OF ADMIN ROUTES
+
+
+// SEARCH ROUTES
+Route::group(['prefix' => 'search'], function () {
+    Route::get('all_car_makes', [CarSearchController::class, 'getAllCarMakes']);
+    Route::get('carmake/{carMake}/models', [CarSearchController::class, 'getCarMakeModels']);
+});
