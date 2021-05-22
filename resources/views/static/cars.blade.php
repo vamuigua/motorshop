@@ -62,13 +62,8 @@
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
           <div class="form-group">
             <label for="carmake">Car Make:</label>
-            <select name="car_make_id" class="form-control">
-              <option disabled selected>Select Car Make</option>
-              @foreach ($carMakes as $carMake)
-              <option value="{{ $carMake->id }}">
-                {{ $carMake->name }}</option>
-              @endforeach
-            </select>
+            {{-- Search Car Make Options Component --}}
+            <search-car-make-options></search-car-make-options>
           </div>
         </div>
 
@@ -76,15 +71,7 @@
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
           <div class="form-group">
             <label for="carmodel">Car Model:</label>
-            <select name="car_model_id" class="form-control">
-              <option disabled selected>Select Car Model</option>
-              @foreach ($carMakes as $carMake)
-              @foreach ($carMake->carModels as $carModel)
-              <option value="{{ $carModel->id }}">
-                {{ $carModel->name }}</option>
-              @endforeach
-              @endforeach
-            </select>
+            <search-car-model-options></search-car-model-options>
           </div>
         </div>
 
@@ -261,7 +248,7 @@
               <br>
               <i class="fa fa-cog"></i> {{ $car->transmission_type }} &nbsp;&nbsp;&nbsp;
             </p>
-            <a href="{{ route('car-details', ['id' => $car->id]) }}" class="filled-button">View More</a>
+            <a href="{{ route('car-details', $car) }}" class="filled-button">View More</a>
           </div>
         </div>
 
