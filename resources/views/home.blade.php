@@ -101,7 +101,7 @@
                             <br>
                             <i class="fa fa-cog"></i> {{ $car->transmission_type }} &nbsp;&nbsp;&nbsp;
                         </p>
-                        <a href="{{ route('car-details', ['id' => $car->id]) }}" class="filled-button">View More</a>
+                        <a href="{{ route('car-details', $car) }}" class="filled-button">View More</a>
                     </div>
                 </div>
 
