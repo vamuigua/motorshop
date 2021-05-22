@@ -10,33 +10,19 @@ require("./bootstrap");
 // admin-lte
 require("admin-lte");
 
-// Datepicker
-require("bootstrap-datepicker");
+// Bootstrap Datepicker
 require("./datepicker");
 
 // Bootstrap-select
 require("bootstrap-select");
 
-// Datatables Depedencies
-var pdfMake = require("pdfmake");
-var pdfFonts = require("pdfmake/build/vfs_fonts.js");
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-window.JSZip = require("jszip/dist/jszip");
-require("datatables.net-bs4");
-require("datatables.net-buttons-bs4");
-require("datatables.net-buttons/js/buttons.colVis.js")();
-require("datatables.net-buttons/js/buttons.html5.js")();
-require("datatables.net-buttons/js/buttons.print.js")();
-require("datatables.net-fixedheader-bs4");
-require("datatables.net-responsive-bs4");
+// Datatables
 require("./datatables");
 
-// Eko Lightbox
-require("ekko-lightbox");
+// Ekko Lightbox
 require("./ekko-lightbox");
 
 // ion.rangeSlider
-require("ion-rangeslider");
 require("./ion-rangeslider");
 
 window.Vue = require("vue").default;
@@ -52,7 +38,7 @@ window.Vue = require("vue").default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Globally registration on vue components
+// Global registration of vue components
 Vue.component(
     "NewCarMakeModal",
     require("./components/NewCarMakeModal.vue").default
@@ -68,6 +54,17 @@ Vue.component(
 Vue.component(
     "NewCarModelModal",
     require("./components/NewCarModelModal.vue").default
+);
+
+// Search vue components
+Vue.component(
+    "SearchCarMakeOptions",
+    require("./components/search/SearchCarMakeOptions.vue").default
+);
+
+Vue.component(
+    "SearchCarModelOptions",
+    require("./components/search/SearchCarModelOptions.vue").default
 );
 
 /**
