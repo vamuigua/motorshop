@@ -73,6 +73,7 @@
                     <span>Buy a car today!</span>
                 </div>
             </div>
+            @isset ($cars)
             @foreach ($cars as $car)
             <div class="col-md-4">
                 <div class="service-item">
@@ -108,6 +109,7 @@
                 <br>
             </div>
             @endforeach
+            @endisset
         </div>
         <div class="d-flex justify-content-center">
             <a href="{{ route('cars') }}" class="btn btn-primary btn-lg btn-block">Checkout more Cars!</a>
@@ -122,7 +124,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="left-image">
-                        <img src="assets/images/about-1-570x350.jpg" class="img-fluid" alt="">
+                        <img src="assets/images/blog-image-2-940x460.jpg" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-md-6 align-self-center">
