@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-6">
               <div class="left-image">
-                <img src="{{ asset('images/about-1-570x350.jpg') }}" alt="">
+                <img src="{{ asset('images/blog-image-3-940x460.jpg') }}" alt="">
               </div>
             </div>
           </div>
@@ -42,17 +42,12 @@
 <div class="fun-facts">
   <div class="container">
     <div class="row">
-      <div class="col-md-6">
-        <div class="left-content">
-          <span>Lorem ipsum dolor sit amet</span>
-          <h2>Modi esse sapiente tenetur <em>impedit laudantium laborum</em></h2>
-          <p>Pellentesque ultrices at turpis in vestibulum. Aenean pretium elit nec congue elementum. Nulla luctus
-            laoreet porta. Maecenas at nisi tempus, porta metus vitae, faucibus augue.
-            <br><br>Fusce et venenatis ex. Quisque varius, velit quis dictum sagittis, odio velit molestie nunc, ut
-            posuere ante tortor ut neque.</p>
+      <div class="col-md-12">
+        <div class="text-center">
+          <h1><b>We got your ride!</b></h1>
         </div>
       </div>
-      <div class="col-md-6 align-self-center">
+      <div class="col-md-12 align-self-center">
         <div class="row">
           <div class="col-md-6">
             <div class="count-area-content">
@@ -68,7 +63,7 @@
           </div>
           <div class="col-md-6">
             <div class="count-area-content">
-              <div class="count-digit">12</div>
+              <div class="count-digit">3</div>
               <div class="count-title">Cities</div>
             </div>
           </div>

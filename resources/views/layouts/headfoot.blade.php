@@ -170,6 +170,7 @@
                         <h4>Pages to explore</h4>
                         <ul class="menu-list justify-content-center">
                             <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('cars') }}">Cars</a></li>
                             <li><a href="{{ route('about') }}">About Us</a></li>
                             <li><a href="{{ route('faq') }}">FAQ</a></li>
                             <li><a href="{{ route('contact-us') }}">Contact Us</a></li>
