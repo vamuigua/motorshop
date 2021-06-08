@@ -142,19 +142,37 @@
         </div>
     </div>
 
-    {{-- Car Negotiability --}}
-    <div class="col-12 col-md-4">
-        <div class="form-group {{ $errors->has('negotiable') ? 'has-error' : ''}}">
-            <label for="negotiable" class="control-label">{{ 'Negotiable' }}</label>
-            <div class="radio">
-                <label><input name="negotiable" type="radio" value="1"
-                        {{ (isset($car) && 1 == $car->negotiable) ? 'checked' : '' }}> Yes</label>
+    <div class="row mx-auto">
+        {{-- Car Negotiability --}}
+        <div class="col-6 col-md-6">
+            <div class="form-group {{ $errors->has('negotiable') ? 'has-error' : ''}}">
+                <label for="negotiable" class="control-label">{{ 'Negotiable' }}</label>
+                <div class="radio">
+                    <label><input name="negotiable" type="radio" value="1"
+                            {{ (isset($car) && 1 == $car->negotiable) ? 'checked' : '' }}> Yes</label>
+                </div>
+                <div class="radio">
+                    <label><input name="negotiable" type="radio" value="0" @if (isset($car))
+                            {{ (0 == $car->negotiable) ? 'checked' : '' }} @else {{ 'checked' }} @endif> No</label>
+                </div>
+                {!! $errors->first('negotiable', '<p class="help-block">:message</p>') !!}
             </div>
-            <div class="radio">
-                <label><input name="negotiable" type="radio" value="0" @if (isset($car))
-                        {{ (0 == $car->negotiable) ? 'checked' : '' }} @else {{ 'checked' }} @endif> No</label>
+        </div>
+
+        {{-- Is Featured --}}
+        <div class="col-6 col-md-6">
+            <div class="form-group {{ $errors->has('isFeatured') ? 'has-error' : ''}}">
+                <label for="isFeatured" class="control-label">{{ 'Featured' }}</label>
+                <div class="radio">
+                    <label><input name="isFeatured" type="radio" value="1"
+                            {{ (isset($car) && 1 == $car->isFeatured) ? 'checked' : '' }}> Yes</label>
+                </div>
+                <div class="radio">
+                    <label><input name="isFeatured" type="radio" value="0" @if (isset($car))
+                            {{ (0 == $car->isFeatured) ? 'checked' : '' }} @else {{ 'checked' }} @endif> No</label>
+                </div>
+                {!! $errors->first('negotiable', '<p class="help-block">:message</p>') !!}
             </div>
-            {!! $errors->first('negotiable', '<p class="help-block">:message</p>') !!}
         </div>
     </div>
 </div>

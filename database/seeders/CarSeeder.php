@@ -32,6 +32,7 @@ class CarSeeder extends Seeder
         $car_1->price = '1000000';
         $car_1->duty = 'Duty-paid';
         $car_1->negotiable = '1';
+        $car_1->isFeatured = '1';
         $car_1->fuel_type = 'Petrol';
         $car_1->interior_type = 'Leather';
         $car_1->color_type = 'Black';
@@ -53,6 +54,7 @@ class CarSeeder extends Seeder
         $car_2->price = '3500000';
         $car_2->duty = 'Duty-paid';
         $car_2->negotiable = '0';
+        $car_2->isFeatured = '1';
         $car_2->fuel_type = 'Petrol';
         $car_2->interior_type = 'Leather';
         $car_2->color_type = 'Silver';

@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cars = Car::latest()->take(3)->get();
+        $cars = Car::latest()->where('isFeatured', '1')->take(3)->get();
         return view('home', compact('cars'));
     }
 }

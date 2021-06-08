@@ -230,6 +230,7 @@ class CarsController extends Controller
             'price' => 'required|numeric',
             'duty' => 'required',
             'negotiable' => 'required',
+            'isFeatured' => 'required',
             'fuel_type' => 'required',
             'interior_type' => 'required',
             'color_type' => 'required',
