@@ -72,7 +72,7 @@ class CarsController extends Controller
             }
 
             foreach ($request->input('images', []) as $file) {
-                $this->uploadImages($car, $file);
+                $this->uploadImagesToLocalStorage($car, $file);
             }
 
             return redirect('/admin/cars/' . $car->id)->with('flash_message', 'Car added!');
@@ -143,12 +143,12 @@ class CarsController extends Controller
             if (count($carImages) > 0) {
                 foreach ($carImages as $carImage) {
                     if (!in_array($carImage->file_name, $request->input('images', []))) {
-                        // Delete image from media table
+                        // Delete image from media table & Local Storage
                         $carImage->delete();
 
                         // Delete the image from Cloudinary
-                        $resource = "Cars/" . $carImage->name;
-                        $result = Cloudinary::destroy($resource);
+                        // $resource = "Cars/" . $carImage->name;
+                        // $result = Cloudinary::destroy($resource);
                     }
                 }
             }
@@ -159,7 +159,7 @@ class CarsController extends Controller
             // add images from the request to the DB
             foreach ($request->input('images', []) as $file) {
                 if (count($carImageFileNames) === 0 || !in_array($file, $carImageFileNames)) {
-                    $this->uploadImages($car, $file);
+                    $this->uploadImagesToLocalStorage($car, $file);
                 }
             }
 
@@ -178,7 +178,7 @@ class CarsController extends Controller
      *
      * @return void
      */
-    public function uploadImages(Car $car, $file)
+    public function uploadImagesToCloudinary(Car $car, $file)
     {
         // Upload an Image File to Cloudinary
         $uploadedFile = Cloudinary::upload(
@@ -190,6 +190,19 @@ class CarsController extends Controller
 
         // Save the image with the Car model-relationship
         $car->addMediaFromUrl($uploadedImageURL)->toMediaCollection('car_image');
+    }
+
+    /**
+     * Uploads an image file to Local Storage and stores its model-relationship in the media table.
+     *
+     * @param  Car $car
+     * @param File $file
+     *
+     * @return void
+     */
+    public function uploadImagesToLocalStorage(Car $car, $file)
+    {
+        $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
     }
 
     /**
