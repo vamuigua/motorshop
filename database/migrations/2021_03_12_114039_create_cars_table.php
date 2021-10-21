@@ -25,6 +25,7 @@ class CreateCarsTable extends Migration
             $table->bigInteger('price');
             $table->string('duty');
             $table->boolean('negotiable');
+            $table->boolean('isFeatured');
             $table->string('fuel_type');
             $table->string('interior_type');
             $table->string('color_type');

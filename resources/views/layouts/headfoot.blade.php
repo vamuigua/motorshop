@@ -231,7 +231,7 @@
     <!-- JQuery -->
     <script src="/assets/js/jquery.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script src="js/app.js" defer></script>
+    <script src="/js/app.js" defer></script>
 
     <!-- Additional Scripts -->
     <script src="/assets/js/custom.js"></script>

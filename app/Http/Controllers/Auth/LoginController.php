@@ -44,9 +44,9 @@ class LoginController extends Controller
     {
         if (Auth::check()) {
             if (Auth::user()->hasRole('Admin')) {
-                return redirect()->route('dashboard');
+                return redirect()->intended('dashboard');
             } else {
-                return redirect()->route('home');
+                return redirect()->intended('home');
             }
         }
     }

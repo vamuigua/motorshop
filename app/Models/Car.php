@@ -30,7 +30,10 @@ class Car extends Model implements HasMedia
      *
      * @var array
      */
-    protected $fillable = ['car_make_id', 'car_model_id', 'year', 'mileage', 'body_type', 'condition_type', 'transmission_type', 'price', 'duty', 'negotiable', 'fuel_type', 'interior_type', 'color_type', 'engine_size', 'description'];
+    protected $fillable = [
+        'car_make_id', 'car_model_id', 'year', 'mileage', 'body_type', 'condition_type', 'transmission_type', 'price', 'duty',
+        'negotiable', 'isFeatured', 'fuel_type', 'interior_type', 'color_type', 'engine_size', 'description'
+    ];
 
     /**
      * Return all Car Body Types
