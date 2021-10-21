@@ -39,11 +39,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // check if authenticated, then redirect to dashboard
+    // check if authenticated, then redirect appropriately
     protected function authenticated()
     {
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            if (Auth::user()->hasRole('Admin')) {
+                return redirect()->intended('dashboard');
+            } else {
+                return redirect()->intended('home');
+            }
         }
     }
 }

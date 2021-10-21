@@ -6,26 +6,24 @@
 
 // Bootstrap 4
 require("./bootstrap");
+
 // admin-lte
 require("admin-lte");
-// Datepicker
-require("bootstrap-datepicker");
+
+// Bootstrap Datepicker
 require("./datepicker");
+
 // Bootstrap-select
 require("bootstrap-select");
-// Datatables Depedencies
-var pdfMake = require("pdfmake");
-var pdfFonts = require("pdfmake/build/vfs_fonts.js");
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-require("datatables.net-bs4");
-require("datatables.net-buttons-bs4");
-require("datatables.net-buttons/js/buttons.colVis.js")();
-require("datatables.net-buttons/js/buttons.html5.js")();
-require("datatables.net-buttons/js/buttons.print.js")();
-require("datatables.net-fixedheader-bs4");
-require("datatables.net-responsive-bs4");
+// Datatables
 require("./datatables");
+
+// Ekko Lightbox
+require("./ekko-lightbox");
+
+// ion.rangeSlider
+require("./ion-rangeslider");
 
 window.Vue = require("vue").default;
 
@@ -40,6 +38,7 @@ window.Vue = require("vue").default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+// Global registration of vue components
 Vue.component(
     "NewCarMakeModal",
     require("./components/NewCarMakeModal.vue").default
@@ -47,6 +46,25 @@ Vue.component(
 Vue.component(
     "CarMakeOptions",
     require("./components/CarMakeOptions.vue").default
+);
+Vue.component(
+    "CarModelOptions",
+    require("./components/CarModelOptions.vue").default
+);
+Vue.component(
+    "NewCarModelModal",
+    require("./components/NewCarModelModal.vue").default
+);
+
+// Search vue components
+Vue.component(
+    "SearchCarMakeOptions",
+    require("./components/search/SearchCarMakeOptions.vue").default
+);
+
+Vue.component(
+    "SearchCarModelOptions",
+    require("./components/search/SearchCarModelOptions.vue").default
 );
 
 /**
@@ -60,11 +78,49 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        allCarMakes: []
+        allCarMakes: [],
+        allCarModels: []
+    },
+    getters: {
+        carMakes(state) {
+            return state.allCarMakes;
+        },
+        carModels(state) {
+            return state.allCarModels;
+        }
+    },
+    mutations: {
+        SET_ALL_CAR_MAKES(state, data) {
+            state.allCarMakes = data;
+        },
+        SET_ALL_CAR_MODELS(state, data) {
+            state.allCarModels = data;
+        }
+    },
+    actions: {
+        updateAllCarMakes({ commit }, data) {
+            commit("SET_ALL_CAR_MAKES", data);
+        },
+
+        addCarMake({ commit, getters }, carMake) {
+            var temp = getters.carMakes;
+            temp.push(carMake);
+            commit("SET_ALL_CAR_MAKES", temp);
+        },
+
+        updateAllCarModels({ commit }, data) {
+            commit("SET_ALL_CAR_MODELS", data);
+        },
+
+        addCarModel({ commit, getters }, carModel) {
+            var temp = getters.carModels;
+            temp.push(carModel);
+            commit("SET_ALL_CAR_MODELS", temp);
+        }
     }
 });
 
 const app = new Vue({
-    el: "#app-admin",
+    el: "#app",
     store
 });

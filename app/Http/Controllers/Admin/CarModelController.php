@@ -29,8 +29,8 @@ class CarModelController extends Controller
      */
     public function index(Request $request)
     {
-        $carmodel = CarModel::latest()->with(['carMake'])->paginate();
-        return view('admin.car-model.index', compact('carmodel'));
+        $carmodels = CarModel::latest()->with(['carMake'])->paginate();
+        return view('admin.car-model.index', compact('carmodels'));
     }
 
     /**
@@ -118,7 +118,7 @@ class CarModelController extends Controller
             $carmodel->update($validatedData);
             return redirect('admin/car-model/' . $carmodel->id)->with('flash_message', 'Car Model updated!');
         } catch (\Throwable $th) {
-            Log::error('Error! Unable to create car model: ' . $th->getMessage());
+            Log::error('Error! Unable to update car model: ' . $th->getMessage());
             return redirect('admin/car-model')->with('flash_message_error', 'Error while updating car model');
         }
     }
@@ -151,8 +151,43 @@ class CarModelController extends Controller
     public function validateRequest(Request $request)
     {
         return $request->validate([
-            'name' => 'required|min:3',
+            'name' => 'required|min:1',
             'car_make_id' => 'required|numeric',
         ]);
+    }
+
+    // Adds Car Model through Vue Modal
+    public function addCarModel(Request $request)
+    {
+        $latest_model = new CarModel;
+        $validatedData = $this->validateRequest($request);
+
+        try {
+            $car_model = CarModel::create($validatedData);
+            $latest_model = $car_model;
+            return response()->json([
+                'car_model' => $car_model->only(['id', 'name']),
+                'created' => true
+            ]);
+        } catch (\Throwable $th) {
+            CarModel::destroy($latest_model);
+            Log::error('Error! Unable to create car model: ' . $th->getMessage());
+            return response()->json([
+                'error' => "Unable to create Car model",
+                'created' => false
+            ]);
+        }
+    }
+
+    // Returns all Car Models
+    public function getAllCarModels()
+    {
+        try {
+            $carModels = CarModel::all(['id', 'name']);
+            return response()->json(['carModels' => $carModels]);
+        } catch (\Throwable $th) {
+            Log::error('Error! Unable get All car models: ' . $th->getMessage());
+            return $th->getMessage();
+        }
     }
 }

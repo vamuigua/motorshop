@@ -17,26 +17,27 @@
     <div class="row">
       <div class="col-md-4">
         <div class="contact-item">
-          <i class="fas fa-phone-alt"></i>
+          <i class="fa fa-phone"></i>
           <h4>Phone</h4>
-          <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate nec cursus augue.</p>
-          <a href="#">+1 333 4040 5566</a>
+          <p>You can reach out to us by using any of the mobile numbers below.</p>
+          <a>+254720720256</a>
+          <a>+254725249932</a>
         </div>
       </div>
       <div class="col-md-4">
         <div class="contact-item">
-          <i class="fas fa-envelope"></i>
+          <i class="fa fa-envelope"></i>
           <h4>Email</h4>
-          <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate nec cursus augue.</p>
-          <a href="#">contact@company.com</a>
+          <p>We also have a mailing contact that you can use to reach out to us!</p>
+          <a href="mailto:gemvist@gmail.com" target="_blank">gemvist@gmail.com</a>
         </div>
       </div>
       <div class="col-md-4">
         <div class="contact-item">
-          <i class="fas fa-map-marker-alt "></i>
+          <i class="fa fa-map-marker "></i>
           <h4>Location</h4>
-          <p>212 Barrington Court New York str <br> USA</p>
-          <a href="#">View on Google Maps</a>
+          <p>Motorshop Dealers, Kiambu Road<br> Kenya &#x1F1F0;&#x1F1EA;</p>
+          <a href="https://g.page/motorshop-dealers-ltd?share" target="_blank">View on Google Maps</a>
         </div>
       </div>
     </div>
@@ -49,12 +50,13 @@
       <div class="col-md-12">
         <div class="section-heading">
           <h2>Send us a <em>message</em></h2>
-          <span>Suspendisse a ante in neque iaculis lacinia</span>
+          <span>Got a Question? We'd love to hear from you. Send us a message and we'll respond as soon as
+            possible.</span>
         </div>
       </div>
       <div class="col-md-12">
         <div class="contact-form">
-          <form id="contact" action="" method="get">
+          <form id="contact" action="https://formspree.io/f/mgervrgw" method="POST">
             <div class="row">
               <div class="col-lg-4 col-md-12 col-sm-12">
                 <fieldset>
@@ -99,8 +101,8 @@
       4. Copy only URL and paste it within the src="" field below
   -->
   <iframe
-    src="https://maps.google.com/maps?q=Av.+Lúcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
-    width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.647871697594!2d36.8352929!3d-1.2212873!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x95b3618a25d83bab!2sMotorshop%20Dealers%20LTD!5e0!3m2!1sen!2ske!4v1620650399809!5m2!1sen!2ske"
+    width="100%" height="500px" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 

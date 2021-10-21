@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Car;
-use App\Http\Requests;
-
 use App\Models\CarMake;
+use App\Models\Feature;
 use App\Models\CarModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class CarsController extends Controller
 {
@@ -44,8 +44,9 @@ class CarsController extends Controller
         $car = new Car();
         $carModel = new CarModel();
         $carMakes = CarMake::with(['carModels'])->get();
+        $features = Feature::all(['id', 'name', 'type']);
 
-        return view('admin.cars.create', compact('car', 'carMakes', 'carModel'));
+        return view('admin.cars.create', compact('car', 'carMakes', 'carModel', 'features'));
     }
 
     /**
@@ -64,8 +65,14 @@ class CarsController extends Controller
             $car = Car::create($valiadtedData);
             $latest_car = $car;
 
+            $car_features = $valiadtedData['features'];
+
+            foreach ($car_features as $car_feature) {
+                $car->features()->attach($car_feature); // Add the car features through the relationship
+            }
+
             foreach ($request->input('images', []) as $file) {
-                $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
+                $this->uploadImages($car, $file);
             }
 
             return redirect('/admin/cars/' . $car->id)->with('flash_message', 'Car added!');
@@ -103,8 +110,9 @@ class CarsController extends Controller
         $car = Car::findOrFail($id);
         $carModel = $car->carModel($car->car_model_id);
         $carMakes = CarMake::with(['carModels'])->get();
+        $features = Feature::all(['id', 'name', 'type']);
 
-        return view('admin.cars.edit', compact('car', 'carModel', 'carMakes'));
+        return view('admin.cars.edit', compact('car', 'carModel', 'carMakes', 'features'));
     }
 
     /**
@@ -122,22 +130,66 @@ class CarsController extends Controller
         $car = Car::findOrFail($id);
 
         try {
+            // update the car with the validated data
             $car->update($valiadtedData);
 
-            $carImages = $car->images()->pluck('file_name')->toArray();
+            // update the car features
+            $car->features()->sync($valiadtedData['features']);
+
+            // get all images of this car
+            $carImages = $car->images();
+
+            // delete old images of this car
+            if (count($carImages) > 0) {
+                foreach ($carImages as $carImage) {
+                    if (!in_array($carImage->file_name, $request->input('images', []))) {
+                        // Delete image from media table
+                        $carImage->delete();
+
+                        // Delete the image from Cloudinary
+                        $resource = "Cars/" . $carImage->name;
+                        $result = Cloudinary::destroy($resource);
+                    }
+                }
+            }
+
+            // get the car image file names of this car
+            $carImageFileNames = $carImages->pluck('file_name')->toArray();
 
             // add images from the request to the DB
             foreach ($request->input('images', []) as $file) {
-                if (count($carImages) === 0 || !in_array($file, $carImages)) {
-                    $car->addMedia(storage_path('tmp/uploads/cars/' . $file))->toMediaCollection('car_image');
+                if (count($carImageFileNames) === 0 || !in_array($file, $carImageFileNames)) {
+                    $this->uploadImages($car, $file);
                 }
             }
 
             return redirect('admin/cars/' . $car->id)->with('flash_message', 'Car updated!');
         } catch (\Throwable $th) {
             Log::error('Error! Unable to update car: ' . $th->getMessage());
-            return redirect('admin/cars')->with('flash_message_error', 'Error while updating car!');
+            return redirect('admin/cars/' . $car->id)->with('flash_message_error', 'Error while updating car!');
         }
+    }
+
+    /**
+     * Uploads an image file to Cloudinary and stores its model-relationship in the media table.
+     *
+     * @param  Car $car
+     * @param File $file
+     *
+     * @return void
+     */
+    public function uploadImages(Car $car, $file)
+    {
+        // Upload an Image File to Cloudinary
+        $uploadedFile = Cloudinary::upload(
+            storage_path('tmp/uploads/cars/' . $file),
+            ['folder' => 'Cars']
+        );
+        // Get https path to uploaded Image media
+        $uploadedImageURL = $uploadedFile->getSecurePath();
+
+        // Save the image with the Car model-relationship
+        $car->addMediaFromUrl($uploadedImageURL)->toMediaCollection('car_image');
     }
 
     /**
@@ -178,11 +230,14 @@ class CarsController extends Controller
             'price' => 'required|numeric',
             'duty' => 'required',
             'negotiable' => 'required',
+            'isFeatured' => 'required',
             'fuel_type' => 'required',
             'interior_type' => 'required',
             'color_type' => 'required',
             'engine_size' => 'required|numeric',
             'description' => 'required',
+            'features' => 'required',
+            'images.*' => 'required|string'
         ]);
     }
 

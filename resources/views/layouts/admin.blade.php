@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }} Admin Panel</title>
+    <title>Admin Panel</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,7 +21,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-footer-fixed layout-navbar-fixed layout-fixed">
-    <div id="app-admin">
+    <div id="app">
         <div class="wrapper">
 
             <!-- Navbar -->
@@ -44,9 +44,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="/img/logo_3.png" alt="Motorshop Logo" class="brand-image img-circle elevation-3"
+                <img src="/img/logo_3.png" alt="{{config('app.name')}} Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">{{ config('app.name') }} Admin</span>
+                <span class="brand-text font-weight-light">ADMIN</span>
             </a>
 
             <!-- Sidebar -->
@@ -113,6 +113,12 @@
                                         <p>Car Models</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('features.index') }}" class="nav-link">
+                                        <i class="fas fa-car nav-icon"></i>
+                                        <p>Car Features</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -127,7 +133,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('roles.index') }}" class="nav-link">
                                         <i class="fas fa-users nav-icon"></i>
                                         <p>
                                             Roles
@@ -135,10 +141,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('user-roles.index') }}" class="nav-link">
                                         <i class="fas fa-user-plus nav-icon"></i>
                                         <p>
-                                            Assign Roles
+                                            User Roles
                                         </p>
                                     </a>
                                 </li>
@@ -176,7 +182,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Motorshop</h1>
+                            <h1 class="m-0 text-dark">{{ config('app.name') }}</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -226,7 +232,8 @@
                 We got your ride!
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; {{date('Y')}} <a href="#">Motorshop</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; {{date('Y')}} <a href="#">{{ config('app.name') }}</a>.</strong> All rights
+            reserved.
         </footer>
     </div>
     <!-- ./wrapper -->

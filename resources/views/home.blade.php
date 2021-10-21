@@ -8,12 +8,14 @@
         <div class="item item-1">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>lorem ipsum dolor sit amet!</h6>
-                    <h4>Quam temporibus accusam <br> hic ducimus quia</h4>
-                    <p>Magni deserunt dolorem consectetur adipisicing elit. Corporis molestiae optio, laudantium
-                        odio quod rerum
-                        maiores, omnis unde quae illo.</p>
-                    <a href="#" class="filled-button">Cars</a>
+                    <h6>A Wide Variety of Vehicles Available for Sale!</h6>
+                    <h4>WELCOME TO <br> {{config('app.name')}} </h4>
+                    <p style="font-size:0.895em">Here at {{config('app.name')}} we offer all the best prices on all
+                        available cars and car brands. We pride ourselves in best quality at affordable prices, customer
+                        service and also
+                        legal expertise. To view some of our machines click on the <b>cars</b> link below.
+                    </p>
+                    <a href="{{ route('cars') }}" class="filled-button">Cars</a>
                 </div>
             </div>
         </div>
@@ -22,12 +24,12 @@
         <div class="item item-2">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>magni deserunt dolorem harum quas!</h6>
-                    <h4>Aliquam iusto harum <br> ratione porro odio</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa cupiditate mollitia
-                        adipisci assumenda
-                        laborum eius quae quo excepturi, eveniet. Dicta nulla ea beatae consequuntur?</p>
-                    <a href="#" class="filled-button">About Us</a>
+                    <h6>Karibu to {{config('app.name')}}!</h6>
+                    <h4>WELCOME TO <br> {{config('app.name')}}</h4>
+                    <p>We deal with, all brands, makes & models of cars. We fame ourselves with providing the best cars
+                        in the market both used and new. We have over <b>20 Years</b> experience in the car dealership
+                        market, and have been marked among the best corporations in Kenya &#x1F3C5;</p>
+                    <a href="{{ route('about') }}" class="filled-button">About Us</a>
                 </div>
             </div>
         </div>
@@ -36,12 +38,10 @@
         <div class="item item-3">
             <div class="img-fill">
                 <div class="text-content">
-                    <h6>alias officia qui quae vitae natus!</h6>
-                    <h4>Lorem ipsum dolor <br>sit amet, consectetur.</h4>
-                    <p>Vivamus ut tellus mi. Nulla nec cursus elit, id vulputate mi. Sed nec cursus augue. Phasellus
-                        lacinia ac
-                        sapien vitae dapibus. Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</p>
-                    <a href="#" class="filled-button">Contact Us</a>
+                    <h6>Karibu to {{config('app.name')}}!</h6>
+                    <h4>WELCOME TO <br> {{config('app.name')}} </h4>
+                    <p>We are located on along Kiambu Road next to Runda Entrance, Nairobi &#x1F1F0;&#x1F1EA;</p>
+                    <a href="{{ route('contact-us') }}" class="filled-button">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -55,10 +55,10 @@
         <div class="row">
             <div class="col-md-8">
                 <h4>Request a call back right now ?</h4>
-                <span>Mauris ut dapibus velit cras interdum nisl ac urna tempor mollis.</span>
+                <span>Click on the <b>Contact Us </b> button to view our contact details. Thank you &#x1F600;</span>
             </div>
             <div class="col-md-4">
-                <a href="contact.html" class="border-button">Contact Us</a>
+                <a href="{{ route('contact-us') }}" class="border-button">Contact Us</a>
             </div>
         </div>
     </div>
@@ -70,77 +70,52 @@
             <div class="col-md-12">
                 <div class="section-heading">
                     <h2>Featured <em>Cars</em></h2>
-                    <span>Aliquam id urna imperdiet libero mollis hendrerit</span>
+                    <span>Buy a car today!</span>
                 </div>
             </div>
+            @isset ($cars)
+            @foreach ($cars as $car)
             <div class="col-md-4">
                 <div class="service-item">
-                    <img src="assets/images/product-1-720x480.jpg" alt="">
+                    @if (count($car->images()) > 0)
+                    <img src="{{$car->images()[0]->getUrl()}}" class="img-fluid" alt="car image">
+                    @else
+                    <div class="col-sm-9">
+                        <div class="d-flex justify-content-center">
+                            <img src="/images/no-image-available.png" class="img-fluid" alt="no-image-available.png">
+                        </div>
+                    </div>
+                    @endif
                     <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet</h4>
+                        <h4>{{ $car->carMake($car->car_make_id)->name}} {{$car->carModel($car->car_model_id)->name}}
+                        </h4>
                         <div style="margin-bottom:10px;">
                             <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
+                                {{ number_format($car->price) }}.KSH
                             </span>
                         </div>
 
                         <p>
-                            <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-dashboard"></i> 1{{ number_format($car->mileage) }} km &nbsp;&nbsp;&nbsp;
+                            <br>
+                            <i class="fa fa-cube"></i> {{ number_format($car->engine_size) }} cc &nbsp;&nbsp;&nbsp;
+                            <br>
+                            <i class="fa fa-cog"></i> {{ $car->transmission_type }} &nbsp;&nbsp;&nbsp;
                         </p>
-                        <a href="car-details.html" class="filled-button">View More</a>
+                        <a href="{{ route('car-details', $car) }}" class="filled-button">View More</a>
                     </div>
                 </div>
 
                 <br>
             </div>
-            <div class="col-md-4">
-                <div class="service-item">
-                    <img src="assets/images/product-2-720x480.jpg" alt="">
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <div style="margin-bottom:10px;">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-                        </div>
-
-                        <p>
-                            <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                        </p>
-                        <a href="car-details.html" class="filled-button">View More</a>
-                    </div>
-                </div>
-
-                <br>
-            </div>
-            <div class="col-md-4">
-                <div class="service-item">
-                    <img src="assets/images/product-3-720x480.jpg" alt="">
-                    <div class="down-content">
-                        <h4>Lorem ipsum dolor sit amet</h4>
-                        <div style="margin-bottom:10px;">
-                            <span>
-                                <del><sup>$</sup>11999 </del> &nbsp; <sup>$</sup>11779
-                            </span>
-                        </div>
-
-                        <p>
-                            <i class="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                            <i class="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                        </p>
-                        <a href="car-details.html" class="filled-button">View More</a>
-                    </div>
-                </div>
-
-                <br>
-            </div>
+            @endforeach
+            @endisset
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="{{ route('cars') }}" class="btn btn-primary btn-lg btn-block">Checkout more Cars!</a>
         </div>
     </div>
+</div>
 </div>
 
 <div class="fun-facts">
@@ -149,151 +124,19 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="left-image">
-                        <img src="assets/images/about-1-570x350.jpg" class="img-fluid" alt="">
+                        <img src="assets/images/blog-image-2-940x460.jpg" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="col-md-6 align-self-center">
                     <div class="right-content">
                         <span>Who we are</span>
                         <h2>Get to know about <em>our company</em></h2>
-                        <p>Curabitur pulvinar sem a leo tempus facilisis. Sed non sagittis neque. Nulla conse quat
-                            tellus nibh, id
-                            molestie felis sagittis ut. Nam ullamcorper tempus ipsum in cursus</p>
-                        <a href="about.html" class="filled-button">Read More</a>
+                        <p>Here at {{config('app.name')}} we deal with, all brands, makes & models of cars. We fame
+                            ourselves with providing the best cars in the market both used and new.
+                            We have over <b>20 Years</b> experience in the car dealership market, and have been marked
+                            among the best corporations in Kenya &#x1F3C5; .</p>
+                        <a href="{{ route('about') }}" class="filled-button">Read More</a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="more-info">
-    <div class="container">
-        <div class="section-heading">
-            <h2>Read our <em>Blog</em></h2>
-            <span>Aliquam id urna imperdiet libero mollis hendrerit</span>
-        </div>
-
-        <div class="row" id="tabs">
-            <div class="col-md-4">
-                <ul>
-                    <li><a href='#tabs-1'>Lorem ipsum dolor sit amet, consectetur adipisicing <br> <small>John Doe
-                                &nbsp;|&nbsp;
-                                27.07.2020 10:10</small></a></li>
-                    <li><a href='#tabs-2'>Mauris lobortis quam id dictum dignissim <br> <small>John Doe
-                                &nbsp;|&nbsp; 27.07.2020
-                                10:10</small></a></li>
-                    <li><a href='#tabs-3'>Class aptent taciti sociosqu ad litora torquent per <br> <small>John Doe
-                                &nbsp;|&nbsp;
-                                27.07.2020 10:10</small></a></li>
-                </ul>
-
-                <br>
-
-                <div class="text-center">
-                    <a href="blog.html" class="filled-button">Read More</a>
-                </div>
-
-                <br>
-            </div>
-
-            <div class="col-md-8">
-                <section class='tabs-content'>
-                    <article id='tabs-1'>
-                        <img src="assets/images/blog-image-1-940x460.jpg" alt="">
-                        <h4><a href="blog-details.html">Lorem ipsum dolor sit amet, consectetur adipisicing.</a>
-                        </h4>
-                        <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in,
-                            tincidunt vel
-                            diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris ante, quis
-                            posuere nibh
-                            vestibulum sit amet.</p>
-                    </article>
-                    <article id='tabs-2'>
-                        <img src="assets/images/blog-image-2-940x460.jpg" alt="">
-                        <h4><a href="blog-details.html">Mauris lobortis quam id dictum dignissim</a></h4>
-                        <p>Sed ut dolor in augue cursus ultrices. Vivamus mauris turpis, auctor vel facilisis in,
-                            tincidunt vel
-                            diam. Sed vitae scelerisque orci. Nunc non magna orci. Aliquam commodo mauris ante, quis
-                            posuere nibh
-                            vestibulum sit amet</p>
-                    </article>
-                    <article id='tabs-3'>
-                        <img src="assets/images/blog-image-3-940x460.jpg" alt="">
-                        <h4><a href="blog-details.html">Class aptent taciti sociosqu ad litora torquent per</a></h4>
-                        <p>Mauris lobortis quam id dictum dignissim. Donec pellentesque erat dolor, cursus dapibus
-                            turpis
-                            hendrerit quis. Suspendisse at suscipit arcu. Nulla sed erat lectus. Nulla facilisi. In
-                            sit amet neque
-                            sapien. Donec scelerisque mi at gravida efficitur. Nunc lacinia a est eu malesuada.
-                            Curabitur eleifend
-                            elit sapien, sed pulvinar orci luctus eget.
-                        </p>
-                    </article>
-                </section>
-            </div>
-        </div>
-
-
-    </div>
-</div>
-
-<div class="testimonials">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-heading">
-                    <h2>What they say <em>about us</em></h2>
-                    <span>testimonials from our greatest clients</span>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="owl-testimonials owl-carousel">
-
-                    <div class="testimonial-item">
-                        <div class="inner-content">
-                            <h4>George Walker</h4>
-                            <span>Chief Financial Analyst</span>
-                            <p>"Nulla ullamcorper, ipsum vel condimentum congue, mi odio vehicula tellus, sit amet
-                                malesuada justo
-                                sem sit amet quam. Pellentesque in sagittis lacus."</p>
-                        </div>
-                        <img src="http://placehold.it/60x60" alt="">
-                    </div>
-
-                    <div class="testimonial-item">
-                        <div class="inner-content">
-                            <h4>John Smith</h4>
-                            <span>Market Specialist</span>
-                            <p>"In eget leo ante. Sed nibh leo, laoreet accumsan euismod quis, scelerisque a nunc.
-                                Mauris accumsan,
-                                arcu id ornare malesuada, est nulla luctus nisi."</p>
-                        </div>
-                        <img src="http://placehold.it/60x60" alt="">
-                    </div>
-
-                    <div class="testimonial-item">
-                        <div class="inner-content">
-                            <h4>David Wood</h4>
-                            <span>Chief Accountant</span>
-                            <p>"Ut ultricies maximus turpis, in sollicitudin ligula posuere vel. Donec finibus
-                                maximus neque, vitae
-                                egestas quam imperdiet nec. Proin nec mauris eu tortor consectetur tristique."</p>
-                        </div>
-                        <img src="http://placehold.it/60x60" alt="">
-                    </div>
-
-                    <div class="testimonial-item">
-                        <div class="inner-content">
-                            <h4>Andrew Boom</h4>
-                            <span>Marketing Head</span>
-                            <p>"Curabitur sollicitudin, tortor at suscipit volutpat, nisi arcu aliquet dui, vitae
-                                semper sem turpis
-                                quis libero. Quisque vulputate lacinia nisl ac lobortis."</p>
-                        </div>
-                        <img src="http://placehold.it/60x60" alt="">
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -306,12 +149,12 @@
             <div class="col-md-12">
                 <div class="section-heading">
                     <h2>Request a <em>call back</em></h2>
-                    <span>Etiam suscipit ante a odio consequat</span>
+                    <span>Please write us a Message and we will respond in the shortest time possible.</span>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="contact-form">
-                    <form id="contact" action="" method="post">
+                    <form id="contact" action="https://formspree.io/f/mgervrgw" method="post">
                         <div class="row">
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
@@ -321,7 +164,7 @@
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="email" type="text" class="form-control" id="email"
+                                    <input name="email" type="email" class="form-control" id="email"
                                         pattern="[^ @]*@[^ @]*" placeholder="E-Mail Address" required="">
                                 </fieldset>
                             </div>
