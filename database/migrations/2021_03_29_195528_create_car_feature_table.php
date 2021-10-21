@@ -16,8 +16,8 @@ class CreateCarFeatureTable extends Migration
         Schema::create('car_feature', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('car_id')->constrained();
-            $table->foreignId('feature_id')->constrained();
+            $table->foreignId('car_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('feature_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
