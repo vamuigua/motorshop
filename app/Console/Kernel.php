@@ -26,8 +26,15 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        // $schedule->call(new DeleteTempImages)->everyMinute();
-        $schedule->call(new DeleteTempImages)->daily()->withoutOverlapping();
+
+        /**
+         * If using withoutOverlapping method this is the order
+         * (1) call -> (2) name -> (3) withoutOverlapping -> (4) dailyAt -> (5) onOneServer
+         */
+        $schedule->call(new DeleteTempImages)
+            ->name('delete_temp_images')
+            ->withoutOverlapping()
+            ->daily();
     }
 
     /**
