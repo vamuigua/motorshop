@@ -79,7 +79,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         allCarMakes: [],
-        allCarModels: []
+        allCarModels: [],
     },
     getters: {
         carMakes(state) {
@@ -87,7 +87,7 @@ const store = new Vuex.Store({
         },
         carModels(state) {
             return state.allCarModels;
-        }
+        },
     },
     mutations: {
         SET_ALL_CAR_MAKES(state, data) {
@@ -95,7 +95,7 @@ const store = new Vuex.Store({
         },
         SET_ALL_CAR_MODELS(state, data) {
             state.allCarModels = data;
-        }
+        },
     },
     actions: {
         updateAllCarMakes({ commit }, data) {
@@ -116,11 +116,17 @@ const store = new Vuex.Store({
             var temp = getters.carModels;
             temp.push(carModel);
             commit("SET_ALL_CAR_MODELS", temp);
-        }
-    }
+        },
+    },
 });
 
 const app = new Vue({
     el: "#app",
-    store
+    store,
 });
+
+if (process.env.MIX_ENV_MODE === "production") {
+    Vue.config.devtools = false;
+    Vue.config.debug = false;
+    Vue.config.silent = true;
+}
