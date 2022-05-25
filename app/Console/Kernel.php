@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(new DeleteTempImages)
             ->name('delete_temp_images')
             ->withoutOverlapping()
-            ->daily();
+            ->monthly();
     }
 
     /**
