@@ -24,7 +24,8 @@ jobs:
         env:
           ## Accessing to Github secrets, where you can store your configuration
           MYSQL_DATABASE: db_test
-          MYSQL_USER: root
+          MYSQL_USER: db_user
+          MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
           MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
         ## map the "external" 33306 port with the "internal" 3306
         ports:
