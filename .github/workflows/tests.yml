@@ -60,7 +60,6 @@ jobs:
           DB_PORT: 33306
           DB_USER: laravel_user
           DB_PASSWORD: root
-        run: mysql -h 127.0.0.1 --port 33306 -u laravel_user -p root -e 'CREATE DATABASE IF NOT EXISTS laravel_db;'
       - name: Run Migrations
         run: php artisan migrate
       - name: Execute tests via PHPUnit
