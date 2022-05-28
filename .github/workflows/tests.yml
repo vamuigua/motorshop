@@ -24,8 +24,8 @@ jobs:
         env:
           ## Accessing to Github secrets, where you can store your configuration
           MYSQL_USER: laravel_user
-          MYSQL_PASSWORD: root
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_PASSWORD: ""
+          MYSQL_ROOT_PASSWORD: ""
           MYSQL_DATABASE: laravel_db
         ## map the "external" 33306 port with the "internal" 3306
         ports:
@@ -38,8 +38,7 @@ jobs:
           --health-retries=3
     steps:
       - name: Checkout
-      - uses: actions/checkout@v2
-      - run: mysql -h 127.0.0.1 --port 33306 -u laravel_user -p root -e 'CREATE DATABASE IF NOT EXISTS laravel_db;'
+        uses: actions/checkout@v2
       - name: Setup and Install PHP Action
         uses: shivammathur/setup-php@2.9.0
         with:
@@ -54,15 +53,14 @@ jobs:
         run: php artisan key:generate
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
-      - name: Setup Database credentials & Run Migrations
+      - name: Setup Migrate Database & Execute tests via PHPUnit
         env:
           DB_CONNECTION: mysql
           DB_DATABASE: laravel_db
           DB_PORT: 33306
           DB_USER: laravel_user
-          DB_PASSWORD: root
-        run: php artisan migrate
-      - name: Execute tests via PHPUnit
-        run: vendor/bin/phpunit
-          
-          
+          DB_PASSWORD: ""
+        run: |
+          mysql -h 127.0.0.1 --port 33306 -u laravel_user -p -e 'CREATE DATABASE IF NOT EXISTS laravel_db;'
+          php artisan migrate
+          vendor/bin/phpunit
