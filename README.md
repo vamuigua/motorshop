@@ -7,7 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
  
-[![Actions Status](https://github.com/vamuigua/motorshop/actions/workflows/tests.yml/badge.svg)](https://github.com/vamuigua/motorshop/actions)
+[![Actions Status](https://github.com/vamuigua/motorshop/actions/workflows/tests-mysql.yml/badge.svg)](https://github.com/vamuigua/motorshop/actions)
+&nbsp;
+[![Actions Status](https://github.com/vamuigua/motorshop/actions/workflows/tests-sqlite.yml/badge.svg)](https://github.com/vamuigua/motorshop/actions)
 
 ## About Laravel
 
