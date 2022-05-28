@@ -1,0 +1,79 @@
+name: Run Unit and Feature Tests using MySQL
+
+on:
+  push:
+    branches:
+      - victor
+  pull_request:
+    branches: [main]
+
+jobs:
+  laravel:
+    name: Start Unit & Feature Test Configuration (PHP ${{ matrix.php-versions }})
+    runs-on: ubuntu-latest
+    env:
+      DB_DATABASE: laravel
+      DB_USERNAME: root
+      DB_PASSWORD: password
+
+    # Docs: https://docs.github.com/en/actions/using-containerized-services
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: laravel
+        ports:
+          - 3306/tcp
+        # Set health checks to wait until mysql database has started (it takes some seconds to start)
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ["8.0"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup and Install PHP Action
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, dom, fileinfo, mysql
+          coverage: xdebug
+
+      - name: Check PHP Version
+        run: php -v
+
+      - name: Install Composer dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Copy .env.example into .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Clear Config
+        run: php artisan config:clear
+
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
+
+      - name: Run the database migrations
+        run: php artisan migrate
+        env:
+          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
+
+      - name: Run tests with phpunit
+        run: vendor/bin/phpunit --coverage-text
+        env:
+          DB_PORT: ${{ job.services.mysql.ports['3306'] }}
