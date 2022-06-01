@@ -5,15 +5,15 @@ on:
     branches: [victor]
 
 jobs:
-  deploy:
+  build:
     name: Deploy to motorshop.tk
     runs-on: ubuntu-latest
     steps:
-    - name: Executing remote ssh commands
+    - name: Executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       with:
-        username: ${{ secrets.USERNAME }}
         host: ${{ secrets.HOST }}
-        password: ${{ secrets.SSH_PASSWORD }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.PORT }}
-        script: 'cd /var/www/html/test.motorshop.tk && echo "Deployed!"'
+        script: whoami
