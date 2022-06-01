@@ -16,4 +16,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
-          script: "cd /var/www/motorshop.tk && sudo ./deploy_app.sh"
+          script: "cd /var/www/motorshop.tk && ./deploy_app.sh"
