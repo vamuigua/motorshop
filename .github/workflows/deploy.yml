@@ -9,19 +9,6 @@ jobs:
     name: Deploy app to production
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-
-      - name: Copy repository contents via scp
-        uses: appleboy/scp-action@master
-        env:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        with:
-          source: "."
-          target: "/var/www/motorshop.tk"
-
       - name: Executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
@@ -30,3 +17,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           script: "cd /var/www/motorshop.tk && ./deploy_app.sh"
+          
