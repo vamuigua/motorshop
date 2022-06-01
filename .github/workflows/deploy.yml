@@ -2,18 +2,18 @@ name: Deploy app
 
 on:
   push:
-    branches: [victor]
+    branches: [main]
 
 jobs:
   deploy:
     name: Deploy app to production
     runs-on: ubuntu-latest
     steps:
-    - name: Executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.PORT }}
-        script: 'cd /var/www/html/motorshop.tk && ./deploy_app.sh'
+      - name: Executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          script: "cd /var/www/motorshop.tk && ./deploy_app.sh"
