@@ -9,12 +9,11 @@ jobs:
     name: Deploy to motorshop.tk
     runs-on: ubuntu-latest
     steps:
-    - name: Executing remote ssh commands using password
+    - name: Executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        password: ${{ secrets.SSH_PASSWORD }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         script: whoami
