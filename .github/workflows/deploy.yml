@@ -9,7 +9,16 @@ jobs:
     name: Deploy app to production
     runs-on: ubuntu-latest
     steps:
-      - name: Executing remote ssh commands using ssh key
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Start webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          # Private SSH key to register in the SSH agent
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Run deploy actions
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
