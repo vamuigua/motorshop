@@ -1,33 +1,19 @@
-name: Deploy app to Production
+name: Deploy app to Production using SSH
 
 on:
   push:
-    branches: [main]
+    branches: [victor]
 
 jobs:
-  build:
+  deploy:
+    name: Deploy to motorshop.tk
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Copy repository contents via scp
-        uses: appleboy/scp-action@master
-        env:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-        with:
-          source: "."
-          target: "/var/www/test.motorshop.tk"
-
-      - name: Executing remote command
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          script: ls
+    - name: Executing remote ssh commands
+      uses: appleboy/ssh-action@master
+      with:
+        username: ${{ secrets.USERNAME }}
+        host: ${{ secrets.HOST }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: 'cd /var/www/html/test.motorshop.tk && echo "Deployed!"'
