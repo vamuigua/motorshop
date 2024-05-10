@@ -101,3 +101,10 @@ Route::group(['prefix' => 'search'], function () {
     Route::get('all_car_makes', [CarSearchController::class, 'getAllCarMakes']);
     Route::get('carmake/{carMake}/models', [CarSearchController::class, 'getCarMakeModels']);
 });
+
+// Hack to make Storage work like the Default in production
+if (app()->environment(['production'])) {
+    Route::get('/storage/{extra}', function ($extra) {
+        return redirect("/public/storage/$extra");
+    })->where('extra', '.*');
+}
