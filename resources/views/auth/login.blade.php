@@ -66,6 +66,14 @@
                         </div>
                     </form>
                 </div>
+
+                <div class="card-footer">
+                    <p>Admin Login Creds:</p>
+                    <ul>
+                        <li><b>Email:</b> admin@gemvist.com</li>
+                        <li><b>Password:</b> Admin@123</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
